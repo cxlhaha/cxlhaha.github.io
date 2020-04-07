@@ -6,15 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="https://cxlhaha.github.io">
-  <title>Archives: 2019/6 | 常鑫亮的博客</title>
+  <title>swift笔记一:基础内容 | 常鑫亮的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="常鑫亮的博客">
-<meta property="og:url" content="https://cxlhaha.github.io/archives/2019/06/index.html">
+  <meta name="description" content="常量和变量用关键字let来声明常量,用var来声明变量,在swift中,如果值不发生改变都应该用let声明为常量. 123let a = 10var b = 100let c = 1,d = 2,e = 3 关于常量和变量的类型,一般我们不需要主动标注出常量和变量的类型,当我们给常量变量初始化赋值后,swift会自动推断类型 整数会被推断为Int类型,而浮点数则会被推断为Double类型 如果要打">
+<meta name="keywords" content="swift笔记">
+<meta property="og:type" content="article">
+<meta property="og:title" content="swift笔记一:基础内容">
+<meta property="og:url" content="https://cxlhaha.github.io/2018/06/11/swift笔记一-基础内容/index.html">
 <meta property="og:site_name" content="常鑫亮的博客">
+<meta property="og:description" content="常量和变量用关键字let来声明常量,用var来声明变量,在swift中,如果值不发生改变都应该用let声明为常量. 123let a = 10var b = 100let c = 1,d = 2,e = 3 关于常量和变量的类型,一般我们不需要主动标注出常量和变量的类型,当我们给常量变量初始化赋值后,swift会自动推断类型 整数会被推断为Int类型,而浮点数则会被推断为Double类型 如果要打">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2020-04-07T01:39:22.476Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="常鑫亮的博客">
+<meta name="twitter:title" content="swift笔记一:基础内容">
+<meta name="twitter:description" content="常量和变量用关键字let来声明常量,用var来声明变量,在swift中,如果值不发生改变都应该用let声明为常量. 123let a = 10var b = 100let c = 1,d = 2,e = 3 关于常量和变量的类型,一般我们不需要主动标注出常量和变量的类型,当我们给常量变量初始化赋值后,swift会自动推断类型 整数会被推断为Int类型,而浮点数则会被推断为Double类型 如果要打">
   
     <link rel="alternative" href="/atom.xml" title="常鑫亮的博客" type="application/atom+xml">
   
@@ -138,36 +143,76 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-swift笔记一-基础内容" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2019" class="archive-year">2019</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/06/11/swift笔记一-基础内容/" class="archive-article-date">
-  	<time datetime="2019-06-11T03:13:53.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-06-11</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/06/11/swift笔记一-基础内容/">swift笔记一:基础内容</a>
+    <h1 class="article-title" itemprop="name">
+      swift笔记一:基础内容
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        
+        <a href="/2018/06/11/swift笔记一-基础内容/" class="archive-article-date">
+  	<time datetime="2018-06-11T03:13:53.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-06-11</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="常量和变量"><a href="#常量和变量" class="headerlink" title="常量和变量"></a>常量和变量</h2><p>用关键字<strong>let</strong>来声明常量,用<strong>var</strong>来声明变量,在swift中,如果值不发生改变都应该用let声明为常量.</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> a = <span class="number">10</span></span><br><span class="line"><span class="keyword">var</span> b = <span class="number">100</span></span><br><span class="line"><span class="keyword">let</span> <span class="built_in">c</span> = <span class="number">1</span>,d = <span class="number">2</span>,e = <span class="number">3</span></span><br></pre></td></tr></table></figure>
+<p>关于常量和变量的类型,一般我们不需要主动标注出常量和变量的类型,当我们给常量变量初始化赋值后,swift会自动推断类型</p>
+<p>整数会被推断为Int类型,而浮点数则会被推断为Double类型</p>
+<p>如果要打印某个变量则,格式如下:</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">print</span>(a)</span><br><span class="line">        </span><br><span class="line"><span class="built_in">print</span>(<span class="string">"fdasfdafda\(a)"</span>)</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+<h2 id="整数"><a href="#整数" class="headerlink" title="整数"></a>整数</h2><p>整数类型有Int,Int8,Int16,Int32,Int64,我们一般使用Int就OK了,Int在32位平台上等于Int32,在64位平台上等于Int64</p>
+<p>我们可以这样取到类型最大最小值:</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">print</span>(<span class="type">Int</span>.<span class="built_in">max</span>,<span class="type">Int</span>.<span class="built_in">min</span>)</span><br></pre></td></tr></table></figure>
+<p>UInt是无符号整数,但是因为容错等问题,我们还是推荐使用Int</p>
+<h2 id="浮点数"><a href="#浮点数" class="headerlink" title="浮点数"></a>浮点数</h2><p>浮点数有Double和Float两种类型,Double类型为64位浮点数至少有15位精度,而Float位32位浮点数,只有6位精度,浮点数的默认类型和推荐类型是Double</p>
+<h2 id="数值字面量"><a href="#数值字面量" class="headerlink" title="数值字面量"></a>数值字面量</h2><p>关于各个进制的前缀:</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> g = <span class="number">17</span><span class="comment">//十进制</span></span><br><span class="line">      <span class="keyword">let</span> h = <span class="number">0b10001</span><span class="comment">//二进制</span></span><br><span class="line">      <span class="keyword">let</span> i = <span class="number">0o21</span><span class="comment">//八进制</span></span><br><span class="line">      <span class="keyword">let</span> j = <span class="number">0x11</span><span class="comment">//十六进制</span></span><br><span class="line">      </span><br><span class="line">      <span class="built_in">print</span>(g,h,i,j)</span><br><span class="line">      <span class="number">17</span> <span class="number">17</span> <span class="number">17</span> <span class="number">17</span><span class="comment">//打印结果</span></span><br></pre></td></tr></table></figure>
+<p>浮点数指数:</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> k = <span class="number">1.25e2</span><span class="comment">//相当于1.25*10^2</span></span><br><span class="line">      <span class="keyword">let</span> l = <span class="number">1.25e</span>-<span class="number">2</span><span class="comment">//相当于1.25*10^-2</span></span><br><span class="line">      </span><br><span class="line">      <span class="built_in">print</span>(k,l)</span><br><span class="line">      <span class="number">125.0</span> <span class="number">0.0125</span><span class="comment">//打印结果</span></span><br></pre></td></tr></table></figure>
+<p>为了可阅读性,增加_不影响值:</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> m = <span class="number">1000_000_0_0</span></span><br><span class="line">     <span class="built_in">print</span>(m)</span><br><span class="line">     <span class="number">100000000</span><span class="comment">//打印结果</span></span><br></pre></td></tr></table></figure>
+<h2 id="类型转换"><a href="#类型转换" class="headerlink" title="类型转换"></a>类型转换</h2><p>对于不同类型的值并不能直接进行计算即使是Int8和Int16,所以我们要进行类型转换,转换方式如下:</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> n :<span class="type">Int8</span> = <span class="number">1</span></span><br><span class="line">      <span class="keyword">let</span> o :<span class="type">Int16</span> = <span class="number">2</span></span><br><span class="line">      </span><br><span class="line">      <span class="built_in">print</span>(<span class="type">Int16</span>(n)+o)</span><br></pre></td></tr></table></figure>
+<p>值得注意的是,如果我们将浮点数转化为整数,则小数部分会被直接丢弃,而不是四舍五入</p>
+<h2 id="别名"><a href="#别名" class="headerlink" title="别名"></a>别名</h2><p>有时候,我们为了可读性,会根据语境为某个类型创建一个可阅读的别名,格式如下:</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> n :<span class="type">Int8</span> = <span class="number">1</span></span><br><span class="line">      <span class="keyword">let</span> o :<span class="type">Int16</span> = <span class="number">2</span></span><br><span class="line">      </span><br><span class="line">      <span class="built_in">print</span>(<span class="type">Int16</span>(n)+o)</span><br></pre></td></tr></table></figure>
+<h2 id="布尔值"><a href="#布尔值" class="headerlink" title="布尔值"></a>布尔值</h2><p>swift的布尔值类型为Bool,它的两个值为true,false</p>
+<p>在swift中if后面的条件语句必须是一个布尔值,而不能用其它替代,例如</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">let q = 1</span><br><span class="line">      if q &#123;//不能通过编译,会报错</span><br><span class="line">          print(111)</span><br><span class="line">      &#125;</span><br></pre></td></tr></table></figure>
+<h2 id="元组"><a href="#元组" class="headerlink" title="元组"></a>元组</h2><p>元组是swift新引入的类型,以下是元组的各种常见语法:</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> r = (<span class="number">1</span>,<span class="string">"1"</span>)</span><br><span class="line"><span class="built_in">print</span>(r)</span><br><span class="line">    </span><br><span class="line"><span class="keyword">let</span> (num,str) = r</span><br><span class="line"><span class="built_in">print</span>(num,str)</span><br><span class="line">    </span><br><span class="line"><span class="keyword">let</span> (num1,<span class="number">_</span>) = r</span><br><span class="line"><span class="built_in">print</span>(num1)</span><br><span class="line">    </span><br><span class="line"><span class="built_in">print</span>(r.<span class="number">0</span>,r.<span class="number">1</span>)</span><br><span class="line">    </span><br><span class="line"><span class="keyword">let</span> r1 = (<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="string">"6"</span>,<span class="number">3.2</span>)</span><br><span class="line"><span class="built_in">print</span>(r1)</span><br><span class="line">    </span><br><span class="line"><span class="keyword">let</span> r2 = (r2Num:<span class="number">1</span>,r2Str:<span class="string">"str"</span>)</span><br><span class="line"><span class="built_in">print</span>(r2.r2Num,r2.r2Str)</span><br></pre></td></tr></table></figure>
+<h2 id="可选项"><a href="#可选项" class="headerlink" title="可选项"></a>可选项</h2><p>如果一个变量或者常量是一个可选类型例如<strong>Int?</strong>,则代表这个变量或者常量可能是一个Int值也可能没有值.</p>
+<p>我们可以给一个可选类型变量赋值一个nil,将这个变量设为没有值.如下:</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> s:<span class="type">Int?</span> = <span class="number">12</span></span><br><span class="line"><span class="built_in">print</span>(s)</span><br><span class="line">    </span><br><span class="line">s=<span class="literal">nil</span></span><br><span class="line"><span class="built_in">print</span>(s)</span><br></pre></td></tr></table></figure>
+<p>值得注意的是,和OC不同swift中的nil不止能用在对象上,它可以用在任何可选类型上,代表没有值</p>
+<h3 id="可选绑定"><a href="#可选绑定" class="headerlink" title="可选绑定"></a>可选绑定</h3><p>可选绑定,是一种展开可选项的语法,通过在if或者while的条件判断语句中,将一个可选变量或常量,赋值给一个新的变量或者常量,这个新的值会是一个不可选类型,如果可选变量或者常量是有值的,那么新的值就被成功赋值了,并且条件语句的布尔值为true,在之后的执行语句中就可以用这个新的值了,因为新的值是一个不可选类型,所以使用时候不需要加!</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> s:<span class="type">Int?</span> = <span class="number">12</span></span><br><span class="line"><span class="built_in">print</span>(s)</span><br><span class="line">    </span><br><span class="line"><span class="keyword">if</span> <span class="keyword">let</span> s1 = s &#123;</span><br><span class="line">    <span class="built_in">print</span>(s1)</span><br><span class="line">&#125;<span class="keyword">else</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">"s没有值"</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="隐式展开可选项"><a href="#隐式展开可选项" class="headerlink" title="隐式展开可选项"></a>隐式展开可选项</h3><p>在可选项变量或者常量后面加个<strong>!</strong>表明,这个可选项一定有值,可以安全使用</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> s:<span class="type">Int?</span> = <span class="literal">nil</span></span><br><span class="line">    </span><br><span class="line"><span class="keyword">if</span> s != <span class="literal">nil</span> &#123;</span><br><span class="line">    <span class="built_in">print</span>(s!+<span class="number">5</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="遗留待整理问题"><a href="#遗留待整理问题" class="headerlink" title="遗留待整理问题"></a>遗留待整理问题</h2><ol>
+<li>错误处理</li>
+<li>断言和先决条件</li>
+<li>使用断言进行调试</li>
+<li>强制先决条件</li>
+</ol>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -179,19 +224,115 @@
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="http://s.jiathis.com/qrcode.php?url=https://cxlhaha.github.io/2018/06/11/swift笔记一-基础内容/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
+  
+    <a href="/2018/09/30/KVC/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          KVC
+        
+      </div>
+    </a>
   
   
-    </div></section>
+    <a href="/2017/04/07/GCD技术/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">GCD技术</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+
+
+
+
+  
+  <div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="swift笔记一-基础内容" data-title="swift笔记一:基础内容" data-url="https://cxlhaha.github.io/2018/06/11/swift笔记一-基础内容/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"cxlhaha"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
   
 
-    
+
 
 
           </div>
@@ -214,8 +355,8 @@
 	var yiliaConfig = {
 		mathjax: true,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: true,
@@ -366,6 +507,10 @@ MathJax.Hub.Queue(function() {
           
             <li class="search-li">
               <a href="http://casatwy.com" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>田伟宇的博客</a>
+            </li>
+          
+            <li class="search-li">
+              <a href="https://onevcat.com/#blog" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>喵神的博客</a>
             </li>
           
         </ul>

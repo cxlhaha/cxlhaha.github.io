@@ -6,15 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="https://cxlhaha.github.io">
-  <title>Tag: swift笔记 | 常鑫亮的博客</title>
+  <title>深入理解Block | 常鑫亮的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="常鑫亮的博客">
-<meta property="og:url" content="https://cxlhaha.github.io/tags/swift笔记/index.html">
+  <meta name="description" content="关于Block:在我们使用OC进行iOS开发和Mac OS开发中,Block语法是我们最常见的语法之一,而且苹果官方也推荐我们使用Block代码块的语法,如果仔细观察,大家可以看到,在近期苹果新开放的系统框架的API中,苹果越来越多的使用了Block这种语法方式,而不是@selector方法选择器. 苹果如此推荐Block的使用,以及这种语法深受广大OC开发者的喜爱的原因是Block不可替代的优点">
+<meta property="og:type" content="article">
+<meta property="og:title" content="深入理解Block">
+<meta property="og:url" content="https://cxlhaha.github.io/2019/03/31/关于Block块的所有所有/index.html">
 <meta property="og:site_name" content="常鑫亮的博客">
+<meta property="og:description" content="关于Block:在我们使用OC进行iOS开发和Mac OS开发中,Block语法是我们最常见的语法之一,而且苹果官方也推荐我们使用Block代码块的语法,如果仔细观察,大家可以看到,在近期苹果新开放的系统框架的API中,苹果越来越多的使用了Block这种语法方式,而不是@selector方法选择器. 苹果如此推荐Block的使用,以及这种语法深受广大OC开发者的喜爱的原因是Block不可替代的优点">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2020-04-07T01:42:10.810Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="常鑫亮的博客">
+<meta name="twitter:title" content="深入理解Block">
+<meta name="twitter:description" content="关于Block:在我们使用OC进行iOS开发和Mac OS开发中,Block语法是我们最常见的语法之一,而且苹果官方也推荐我们使用Block代码块的语法,如果仔细观察,大家可以看到,在近期苹果新开放的系统框架的API中,苹果越来越多的使用了Block这种语法方式,而不是@selector方法选择器. 苹果如此推荐Block的使用,以及这种语法深受广大OC开发者的喜爱的原因是Block不可替代的优点">
   
     <link rel="alternative" href="/atom.xml" title="常鑫亮的博客" type="application/atom+xml">
   
@@ -138,60 +142,229 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-关于Block块的所有所有" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2018" class="archive-year">2018</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/06/11/swift笔记一-基础内容/" class="archive-article-date">
-  	<time datetime="2018-06-11T03:13:53.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-06-11</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/06/11/swift笔记一-基础内容/">swift笔记一:基础内容</a>
+    <h1 class="article-title" itemprop="name">
+      深入理解Block
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">swift笔记</a>
-        		</li>
-      		
-		</ul>
-	</div>
+        
+        <a href="/2019/03/31/关于Block块的所有所有/" class="archive-article-date">
+  	<time datetime="2019-03-31T06:14:27.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-03-31</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="关于Block"><a href="#关于Block" class="headerlink" title="关于Block:"></a>关于Block:</h2><p>在我们使用OC进行iOS开发和Mac OS开发中,Block语法是我们最常见的语法之一,而且苹果官方也推荐我们使用Block代码块的语法,如果仔细观察,大家可以看到,在近期苹果新开放的系统框架的API中,苹果越来越多的使用了Block这种语法方式,而不是@selector方法选择器.</p>
+<p>苹果如此推荐Block的使用,以及这种语法深受广大OC开发者的喜爱的原因是Block不可替代的优点:Block的写法非常简洁高效,而且可以减少代码的分散,提高内聚性等等,虽然代理等回调方式也有它的优点,但是广大OC开发者确大都对Block情有独钟.</p>
+<p>接下来,我们一起来看看Block的用法,原理,以及注意点吧.<br><a id="more"></a></p>
+<h2 id="初识Block"><a href="#初识Block" class="headerlink" title="初识Block:"></a>初识Block:</h2><p>Block 是在OSX 10.4 以及iOS4 之后引入的新的语法形式,从技术上来讲,Block应该属于C语言的特性,所以只要编译器支持,就可以在C,C++,OC,OC++中使用.</p>
+<p>通俗点来说Block的内容其实就是一个代码块,表示一段代码.但是这个代码块可以有返回值,可以有参数</p>
+<p>Block也可以看成是一个OC对象,所以它也能赋值给变量.</p>
+<h3 id="没有参数-没有返回值的Block"><a href="#没有参数-没有返回值的Block" class="headerlink" title="没有参数,没有返回值的Block"></a>没有参数,没有返回值的Block</h3><p>说一百句话也不如上一句代码,我们先来写个最简单的Block吧:</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">^&#123;</span><br><span class="line">        <span class="built_in">NSLog</span>(<span class="string">@"I am a Block"</span>);</span><br><span class="line">    &#125;;</span><br></pre></td></tr></table></figure>
+<p>很简单的语法形式对吧,一对<strong>{}</strong>前面再加上一个<strong>^</strong>,就是最简单的Block形式,这个Block只有一句代码,没有返回值,也没有参数.</p>
+<h3 id="有参数-没有返回值的Block"><a href="#有参数-没有返回值的Block" class="headerlink" title="有参数,没有返回值的Block"></a>有参数,没有返回值的Block</h3><figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">^(<span class="built_in">NSInteger</span> count,<span class="built_in">NSString</span> *str)&#123;</span><br><span class="line">        <span class="built_in">NSLog</span>(<span class="string">@"%ld---%@"</span>,count,str);</span><br><span class="line">        </span><br><span class="line">    &#125;;</span><br></pre></td></tr></table></figure>
+<p>这个Block带了两个参数分别是count和str,参数就写在<strong>^</strong>后面的<strong>()</strong>中就可以了</p>
+<h3 id="有参数-有返回值的Block"><a href="#有参数-有返回值的Block" class="headerlink" title="有参数,有返回值的Block"></a>有参数,有返回值的Block</h3><figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">^(<span class="built_in">NSInteger</span> count,<span class="built_in">NSString</span> *str)&#123;</span><br><span class="line">        <span class="built_in">NSLog</span>(<span class="string">@"%ld---%@"</span>,count,str);</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">YES</span>;</span><br><span class="line">    &#125;;</span><br></pre></td></tr></table></figure>
+<p>这个Block不仅有两个参数,还有返回值,返回值的类型是一个<strong>BOOL</strong>值</p>
+<p>这些就是几种Block的类型啦,是不是也没有那么复杂.</p>
+<h3 id="把Block赋值给变量"><a href="#把Block赋值给变量" class="headerlink" title="把Block赋值给变量"></a>把Block赋值给变量</h3><p>上面我们创建了三种类型的Block,但是,我们却无法方便的拿来使用.这个时候,我们需要把这个创建出来的Block赋值给一个变量:</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">BOOL</span> (^aBlock)(<span class="built_in">NSInteger</span> count,<span class="built_in">NSString</span> *str)=^(<span class="built_in">NSInteger</span> count,<span class="built_in">NSString</span> *str)&#123;</span><br><span class="line">        <span class="built_in">NSLog</span>(<span class="string">@"%ld---%@"</span>,count,str);</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">YES</span>;</span><br><span class="line">    &#125;;</span><br></pre></td></tr></table></figure>
+<p>我们把上面那个既有返回值又有参数的Block赋值给了一个叫<strong>aBlock</strong>的变量,这个变量名是写在中间的看起来有点奇怪,但是熟悉了Block的语法就会习惯了,而<strong>BOOL (^aBlock)(NSInteger count,NSString *str)</strong>表示Block的类型.<strong>BOOL</strong>表示返回值,<strong>(NSInteger count,NSString *str)</strong>表示这个Block的两个参数.</p>
+<h3 id="通过变量名调用Block"><a href="#通过变量名调用Block" class="headerlink" title="通过变量名调用Block"></a>通过变量名调用Block</h3><p>我们如果需要调用这个定义的Block,则可以通过变量名如这样:</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">aBlock(<span class="number">10</span>,<span class="string">@"123"</span>);</span><br></pre></td></tr></table></figure>
+<p>这样我们就调用了这个Block,并为这个Block传入了两个参数.</p>
+<h3 id="内联Block"><a href="#内联Block" class="headerlink" title="内联Block"></a>内联Block</h3><p>我们使用Block经常是把Block当做一个参数传出一个方法中,这种用法叫做内联Block.</p>
+<p>我们直观的从代码上了解这种用法就好了:<br><figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">-(<span class="keyword">void</span>)aMethodWithInlineBlock:(<span class="built_in">BOOL</span>(^)(<span class="built_in">NSString</span> *,<span class="built_in">NSInteger</span> ))block</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">if</span> (block) &#123;</span><br><span class="line">        block(<span class="string">@"123"</span>,<span class="number">10</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>上面为一个带Block参数的方法实现,下面是调用这个方法的代码:<br><figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">[<span class="keyword">self</span> aMethodWithInlineBlock:^<span class="built_in">BOOL</span>(<span class="built_in">NSString</span> *str,<span class="built_in">NSInteger</span> count) &#123;</span><br><span class="line">       </span><br><span class="line">        <span class="built_in">NSLog</span>(<span class="string">@"%@----%ld"</span>,str,count);</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">YES</span>;</span><br><span class="line">       </span><br><span class="line">    &#125;];</span><br></pre></td></tr></table></figure></p>
+<h2 id="Block最大的特性-捕获变量"><a href="#Block最大的特性-捕获变量" class="headerlink" title="Block最大的特性:捕获变量:"></a>Block最大的特性:<strong>捕获变量</strong>:</h2><p>在Block的诸多特性中,最显著的最强大的特性是可以在Block的声明范围中,捕获需要的变量.实际上,我们可以把Block看做是一个OC对象,所以它也会用引用计数来管理,如果我们在Block中使用了某个外部变量,而该变量是对象类型的话,Block也会对这个变量有一个强引用,当Block本身的引用计数变为0的时候,系统会释放Block,Block也会对所捕获的对象做一次release操作.</p>
+<h2 id="Block内存结构"><a href="#Block内存结构" class="headerlink" title="Block内存结构:"></a>Block内存结构:</h2><table>
+<thead>
+<tr>
+<th>类型</th>
+<th>变量名</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>void *</td>
+<td>isa</td>
+</tr>
+<tr>
+<td>int</td>
+<td>flag</td>
+</tr>
+<tr>
+<td>int</td>
+<td>reserved</td>
+</tr>
+<tr>
+<td>void(*)(void)</td>
+<td>invoke</td>
+</tr>
+<tr>
+<td>struct</td>
+<td>descriptor</td>
+</tr>
+<tr>
+<td>捕获到的变量</td>
+<td>捕获到的变量</td>
+</tr>
+</tbody>
+</table>
+<p>这其中最重要的是invoke这个函数指针,它指向的是Block的实现代码.</p>
+<p>descriptor是一个结构体,这个结构体中有Block的大小,还有copy,dispose这两个函数指针,分别是在拷贝和丢弃Block的时候调用的.</p>
+<p>Block会对它捕获到的变量指针做一个拷贝.</p>
+<h2 id="在栈中的Block"><a href="#在栈中的Block" class="headerlink" title="在栈中的Block"></a>在栈中的Block</h2><p>我们定义Block时,Block所占据的其实是栈内存空间,在栈内存空间中,那么我们就无法控制Block的生命周期,ARC也没有办法对这种Block进行引用计数的内存管理,这种Block通常是不安全的,例如:</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">void</span> (^aBlock)();</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">if</span> (<span class="keyword">self</span>.condition) &#123;</span><br><span class="line">        aBlock=^&#123;</span><br><span class="line">            <span class="built_in">NSLog</span>(<span class="string">@"123"</span>);</span><br><span class="line">        &#125;;</span><br><span class="line">    &#125;<span class="keyword">else</span></span><br><span class="line">    &#123;</span><br><span class="line">        aBlock=^&#123;</span><br><span class="line">            <span class="built_in">NSLog</span>(<span class="string">@"456"</span>);</span><br><span class="line">        &#125;;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    aBlock();</span><br></pre></td></tr></table></figure>
+<p>这段代码其实是不安全的,因为我们定义出来的Block在栈内存中,而我们不能保证在出了Block的定义区域后,这个Block还有效,那么在这种情况下,赋值给aBlock变量是不安全的,然而,我们只要对Block进行一次copy操作,就能在堆内存中拷贝一份Block,这样我们就能对Block的内存进行控制了,ARC也能对copy出来的Block进行内存管理了.</p>
+<p>上面的代码如下改就变得安全了:</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">void</span> (^aBlock)();</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">if</span> (<span class="keyword">self</span>.condition) &#123;</span><br><span class="line">        aBlock=[^&#123;</span><br><span class="line">            <span class="built_in">NSLog</span>(<span class="string">@"123"</span>);</span><br><span class="line">        &#125; <span class="keyword">copy</span>];</span><br><span class="line">    &#125;<span class="keyword">else</span></span><br><span class="line">    &#123;</span><br><span class="line">        aBlock=[^&#123;</span><br><span class="line">            <span class="built_in">NSLog</span>(<span class="string">@"456"</span>);</span><br><span class="line">        &#125;<span class="keyword">copy</span> ];</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    aBlock();</span><br></pre></td></tr></table></figure>
+<h2 id="为Block变量创建别名"><a href="#为Block变量创建别名" class="headerlink" title="为Block变量创建别名"></a>为Block变量创建别名</h2><p>我们上面说到Block变量名是写在类型中间的,看起来似乎有点奇怪,而且也不是非常有利于易读性,所以,我们一般会为Block类型起一个别名.</p>
+<p>之前我们对一个Block变量赋值为这种写法:</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">BOOL</span> (^aBlock)(<span class="built_in">NSInteger</span> ,<span class="built_in">NSString</span> *)=^(<span class="built_in">NSInteger</span> count,<span class="built_in">NSString</span> *str)&#123;</span><br><span class="line">    <span class="built_in">NSLog</span>(<span class="string">@"%ld---%@"</span>,count,str);</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">YES</span>;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">aBlock(<span class="number">10</span>,<span class="string">@"123"</span>);</span><br></pre></td></tr></table></figure>
+<p>我们现在为这种类型的Block起个别名</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="built_in">BOOL</span> (^ABlock)(<span class="built_in">NSInteger</span> ,<span class="built_in">NSString</span> *);</span><br></pre></td></tr></table></figure>
+<p>ABlock为这种Block的类型名,我们之后再赋值给这种类型的Block就可以如下写了:</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">ABlock aBlock=^(<span class="built_in">NSInteger</span> count,<span class="built_in">NSString</span> *str)&#123;</span><br><span class="line">        <span class="built_in">NSLog</span>(<span class="string">@"%ld---%@"</span>,count,str);</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">YES</span>;</span><br><span class="line">    &#125;;</span><br><span class="line">    </span><br><span class="line">    aBlock(<span class="number">10</span>,<span class="string">@"123"</span>);</span><br></pre></td></tr></table></figure>
+<h2 id="使用Block最大的注意点-避免循环引用"><a href="#使用Block最大的注意点-避免循环引用" class="headerlink" title="使用Block最大的注意点:避免循环引用"></a>使用Block最大的注意点:避免循环引用</h2><p>我们刚刚有说过,在Block中,Block会自动捕获要使用到的变量,并持有该变量.这时往往容易出现循环引用的问题,当前类实例持有该Block,该Block又在其中使用self,持有了该实例,这时循环引用问题就出现了.</p>
+<p>例如:我们在当前类声明一个Block属性:</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">@property</span> (<span class="keyword">nonatomic</span>,<span class="keyword">copy</span>)ABlock ablock;</span><br></pre></td></tr></table></figure>
+<p>我们给这个Block赋值:</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">self</span>.ablock=^(<span class="built_in">NSInteger</span> count,<span class="built_in">NSString</span> *str )&#123;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">self</span>.view.backgroundColor=[<span class="built_in">UIColor</span> greenColor];</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">return</span> <span class="literal">YES</span>;</span><br><span class="line">    &#125;;</span><br></pre></td></tr></table></figure>
+<p>这样,由于我们在Block中使用了self,那么这个Block就会把当前实例捕获,并持有,而当前实例又拥有该Block,这就导致了循环引用的状况.</p>
+<p>如下修改:</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">__<span class="keyword">weak</span> ViewController * weakSelf=<span class="keyword">self</span>;</span><br><span class="line">   </span><br><span class="line">   <span class="keyword">self</span>.ablock=^(<span class="built_in">NSInteger</span> count,<span class="built_in">NSString</span> *str )&#123;</span><br><span class="line">       </span><br><span class="line">       weakSelf.view.backgroundColor=[<span class="built_in">UIColor</span> greenColor];</span><br><span class="line">       </span><br><span class="line">       <span class="keyword">return</span> <span class="literal">YES</span>;</span><br><span class="line">   &#125;;</span><br></pre></td></tr></table></figure>
+<p>我们在该Block中使用了self的若引用,从而打破了这个引用环,解决了循环引用的问题.</p>
+<p>特别需要注意的一种情况是对在Block中使用成员变量,引起的循环引用问题容易让开发者们所忽视,因为,在Block中虽然并没有使用self,而是使用的成员变量,但是想要捕获成员变量又一定要捕获self,这依然会导致循环引用.例如:</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//定义了一个成员变量</span></span><br><span class="line">&#123;</span><br><span class="line">    </span><br><span class="line">    <span class="built_in">NSString</span> *_chengyuanbianliang;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//在Block中使用成员变量,导致循环引用</span></span><br><span class="line"><span class="keyword">self</span>.ablock=^(<span class="built_in">NSInteger</span> count,<span class="built_in">NSString</span> *str )&#123;</span><br><span class="line">        </span><br><span class="line">        <span class="built_in">NSLog</span>(<span class="string">@"%@"</span>,_chengyuanbianliang);</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">return</span> <span class="literal">YES</span>;</span><br><span class="line">    &#125;;</span><br></pre></td></tr></table></figure>
+<p>我们可以如下解决这个问题:</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">__<span class="keyword">weak</span> ViewController * weakSelf=<span class="keyword">self</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">self</span>.ablock=^(<span class="built_in">NSInteger</span> count,<span class="built_in">NSString</span> *str )&#123;</span><br><span class="line">  __<span class="keyword">strong</span>  ViewController *strongSelf=weakSelf;</span><br><span class="line">    </span><br><span class="line">    <span class="built_in">NSLog</span>(<span class="string">@"%@"</span>,strongSelf-&gt;_chengyuanbianliang );</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> <span class="literal">YES</span>;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 
-          
+      
 
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="http://s.jiathis.com/qrcode.php?url=https://cxlhaha.github.io/2019/03/31/关于Block块的所有所有/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
+  
+    <a href="/2020/03/13/动态添加属性-Associated Object/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          动态添加属性-Associated Object
+        
+      </div>
+    </a>
   
   
-    </div></section>
+    <a href="/2018/11/17/iOS绘制和渲染/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">iOS绘制和渲染</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+
+
+
+
+  
+  <div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="关于Block块的所有所有" data-title="深入理解Block" data-url="https://cxlhaha.github.io/2019/03/31/关于Block块的所有所有/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"cxlhaha"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
   
 
-    
+
 
 
           </div>
@@ -214,9 +387,9 @@
 	var yiliaConfig = {
 		mathjax: true,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
-		isTag: true,
+		isTag: false,
 		isCategory: false,
 		open_in_new: true,
 		root: "/",

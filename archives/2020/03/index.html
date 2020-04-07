@@ -6,19 +6,15 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="https://cxlhaha.github.io">
-  <title>动态添加属性-Associated Object | 常鑫亮的博客</title>
+  <title>Archives: 2020/3 | 常鑫亮的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="前言从今天开始,我们将要开始逐步接近OC的动态特性,慢慢揭开OC底层runtime系统的神秘面纱,超强的动态特性,是OC和一般面向对象的语言最明显的区别,也是这门古老的语言最具魅力的地方,如果可以正确的利用动态特性,那么可以帮助我们方便的解决很多棘手的问题. 我们今天来看的呢,是runtime库里非常有用的一组函数,Associated Object动态关联对象.这个功能,能够让我们动态的对一个对">
-<meta property="og:type" content="article">
-<meta property="og:title" content="动态添加属性-Associated Object">
-<meta property="og:url" content="https://cxlhaha.github.io/2017/03/13/动态添加属性-Associated Object/index.html">
+  <meta property="og:type" content="website">
+<meta property="og:title" content="常鑫亮的博客">
+<meta property="og:url" content="https://cxlhaha.github.io/archives/2020/03/index.html">
 <meta property="og:site_name" content="常鑫亮的博客">
-<meta property="og:description" content="前言从今天开始,我们将要开始逐步接近OC的动态特性,慢慢揭开OC底层runtime系统的神秘面纱,超强的动态特性,是OC和一般面向对象的语言最明显的区别,也是这门古老的语言最具魅力的地方,如果可以正确的利用动态特性,那么可以帮助我们方便的解决很多棘手的问题. 我们今天来看的呢,是runtime库里非常有用的一组函数,Associated Object动态关联对象.这个功能,能够让我们动态的对一个对">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-06-11T03:13:18.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="动态添加属性-Associated Object">
-<meta name="twitter:description" content="前言从今天开始,我们将要开始逐步接近OC的动态特性,慢慢揭开OC底层runtime系统的神秘面纱,超强的动态特性,是OC和一般面向对象的语言最明显的区别,也是这门古老的语言最具魅力的地方,如果可以正确的利用动态特性,那么可以帮助我们方便的解决很多棘手的问题. 我们今天来看的呢,是runtime库里非常有用的一组函数,Associated Object动态关联对象.这个功能,能够让我们动态的对一个对">
+<meta name="twitter:title" content="常鑫亮的博客">
   
     <link rel="alternative" href="/atom.xml" title="常鑫亮的博客" type="application/atom+xml">
   
@@ -142,205 +138,49 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-动态添加属性-Associated Object" class="article article-type-post " itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
+            
   
-    <h1 class="article-title" itemprop="name">
-      动态添加属性-Associated Object
+  
+    
+    
+      
+      
+      <section class="archives-wrap">
+        <div class="archive-year-wrap">
+          <a href="/archives/2020" class="archive-year">2020</a>
+        </div>
+        <div class="archives">
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      	<div class="article-meta">
+	      	<a href="/2020/03/13/动态添加属性-Associated Object/" class="archive-article-date">
+  	<time datetime="2020-03-13T09:56:26.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-13</time>
+</a>
+        </div>
+    	 
+  
+    <h1 itemprop="name">
+      <a class="archive-article-title" href="/2020/03/13/动态添加属性-Associated Object/">动态添加属性-Associated Object</a>
     </h1>
   
 
-        
-        <a href="/2017/03/13/动态添加属性-Associated Object/" class="archive-article-date">
-  	<time datetime="2017-03-13T09:56:26.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-13</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>从今天开始,我们将要开始逐步接近OC的动态特性,慢慢揭开OC底层runtime系统的神秘面纱,超强的动态特性,是OC和一般面向对象的语言最明显的区别,也是这门古老的语言最具魅力的地方,如果可以正确的利用动态特性,那么可以帮助我们方便的解决很多棘手的问题.</p>
-<p>我们今天来看的呢,是runtime库里非常有用的一组函数,Associated Object动态关联对象.这个功能,能够让我们动态的对一个对象绑定相关联的数据.</p>
-<p>有了这个功能,我们不仅能够为自己编写的类添加属性,还能够为系统框架里的类动态添加我们需要的属性,甚至能够在分类里动态添加属性.我们这就来看看这个方便又强大的功能吧.<br><a id="more"></a></p>
-<h2 id="Associated-Object使用场景"><a href="#Associated-Object使用场景" class="headerlink" title="Associated Object使用场景"></a>Associated Object使用场景</h2><p>我们都有这样的经验,我们希望在既有的类上添加新的属性,通常情况下:</p>
-<p>如果这个类是我们自己编写的,那么我们就可以方便的在文件中添加对应的属性就可以</p>
-<p>如果这个类是系统框架的,而并非我们自己编写的,那么,我们通常会采取集成该系统类,产生新的类,添加我们需要的方法和属性</p>
-<p>但是,很多时候,某个对象并不是我们产生,而是通过其它机制产生的,比如,系统为我们返回了一个系统类的实例,但是,我们却希望在这个实例加上这个类原本并没有的属性,来记录或存储一些数据,在这个时候我们按照常规的方法就不好解决了.</p>
-<p>这时,我们的<strong>Associated Object</strong>就要发挥它的作用了.</p>
-<h2 id="相关函数"><a href="#相关函数" class="headerlink" title="相关函数"></a>相关函数</h2><p>Associated Object的相关函数在runtime.h 文件中,使用前,我们需要先引入该库.而该库中和<strong>Associated Object</strong>相关的函数有三个:</p>
-<ol>
-<li><strong>objc_setAssociatedObject:</strong>用来给对象动态绑定关联对象(也就是添加相应属性)</li>
-<li><strong>objc_getAssociatedObject:</strong>用来读取对某对象动态绑定的关联对象(读取相应属性)</li>
-<li><strong>objc_removeAssociatedObjects:</strong>这个函数是用来解除某对象的<strong>所有关联对象</strong>这项操作会将该对象所有的关联对象都全部删除.使用时,我们要格外注意.</li>
-</ol>
-<h2 id="Associated-Object存储策略"><a href="#Associated-Object存储策略" class="headerlink" title="Associated Object存储策略:"></a>Associated Object存储策略:</h2><p>在调用<strong>objc_setAssociatedObject:</strong>函数时,我们需要设置关联对象的存储策略,这类似于<strong>property属性</strong>的存储策略关键字,这些存储策略名称从字面上就可以轻易的与<strong>property属性</strong>的存储策略关键字轻松匹配,相信大家一定可以选对的.我就不再一一举例了.</p>
-<table>
-<thead>
-<tr>
-<th>Associated Object存储策略</th>
-<th>property属性存储策略关键字</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>OBJC_ASSOCIATION_ASSIGN</td>
-<td>assign</td>
-</tr>
-<tr>
-<td>OBJC_ASSOCIATION_RETAIN_NONATOMIC</td>
-<td>nonatomic, strong</td>
-</tr>
-<tr>
-<td>OBJC_ASSOCIATION_COPY_NONATOMIC</td>
-<td>copy, nonatomic</td>
-</tr>
-<tr>
-<td>OBJC_ASSOCIATION_RETAIN</td>
-<td>strong</td>
-</tr>
-<tr>
-<td>OBJC_ASSOCIATION_COPY</td>
-<td>copy</td>
-</tr>
-</tbody>
-</table>
-<h2 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h2><p>说了这么多,我们通过一个小小的例子,来感受下<strong>Associated Object</strong>的妙用吧</p>
-<p>我们都有过这样的经历,我们需要在用户进行过某些操作的时候触发一个提醒框,即AlertView.</p>
-<p>通常代码会像这个样子:</p>
-<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">-(<span class="keyword">void</span>)click</span><br><span class="line">&#123;</span><br><span class="line">    <span class="built_in">UIAlertView</span> *alert=[[<span class="built_in">UIAlertView</span> alloc]initWithTitle:<span class="string">@"alert"</span> message:<span class="string">@"msg"</span> delegate:<span class="keyword">self</span> cancelButtonTitle:<span class="string">@"cancle"</span> otherButtonTitles:<span class="string">@"confirm"</span>, <span class="literal">nil</span>];</span><br><span class="line">    </span><br><span class="line">    [alert show];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">-(<span class="keyword">void</span>)alertView:(<span class="built_in">UIAlertView</span> *)alertView clickedButtonAtIndex:(<span class="built_in">NSInteger</span>)buttonIndex</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">if</span> (buttonIndex==<span class="number">0</span>) &#123;</span><br><span class="line">        <span class="built_in">NSLog</span>(<span class="string">@"do someThing"</span>);</span><br><span class="line">    &#125;<span class="keyword">else</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">NSLog</span>(<span class="string">@"do otherThing"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>但是经常我们会在一个控制器中有多个潜在将会触发的提醒框,如果是这样,那么我们通常会为alertView指定tag,在代理方法里区分不同的提醒框,做不同处理,那么代码就会变成这个样子.</p>
-<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line">-(<span class="keyword">void</span>)alertView:(<span class="built_in">UIAlertView</span> *)alertView clickedButtonAtIndex:(<span class="built_in">NSInteger</span>)buttonIndex</span><br><span class="line">&#123;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">if</span> (alertView.tag==<span class="number">0</span>) &#123;</span><br><span class="line">        <span class="keyword">if</span> (buttonIndex==<span class="number">0</span>) &#123;</span><br><span class="line">            <span class="built_in">NSLog</span>(<span class="string">@"do someThing"</span>);</span><br><span class="line">        &#125;<span class="keyword">else</span></span><br><span class="line">        &#123;</span><br><span class="line">            <span class="built_in">NSLog</span>(<span class="string">@"do otherThing"</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;<span class="keyword">else</span> <span class="keyword">if</span> (alertView.tag==<span class="number">1</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span> (buttonIndex==<span class="number">0</span>) &#123;</span><br><span class="line">            <span class="built_in">NSLog</span>(<span class="string">@"do someThing"</span>);</span><br><span class="line">        &#125;<span class="keyword">else</span></span><br><span class="line">        &#123;</span><br><span class="line">            <span class="built_in">NSLog</span>(<span class="string">@"do otherThing"</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">    &#125;<span class="keyword">else</span> <span class="keyword">if</span> (alertView.tag==<span class="number">2</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span> (buttonIndex==<span class="number">0</span>) &#123;</span><br><span class="line">            <span class="built_in">NSLog</span>(<span class="string">@"do someThing"</span>);</span><br><span class="line">        &#125;<span class="keyword">else</span></span><br><span class="line">        &#123;</span><br><span class="line">            <span class="built_in">NSLog</span>(<span class="string">@"do otherThing"</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;<span class="keyword">else</span> <span class="keyword">if</span> (alertView.tag==<span class="number">3</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span> (buttonIndex==<span class="number">0</span>) &#123;</span><br><span class="line">            <span class="built_in">NSLog</span>(<span class="string">@"do someThing"</span>);</span><br><span class="line">        &#125;<span class="keyword">else</span></span><br><span class="line">        &#123;</span><br><span class="line">            <span class="built_in">NSLog</span>(<span class="string">@"do otherThing"</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>这样的代码,不仅繁琐冗长,并不利于我们的代码可读性和高内聚低耦合的设计原则</p>
-<p>我们将要通过Associated Object方式,对该情况进行处理</p>
-<p>大概思路为,在编写alertView时为每一个alertView关联一个处理Block,在代理方法中我们只要调用alertView关联的处理block就可以了,这样的代码将会变得异常清晰,而且具有极高的可读性我们一起来看一下吧:</p>
-<p>我们需要先导入需要的文件,并声明一个用来充当关联Key的字符常量:</p>
-<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="meta">#import <span class="meta-string">&lt;objc/runtime.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">static</span> <span class="keyword">char</span> <span class="keyword">const</span> alertDealBlockKey;</span><br></pre></td></tr></table></figure>
-<p>然后在编写提示框的时候,我们需要编写一个处理alertView的block,并和alertView进行关联:</p>
-<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">-(<span class="keyword">void</span>)click</span><br><span class="line">&#123;</span><br><span class="line">    <span class="built_in">UIAlertView</span> *alert=[[<span class="built_in">UIAlertView</span> alloc]initWithTitle:<span class="string">@"alert"</span> message:<span class="string">@"msg"</span> delegate:<span class="keyword">self</span> cancelButtonTitle:<span class="string">@"cancle"</span> otherButtonTitles:<span class="string">@"confirm"</span>, <span class="literal">nil</span>];</span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">    <span class="keyword">void</span> (^alertDealBlock)(<span class="built_in">NSInteger</span> btnIndex)=^(<span class="built_in">NSInteger</span> btnIndex)&#123;</span><br><span class="line">      </span><br><span class="line">        <span class="keyword">if</span> (btnIndex==<span class="number">0</span>) &#123;</span><br><span class="line">            <span class="built_in">NSLog</span>(<span class="string">@"do someThing"</span>);</span><br><span class="line">        &#125;<span class="keyword">else</span></span><br><span class="line">        &#123;</span><br><span class="line">            <span class="built_in">NSLog</span>(<span class="string">@"do otherThing"</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;;</span><br><span class="line">    </span><br><span class="line">    objc_setAssociatedObject(alert, &amp;alertDealBlockKey, alertDealBlock, OBJC_ASSOCIATION_COPY_NONATOMIC);</span><br><span class="line">    [alert show];</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
-<p>这样处理过得alertView中就会绑定一个处理的block了,接下来我们在alertview的代理方法中,仅仅需要将这个block取出并调用,就可以了:</p>
-<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">-(<span class="keyword">void</span>)alertView:(<span class="built_in">UIAlertView</span> *)alertView clickedButtonAtIndex:(<span class="built_in">NSInteger</span>)buttonIndex</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">void</span> (^alertDealBlock)(<span class="built_in">NSInteger</span> btnIndex)=objc_getAssociatedObject(alertView, &amp;alertDealBlockKey);</span><br><span class="line">    </span><br><span class="line">    alertDealBlock(buttonIndex);</span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>这样无论该文件中将有多少个alertView,我们的代理方法中也只需要这样短短两行的代码就可以处理,是不是很简单呢,而且,在编写alertView的时候我们就可以顺便把处理方式编写好,可读性也大大提高,是不是还是很优雅的呢?</p>
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>上面的这个例子只是一个<strong>Associated Object</strong>一个简单使用,还有很多妙用等待大家发现,<strong>Associated Object</strong>之所以能够动态的为实例添加关联对象,这要依附于我们强大的运行时系统,这点大家要好好理解,最后虽然<strong>Associated Object</strong>非常好用,但是也不建议大家滥用,只有在别的方式都不可行的情况下才建议大家使用关联对象处理,因为如果你的编码有误,产生问题将非常难于查找,因为编译器并不能够检测出运行时才会关联的对象的相关问题,对于关联对象,编译器是有心无力的,保证它的正确性只能我们人为去检测验证</p>
+        <div class="article-info info-on-right">
+          
+          
 
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-
-      
-        
-<div class="share-btn share-icons tooltip-left">
-  <div class="tooltip tooltip-east">
-    <span class="tooltip-item">
-      <a href="javascript:;" class="share-sns share-outer">
-        <i class="icon icon-share"></i>
-      </a>
-    </span>
-    <span class="tooltip-content">
-      <div class="share-wrap">
-        <div class="share-icons">
-          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
-            <i class="icon icon-weibo"></i>
-          </a>
-          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
-            <i class="icon icon-weixin"></i>
-          </a>
-          <a class="qq share-sns" href="javascript:;" data-type="qq">
-            <i class="icon icon-qq"></i>
-          </a>
-          <a class="douban share-sns" href="javascript:;" data-type="douban">
-            <i class="icon icon-douban"></i>
-          </a>
-          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
-            <i class="icon icon-qzone"></i>
-          </a>
-          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
-            <i class="icon icon-facebook"></i>
-          </a>
-          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
-            <i class="icon icon-twitter"></i>
-          </a>
-          <a class="google share-sns" href="javascript:;" data-type="google">
-            <i class="icon icon-google"></i>
-          </a>
         </div>
-      </div>
-    </span>
-  </div>
-</div>
-
-<div class="page-modal wx-share js-wx-box">
-    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
-    <p>扫一扫，分享到微信</p>
-    <div class="wx-qrcode">
-      <img src="http://s.jiathis.com/qrcode.php?url=https://cxlhaha.github.io/2017/03/13/动态添加属性-Associated Object/" alt="微信分享二维码">
-    </div>
-</div>
-
-<div class="mask js-mask"></div>
-      
-      <div class="clearfix"></div>
-    </div>
+        <div class="clearfix"></div>
+    </header>
   </div>
 </article>
-
-  
-<nav id="article-nav">
-  
-    <a href="/2017/03/19/几种常见的排序算法/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          几种常见的排序算法
-        
-      </div>
-    </a>
   
   
-    <a href="/2017/03/10/看破property-属性/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">看破property-属性</div>
-      <i class="icon-circle-right"></i>
-    </a>
-  
-</nav>
-
-
-
-
-
-
-  
-  <div class="duoshuo">
-	<!-- 多说评论框 start -->
-	<div class="ds-thread" data-thread-key="动态添加属性-Associated Object" data-title="动态添加属性-Associated Object" data-url="https://cxlhaha.github.io/2017/03/13/动态添加属性-Associated Object/"></div>
-	<!-- 多说评论框 end -->
-	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
-	<script type="text/javascript">
-	var duoshuoQuery = {short_name:"cxlhaha"};
-	(function() {
-		var ds = document.createElement('script');
-		ds.type = 'text/javascript';ds.async = true;
-		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
-		ds.charset = 'UTF-8';
-		(document.getElementsByTagName('head')[0] 
-		 || document.getElementsByTagName('body')[0]).appendChild(ds);
-	})();
-	</script>
-	<!-- 多说公共JS代码 end -->
-</div>
-
+    </div></section>
   
 
-
+    
 
 
           </div>
@@ -363,8 +203,8 @@
 	var yiliaConfig = {
 		mathjax: true,
 		isHome: false,
-		isPost: true,
-		isArchive: false,
+		isPost: false,
+		isArchive: true,
 		isTag: false,
 		isCategory: false,
 		open_in_new: true,
@@ -515,6 +355,10 @@ MathJax.Hub.Queue(function() {
           
             <li class="search-li">
               <a href="http://casatwy.com" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>田伟宇的博客</a>
+            </li>
+          
+            <li class="search-li">
+              <a href="https://onevcat.com/#blog" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>喵神的博客</a>
             </li>
           
         </ul>
