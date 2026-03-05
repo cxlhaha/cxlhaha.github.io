@@ -140,6 +140,309 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-动态添加属性-Associated Object" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/03/13/动态添加属性-Associated Object/">动态添加属性-Associated Object</a>
+    </h1>
+  
+
+        
+        <a href="/2020/03/13/动态添加属性-Associated Object/" class="archive-article-date">
+  	<time datetime="2020-03-13T09:56:26.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-13</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>从今天开始,我们将要开始逐步接近OC的动态特性,慢慢揭开OC底层runtime系统的神秘面纱,超强的动态特性,是OC和一般面向对象的语言最明显的区别,也是这门古老的语言最具魅力的地方,如果可以正确的利用动态特性,那么可以帮助我们方便的解决很多棘手的问题.</p>
+<p>我们今天来看的呢,是runtime库里非常有用的一组函数,Associated Object动态关联对象.这个功能,能够让我们动态的对一个对象绑定相关联的数据.</p>
+<p>有了这个功能,我们不仅能够为自己编写的类添加属性,还能够为系统框架里的类动态添加我们需要的属性,甚至能够在分类里动态添加属性.我们这就来看看这个方便又强大的功能吧.<br>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/03/13/动态添加属性-Associated Object/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
+    <article id="post-关于Block块的所有所有" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/03/31/关于Block块的所有所有/">深入理解Block</a>
+    </h1>
+  
+
+        
+        <a href="/2019/03/31/关于Block块的所有所有/" class="archive-article-date">
+  	<time datetime="2019-03-31T06:14:27.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-03-31</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="关于Block"><a href="#关于Block" class="headerlink" title="关于Block:"></a>关于Block:</h2><p>在我们使用OC进行iOS开发和Mac OS开发中,Block语法是我们最常见的语法之一,而且苹果官方也推荐我们使用Block代码块的语法,如果仔细观察,大家可以看到,在近期苹果新开放的系统框架的API中,苹果越来越多的使用了Block这种语法方式,而不是@selector方法选择器.</p>
+<p>苹果如此推荐Block的使用,以及这种语法深受广大OC开发者的喜爱的原因是Block不可替代的优点:Block的写法非常简洁高效,而且可以减少代码的分散,提高内聚性等等,虽然代理等回调方式也有它的优点,但是广大OC开发者确大都对Block情有独钟.</p>
+<p>接下来,我们一起来看看Block的用法,原理,以及注意点吧.<br>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/03/31/关于Block块的所有所有/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
+    <article id="post-iOS绘制和渲染" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/11/17/iOS绘制和渲染/">iOS绘制和渲染</a>
+    </h1>
+  
+
+        
+        <a href="/2018/11/17/iOS绘制和渲染/" class="archive-article-date">
+  	<time datetime="2018-11-17T08:08:19.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-11-17</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>我们平常iOS开发中，很少有机会能够深入的了解绘制和渲染详细的底层过程，在UI显示方面，我们大多时候都只知其然而不知其所以然，然后在遇到一些UI方面的性能问题，内存问题，这部分知识就尤其重要了，我们今天就来探究一下iOS绘制渲染的整个过程。</p>
+<h2 id="相关框架"><a href="#相关框架" class="headerlink" title="相关框架"></a>相关框架</h2><img src="/2018/11/17/iOS绘制和渲染/1.png" title="框架结构">
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">UI</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/11/17/iOS绘制和渲染/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
+    <article id="post-离屏渲染" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/11/13/离屏渲染/">离屏渲染</a>
+    </h1>
+  
+
+        
+        <a href="/2018/11/13/离屏渲染/" class="archive-article-date">
+  	<time datetime="2018-11-13T07:53:06.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-11-13</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="GPU渲染的两种方式："><a href="#GPU渲染的两种方式：" class="headerlink" title="GPU渲染的两种方式："></a>GPU渲染的两种方式：</h2><ul>
+<li><strong>On-Screen Rendering(当前屏幕渲染)：</strong> GPU在用于显示的屏幕缓冲区进行渲染。</li>
+<li><strong>Off-Screen Rendering(离屏渲染)：</strong> GPU离开当前用于显示的屏幕缓冲区，重新创建一个屏幕缓冲区进行渲染，等待渲染结束后GPU回到用于显示的屏幕缓冲区，并将离屏渲染的结果拷贝回来。</li>
+</ul>
+<h4 id="离屏渲染的代价"><a href="#离屏渲染的代价" class="headerlink" title="离屏渲染的代价"></a>离屏渲染的代价</h4><p>离屏渲染是一件代价很大的操作，非常消耗GPU性能，体现在以下两个方面：</p>
+<ol>
+<li><strong>创建新的屏幕缓冲区：</strong>想要离开当前用于显示的屏幕缓冲区，就要创建一个新的用于离屏渲染的屏幕缓冲区，而新的屏幕缓冲区的创建和销毁都比较耗费性能。
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">UI</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/11/13/离屏渲染/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
+    <article id="post-iOS绘图" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/11/08/iOS绘图/">iOS绘图</a>
+    </h1>
+  
+
+        
+        <a href="/2018/11/08/iOS绘图/" class="archive-article-date">
+  	<time datetime="2018-11-08T07:01:02.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-11-08</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>当遇到绘图需求的时候我们就需要利用<strong>UIKit</strong>或者是<strong>CoreGraphics</strong>这两个绘图框架进行绘图，而这两个框架之间的关系是这样的：</p>
+<ul>
+<li><p>CoreGraphics是绘图方面的基础，它提供了大量的API满足我们各种各样的绘图需求，但是，因为CoreGraphics更加底层，是一套C语言的框架，所以，UIKit帮我们进行了封装，我们可以利用UIKit简洁的语法，快速的实现绝大多数的绘图需求。所以当绘图需求简单，我们想要快速实现时，我们可以利用UIKit进行绘图，而如果需要全部功能的绘图需求，我们就选择功能强大的CoreGraphics进行绘图。</p>
+</li>
+<li><p>UIKit只能在当前上下文中进行绘图，如果不是当前上下文需要转化为当前上下文再进行绘图。</p>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">UI</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/11/08/iOS绘图/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
     <article id="post-iOS绘图之贝塞尔曲线（UIBezierPath）" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -465,301 +768,6 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2018/10/09/KVO/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-  
-    <article id="post-KVC" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/09/30/KVC/">KVC</a>
-    </h1>
-  
-
-        
-        <a href="/2018/09/30/KVC/" class="archive-article-date">
-  	<time datetime="2018-09-30T03:31:03.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-09-30</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>今天和大家讨论一下OC中<strong>KVC（KeyValueCoding）键值编码</strong></p>
-<h3 id="KVC定义"><a href="#KVC定义" class="headerlink" title="KVC定义"></a>KVC定义</h3><p>KVC（KeyValueCoding）键值编码技术可以让我们在OC的开发中使用字符串作为Key来访问某个对象的属性值或者为某个对象的属性值进行赋值。而不需要通过暴露在头文件中的存取器方法进行访问和赋值操作。通过这种方法，我们可以获取某个对象并没有暴露在头文件中的实例变量和为这个实例变量进行赋值操作。通过这种方法可以绕过编译器的审查，使我们能够做出一些”不太合规“的操作，而不会让编译器报错。因此这种形式的存取是在运行时进行的，也是OC动态特性的一种体现。</p>
-<h3 id="KVC原理"><a href="#KVC原理" class="headerlink" title="KVC原理"></a>KVC原理</h3><p>NSObject有个分类（NSKeyValueCoding）关于KVC的实现都在里面，所以，所有继承自NSObject的对象都可以使用KVC，而结构体和某些Swift对象<br>因为没有继承NSObject而不可以使用</p>
-<h3 id="KVC取值设值以及查找顺序"><a href="#KVC取值设值以及查找顺序" class="headerlink" title="KVC取值设值以及查找顺序"></a>KVC取值设值以及查找顺序</h3><p>KVC进行取值和设值操作时会根据你所传递的字符串按照一定规律进行查找，我们编写代码进行测试，以找到这个规律。<br>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">OC</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/09/30/KVC/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-  
-    <article id="post-swift笔记一-基础内容" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/06/11/swift笔记一-基础内容/">swift笔记一:基础内容</a>
-    </h1>
-  
-
-        
-        <a href="/2018/06/11/swift笔记一-基础内容/" class="archive-article-date">
-  	<time datetime="2018-06-11T03:13:53.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-06-11</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="常量和变量"><a href="#常量和变量" class="headerlink" title="常量和变量"></a>常量和变量</h2><p>用关键字<strong>let</strong>来声明常量,用<strong>var</strong>来声明变量,在swift中,如果值不发生改变都应该用let声明为常量.</p>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> a = <span class="number">10</span></span><br><span class="line"><span class="keyword">var</span> b = <span class="number">100</span></span><br><span class="line"><span class="keyword">let</span> <span class="built_in">c</span> = <span class="number">1</span>,d = <span class="number">2</span>,e = <span class="number">3</span></span><br></pre></td></tr></table></figure>
-<p>关于常量和变量的类型,一般我们不需要主动标注出常量和变量的类型,当我们给常量变量初始化赋值后,swift会自动推断类型</p>
-<p>整数会被推断为Int类型,而浮点数则会被推断为Double类型</p>
-<p>如果要打印某个变量则,格式如下:</p>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">print</span>(a)</span><br><span class="line">        </span><br><span class="line"><span class="built_in">print</span>(<span class="string">"fdasfdafda\(a)"</span>)</span><br></pre></td></tr></table></figure>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">swift笔记</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/06/11/swift笔记一-基础内容/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-  
-    <article id="post-GCD技术" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/04/07/GCD技术/">GCD技术</a>
-    </h1>
-  
-
-        
-        <a href="/2017/04/07/GCD技术/" class="archive-article-date">
-  	<time datetime="2017-04-07T07:13:37.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-04-07</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="初识GCD"><a href="#初识GCD" class="headerlink" title="初识GCD"></a>初识GCD</h2><p>在我们平时的OC开发中经常需要用到多线程编程,而GCD这项技术是最受开发者喜爱的多线程技术,我们今天就一起来学习这门技术.</p>
-<p>GCD可以说是一项划时代的技术,它用非常简单的语法,实现了非常复杂的多线程编程.</p>
-<p>使用GCD,我们只需要把需要执行的任务追加到合适的<strong>队列Dispatch Queue</strong>中,GCD就能够生成适当的线程去执行任务</p>
-<p>而GCD是一项非常底层的技术,苹果公司为我们做了大量的优化,所以我们才能如此优雅的进行多线程编程</p>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/04/07/GCD技术/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-  
-    <article id="post-iOS黑魔法-method-swizzling" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/03/27/iOS黑魔法-method-swizzling/">iOS黑魔法-method_swizzling</a>
-    </h1>
-  
-
-        
-        <a href="/2017/03/27/iOS黑魔法-method-swizzling/" class="archive-article-date">
-  	<time datetime="2017-03-27T04:56:11.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-27</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="前言"><a href="#前言" class="headerlink" title="前言:"></a>前言:</h2><p>今天我们再来了解另外一个体现OC动态特性的技术,向来有IOS黑魔法之称的Method Swizzling,中文叫做方法调配,也叫做方法交换技术</p>
-<p>这项技术为什么能够有如此的盛名呢?我们来看看它到底能做什么吧,Method Swizzling技术能够在运行期间动态的交换两个方法的实现,神不知鬼不觉的把一个方法实现代码交换掉,而可以方法交换的类不仅仅限制于我们自己编写的类,还可以把系统的类中的方法实现交换掉,这就为我们带来了无限的发挥空间.我们可以在没有系统类源代码的情况下,修改系统方法的实现,想想是不是非常酷.</p>
-<p><strong>注意</strong>:虽然这项技术非常强大,但是我们并不建议滥用这项技术,和其它运行时技术一样,如果出现问题以后,编译器并不能帮我们发现,这将会使得排查错误是一件非常困难的事情<br>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/03/27/iOS黑魔法-method-swizzling/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-  
-    <article id="post-消息转发机制" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/03/27/消息转发机制/">消息转发机制</a>
-    </h1>
-  
-
-        
-        <a href="/2017/03/27/消息转发机制/" class="archive-article-date">
-  	<time datetime="2017-03-27T04:54:41.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-27</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>今天我们再来通过另外一个机制来感受一下OC的动态特性吧,那就是OC的<strong>消息转发机制</strong></p>
-<p>在之前的<a href="http://www.baidu.com" target="_blank" rel="noopener"><strong>不一样的OC</strong></a>中我们有提到,OC是<strong>消息型语言</strong>,OC中的方法调用其实只是传递消息而已,编译器并不能决定程序真正执行的到底是哪段代码,这个工作,需要运行时系统来完成.</p>
-<p>那我们今天要讨论的<strong>消息转发</strong>又是什么呢?</p>
-<p>既然OC的方法调用实际上都是消息传递,那传递的消息内容和时机其实编译器并不能完全控制,这时我们是不是能够联想到这样的场景:一个对象接受了一个编译器控制外的消息,这个对象对这个消息无从下手,他并不具备解决这个消息的能力(没有实现相应方法),这个时候该怎么办呢?</p>
-<p>当遇到这种情况的时候,我们的消息转发机制就被触发了,系统将利用这套机制竭力帮我们控制这个糟糕的局面,不至于让程序崩溃,但是如果消息转发机制竭尽全力通过各种办法也无法解决这个意料之外的消息时,那么程序就会崩溃,并产生那个经典的崩溃日志:</p>
-<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">unrecognized selector sent to instance <span class="number">0x60000000b480</span></span><br></pre></td></tr></table></figure>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/03/27/消息转发机制/">展开全文 >></a>
         </p>
       
 

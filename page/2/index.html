@@ -140,140 +140,6 @@
           <div id="js-content" class="content-ll">
             
   
-    <article id="post-AI-Agent：从概念到代码实现" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2025/05/15/AI-Agent：从概念到代码实现/">AI Agent：从概念到代码实现</a>
-    </h1>
-  
-
-        
-        <a href="/2025/05/15/AI-Agent：从概念到代码实现/" class="archive-article-date">
-  	<time datetime="2025-05-15T12:38:58.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2025-05-15</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h2><p>随着大语言模型（LLM）的爆发式发展，AI Agent（人工智能代理）成为技术圈最热门的话题之一。从 AutoGPT 到 BabyAGI，再到各种基于 LLM 的自主代理框架，AI Agent 被寄予厚望，被认为是通往通用人工智能（AGI）的关键一步。那么，究竟什么是 AI Agent？它如何工作？我们能否亲手构建一个简单的 Agent？本文将带你一探究竟。</p>
-<hr>
-<h2 id="1-什么是-AI-Agent？"><a href="#1-什么是-AI-Agent？" class="headerlink" title="1. 什么是 AI Agent？"></a>1. 什么是 AI Agent？</h2><p>AI Agent 是一种能够<strong>感知环境、进行决策并执行动作</strong>的智能实体。它不仅仅是被动地回答问题，而是能够主动地完成一系列任务，比如预订酒店、编写代码、进行市场调研等。</p>
-<p>一个典型的 AI Agent 包含以下核心模块：</p>
-<ul>
-<li><strong>感知（Perception）</strong>：接收来自用户或外部环境的输入（文本、图像、传感器数据等）。</li>
-<li><strong>记忆（Memory）</strong>：存储历史对话、观察结果和中间思考。</li>
-<li><strong>规划（Planning）</strong>：将复杂任务分解为子目标，并制定行动计划。</li>
-<li><strong>工具（Tools）</strong>：调用外部 API、搜索引擎、计算器等执行具体动作。</li>
-<li><strong>行动（Action）</strong>：执行决策，并观察结果反馈给感知模块。</li>
-</ul>
-<p>当前最流行的 AI Agent 范式是基于 LLM 的 <strong>ReAct（Reason + Act）</strong> 模式，即让模型交替进行“推理”和“行动”，从而逐步解决问题。</p>
-<hr>
-<h2 id="2-ReAct-模式简介"><a href="#2-ReAct-模式简介" class="headerlink" title="2. ReAct 模式简介"></a>2. ReAct 模式简介</h2><p>ReAct 由 Shunyu Yao 等人提出，核心思想是将推理轨迹（reasoning traces）和动作（actions）交织在一起。Agent 在每一步都会：</p>
-<ol>
-<li><strong>思考（Thought）</strong>：描述当前状态和下一步计划。</li>
-<li><strong>行动（Action）</strong>：选择一个工具并执行，例如搜索、计算。</li>
-<li><strong>观察（Observation）</strong>：接收工具返回的结果。</li>
-<li>重复直到完成任务。</li>
-</ol>
-<p>这种方式让 Agent 能够利用外部工具获取实时信息，并通过推理动态调整计划。</p>
-<hr>
-<h2 id="3-构建一个简单的-AI-Agent"><a href="#3-构建一个简单的-AI-Agent" class="headerlink" title="3. 构建一个简单的 AI Agent"></a>3. 构建一个简单的 AI Agent</h2><p>我们将使用 Python 和 LangChain 框架来实现一个能够回答用户问题并调用工具的 Agent。LangChain 提供了现成的 Agent 接口和工具集合，使我们能够快速搭建原型。</p>
-<h3 id="3-1-环境准备"><a href="#3-1-环境准备" class="headerlink" title="3.1 环境准备"></a>3.1 环境准备</h3><p>安装必要的库：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install langchain openai langchain-community langchainhub</span><br></pre></td></tr></table></figure>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2025/05/15/AI-Agent：从概念到代码实现/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-  
-    <article id="post-LLM-API-集成指南" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2025/05/11/LLM-API-集成指南/">LLM_API_集成指南</a>
-    </h1>
-  
-
-        
-        <a href="/2025/05/11/LLM-API-集成指南/" class="archive-article-date">
-  	<time datetime="2025-05-11T13:43:44.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2025-05-11</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h2><p>随着 OpenAI 的 ChatGPT 引爆全球，大语言模型（LLM）已经渗透到各个领域：智能客服、内容生成、代码辅助、数据分析等。对于开发者而言，如何将 LLM 的能力集成到自己的应用中，成为一项必备技能。本文将详细介绍 LLM API 的集成方法，包括基础调用、流式输出、对话管理以及高级功能——函数调用（Function Calling），并通过 Python 代码示例帮助你快速上手。</p>
-<hr>
-<h2 id="1-准备工作"><a href="#1-准备工作" class="headerlink" title="1. 准备工作"></a>1. 准备工作</h2><h3 id="1-1-获取-API-密钥"><a href="#1-1-获取-API-密钥" class="headerlink" title="1.1 获取 API 密钥"></a>1.1 获取 API 密钥</h3><p>以 OpenAI API 为例（其他厂商如 Anthropic、百度文心、阿里通义等流程类似），你需要：</p>
-<ul>
-<li>注册 OpenAI 账号</li>
-<li>在 <a href="https://platform.openai.com/api-keys" target="_blank" rel="noopener">API Keys 页面</a> 创建新的密钥</li>
-<li>保存密钥，注意保密</li>
-</ul>
-<h3 id="1-2-安装-OpenAI-Python-库"><a href="#1-2-安装-OpenAI-Python-库" class="headerlink" title="1.2 安装 OpenAI Python 库"></a>1.2 安装 OpenAI Python 库</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install openai</span><br></pre></td></tr></table></figure>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2025/05/11/LLM-API-集成指南/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-  
     <article id="post-混沌工程实战" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -348,306 +214,37 @@
 
 
   
-    <article id="post-动态添加属性-Associated Object" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-构建高可用微服务系统：原理、模式与实战" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2020/03/13/动态添加属性-Associated Object/">动态添加属性-Associated Object</a>
+      <a class="article-title" href="/2025/03/04/构建高可用微服务系统：原理、模式与实战/">构建高可用微服务系统：原理、模式与实战</a>
     </h1>
   
 
         
-        <a href="/2020/03/13/动态添加属性-Associated Object/" class="archive-article-date">
-  	<time datetime="2020-03-13T09:56:26.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-13</time>
+        <a href="/2025/03/04/构建高可用微服务系统：原理、模式与实战/" class="archive-article-date">
+  	<time datetime="2025-03-04T09:26:55.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2025-03-04</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>从今天开始,我们将要开始逐步接近OC的动态特性,慢慢揭开OC底层runtime系统的神秘面纱,超强的动态特性,是OC和一般面向对象的语言最明显的区别,也是这门古老的语言最具魅力的地方,如果可以正确的利用动态特性,那么可以帮助我们方便的解决很多棘手的问题.</p>
-<p>我们今天来看的呢,是runtime库里非常有用的一组函数,Associated Object动态关联对象.这个功能,能够让我们动态的对一个对象绑定相关联的数据.</p>
-<p>有了这个功能,我们不仅能够为自己编写的类添加属性,还能够为系统框架里的类动态添加我们需要的属性,甚至能够在分类里动态添加属性.我们这就来看看这个方便又强大的功能吧.<br>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/03/13/动态添加属性-Associated Object/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-  
-    <article id="post-技术支持" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/01/12/技术支持/">技术支持</a>
-    </h1>
-  
-
-        
-        <a href="/2020/01/12/技术支持/" class="archive-article-date">
-  	<time datetime="2020-01-12T08:39:09.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-01-12</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>If you have any questions, you can either leave a message or send the questions to your email address. We will answer them for you in the first time.</p>
-<p>Address:<a href="mailto:changxlhaha1@163.com" target="_blank" rel="noopener">changxlhaha1@163.com</a></p>
-<p>thank you</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/01/12/技术支持/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-  
-    <article id="post-隐私政策" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/01/12/隐私政策/">心帆隐私政策</a>
-    </h1>
-  
-
-        
-        <a href="/2020/01/12/隐私政策/" class="archive-article-date">
-  	<time datetime="2020-01-12T04:16:26.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-01-12</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>本隐私政策为心帆(以下简称本应用)应用隐私政策<br>本应用尊重并保护所有使用服务用户的个人隐私权。为了给您提供更准确、更有个性化的服务，本应用会按照本隐私权政策的规定使用和披露您的个人信息。但本应用将以高度的勤勉、审慎义务对待这些信息。除本隐私权政策另有规定外，在未征得您事先许可的情况下，本应用不会将这些信息对外披露或向第三方提供。本应用会不时更新本隐私权政策。 您在同意本应用服务使用协议之时，即视为您已经同意本隐私权政策全部内容。本隐私权政策属于本应用服务使用协议不可分割的一部分。<br>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/01/12/隐私政策/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-  
-    <article id="post-关于Block块的所有所有" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/03/31/关于Block块的所有所有/">深入理解Block</a>
-    </h1>
-  
-
-        
-        <a href="/2019/03/31/关于Block块的所有所有/" class="archive-article-date">
-  	<time datetime="2019-03-31T06:14:27.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-03-31</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="关于Block"><a href="#关于Block" class="headerlink" title="关于Block:"></a>关于Block:</h2><p>在我们使用OC进行iOS开发和Mac OS开发中,Block语法是我们最常见的语法之一,而且苹果官方也推荐我们使用Block代码块的语法,如果仔细观察,大家可以看到,在近期苹果新开放的系统框架的API中,苹果越来越多的使用了Block这种语法方式,而不是@selector方法选择器.</p>
-<p>苹果如此推荐Block的使用,以及这种语法深受广大OC开发者的喜爱的原因是Block不可替代的优点:Block的写法非常简洁高效,而且可以减少代码的分散,提高内聚性等等,虽然代理等回调方式也有它的优点,但是广大OC开发者确大都对Block情有独钟.</p>
-<p>接下来,我们一起来看看Block的用法,原理,以及注意点吧.<br>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/03/31/关于Block块的所有所有/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-  
-    <article id="post-iOS绘制和渲染" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/11/17/iOS绘制和渲染/">iOS绘制和渲染</a>
-    </h1>
-  
-
-        
-        <a href="/2018/11/17/iOS绘制和渲染/" class="archive-article-date">
-  	<time datetime="2018-11-17T08:08:19.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-11-17</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>我们平常iOS开发中，很少有机会能够深入的了解绘制和渲染详细的底层过程，在UI显示方面，我们大多时候都只知其然而不知其所以然，然后在遇到一些UI方面的性能问题，内存问题，这部分知识就尤其重要了，我们今天就来探究一下iOS绘制渲染的整个过程。</p>
-<h2 id="相关框架"><a href="#相关框架" class="headerlink" title="相关框架"></a>相关框架</h2><img src="/2018/11/17/iOS绘制和渲染/1.png" title="框架结构">
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">UI</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/11/17/iOS绘制和渲染/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-  
-    <article id="post-离屏渲染" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/11/13/离屏渲染/">离屏渲染</a>
-    </h1>
-  
-
-        
-        <a href="/2018/11/13/离屏渲染/" class="archive-article-date">
-  	<time datetime="2018-11-13T07:53:06.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-11-13</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="GPU渲染的两种方式："><a href="#GPU渲染的两种方式：" class="headerlink" title="GPU渲染的两种方式："></a>GPU渲染的两种方式：</h2><ul>
-<li><strong>On-Screen Rendering(当前屏幕渲染)：</strong> GPU在用于显示的屏幕缓冲区进行渲染。</li>
-<li><strong>Off-Screen Rendering(离屏渲染)：</strong> GPU离开当前用于显示的屏幕缓冲区，重新创建一个屏幕缓冲区进行渲染，等待渲染结束后GPU回到用于显示的屏幕缓冲区，并将离屏渲染的结果拷贝回来。</li>
+        <h2 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h2><p>在当今的互联网时代，系统高可用性（High Availability，HA）已经成为软件架构设计的核心目标之一。从电商的大促秒杀，到金融系统的实时交易，任何短暂的服务不可用都可能造成巨大的经济损失和用户流失。通常，我们用“几个9”来衡量可用性：99.9%（三个9）意味着全年停机不超过8.76小时，而99.99%（四个9）则要求全年停机不超过52.56分钟。要达到这样的标准，单靠硬件冗余远远不够，必须在软件架构层面进行精心的设计。</p>
+<p>微服务架构将单体应用拆分为多个独立部署的服务，这带来了灵活性，但也增加了系统的复杂性——网络延迟、服务依赖、部分故障等问题变得突出。本文将深入探讨构建高可用微服务系统的核心原则与实战模式，并结合代码示例（基于Spring Cloud生态和Resilience4j）展示具体实现。</p>
+<hr>
+<h2 id="一、高可用设计原则"><a href="#一、高可用设计原则" class="headerlink" title="一、高可用设计原则"></a>一、高可用设计原则</h2><p>在深入代码之前，我们需要先理解几个顶层设计原则，它们是所有高可用实践的基石。</p>
+<h3 id="1-冗余与无状态"><a href="#1-冗余与无状态" class="headerlink" title="1. 冗余与无状态"></a>1. 冗余与无状态</h3><ul>
+<li><strong>冗余</strong>：每个服务组件（包括应用实例、数据库、中间件）都应部署多个副本，避免单点故障（SPOF）。</li>
+<li><strong>无状态</strong>：应用实例不存储任何会话或业务状态，状态全部外移到分布式缓存（如Redis）或数据库。这样任何实例都可以处理任何请求，故障时流量可瞬间切换到其他实例。</li>
 </ul>
-<h4 id="离屏渲染的代价"><a href="#离屏渲染的代价" class="headerlink" title="离屏渲染的代价"></a>离屏渲染的代价</h4><p>离屏渲染是一件代价很大的操作，非常消耗GPU性能，体现在以下两个方面：</p>
-<ol>
-<li><strong>创建新的屏幕缓冲区：</strong>想要离开当前用于显示的屏幕缓冲区，就要创建一个新的用于离屏渲染的屏幕缓冲区，而新的屏幕缓冲区的创建和销毁都比较耗费性能。
+<h3 id="2-故障隔离（舱壁模式）"><a href="#2-故障隔离（舱壁模式）" class="headerlink" title="2. 故障隔离（舱壁模式）"></a>2. 故障隔离（舱壁模式）</h3><p>将系统拆分为独立的舱室，一个舱室的故障不会蔓延到其他舱室。例如：为每个下游服务配置独立的线程池或连接池，防止某个慢服务耗尽整个容器的资源。</p>
+<h3 id="3-可观测性"><a href="#3-可观测性" class="headerlink" title="3. 可观测性"></a>3. 可观测性</h3><p>没有监控，就谈不上高可用。必须建立完善的日志、度量和追踪系统，以便快速发现故障、定位原因。指标（如QPS、延迟、错误率）应实时采集并配置告警。</p>
+<h3 id="4-自动化"><a href="#4-自动化" class="headerlink" title="4. 自动化"></a>4. 自动化</h3><p>故障恢复的过程必须自动化。无论是弹性伸缩、服务重启，还是数据库主从切换，都应通过编排工具（如Kubernetes）或自动化脚本完成，减少人工介入时间。</p>
         
       
 
@@ -656,22 +253,11 @@
     <div class="article-info article-info-index">
       
       
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">UI</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
       
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2018/11/13/离屏渲染/">展开全文 >></a>
+          <a class="article-more-a" href="/2025/03/04/构建高可用微服务系统：原理、模式与实战/">展开全文 >></a>
         </p>
       
 
@@ -689,31 +275,43 @@
 
 
   
-    <article id="post-iOS绘图" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-高并发场景下的秒杀系统优化实践：从Redis到消息队列" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2018/11/08/iOS绘图/">iOS绘图</a>
+      <a class="article-title" href="/2025/02/15/高并发场景下的秒杀系统优化实践：从Redis到消息队列/">高并发场景下的秒杀系统优化实践：从Redis到消息队列</a>
     </h1>
   
 
         
-        <a href="/2018/11/08/iOS绘图/" class="archive-article-date">
-  	<time datetime="2018-11-08T07:01:02.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-11-08</time>
+        <a href="/2025/02/15/高并发场景下的秒杀系统优化实践：从Redis到消息队列/" class="archive-article-date">
+  	<time datetime="2025-02-15T03:17:21.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2025-02-15</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>当遇到绘图需求的时候我们就需要利用<strong>UIKit</strong>或者是<strong>CoreGraphics</strong>这两个绘图框架进行绘图，而这两个框架之间的关系是这样的：</p>
+        <h2 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h2><p>秒杀系统是互联网中典型的高并发场景，例如双十一秒杀、限量抢购等。这类系统的特点是：瞬间涌入大量请求，热点数据（如库存）集中读写，对系统的性能和一致性要求极高。如果直接使用传统的关系型数据库处理所有请求，数据库将不堪重负，甚至出现超卖、响应慢等问题。</p>
+<p>本文将通过一个简化的秒杀系统案例，介绍如何利用<strong>Redis</strong>预减库存和<strong>消息队列</strong>异步下单来优化高并发处理能力，并给出核心代码片段。</p>
+<hr>
+<h2 id="1-传统架构的痛点"><a href="#1-传统架构的痛点" class="headerlink" title="1. 传统架构的痛点"></a>1. 传统架构的痛点</h2><p>一个最基础的秒杀系统通常包含以下流程：</p>
+<ol>
+<li>用户点击秒杀按钮，请求进入后端。</li>
+<li>后端查询数据库中的库存，判断是否足够。</li>
+<li>如果库存足够，扣减库存并创建订单。</li>
+<li>返回秒杀结果。</li>
+</ol>
+<p>这种方式在低并发下没有问题，但在高并发时会出现：</p>
 <ul>
-<li><p>CoreGraphics是绘图方面的基础，它提供了大量的API满足我们各种各样的绘图需求，但是，因为CoreGraphics更加底层，是一套C语言的框架，所以，UIKit帮我们进行了封装，我们可以利用UIKit简洁的语法，快速的实现绝大多数的绘图需求。所以当绘图需求简单，我们想要快速实现时，我们可以利用UIKit进行绘图，而如果需要全部功能的绘图需求，我们就选择功能强大的CoreGraphics进行绘图。</p>
-</li>
-<li><p>UIKit只能在当前上下文中进行绘图，如果不是当前上下文需要转化为当前上下文再进行绘图。</p>
+<li><strong>数据库行锁竞争</strong>：多个请求同时更新同一行库存记录，导致锁等待，性能急剧下降。</li>
+<li><strong>超卖风险</strong>：由于查询和更新并非原子操作，在并发下可能读取到过期库存，导致扣减超出实际库存。</li>
+<li><strong>响应延迟</strong>：数据库连接池被占满，请求超时。</li>
+</ul>
+<p>因此，我们需要引入更高效的技术组件来保护数据库，并提升吞吐量。</p>
         
       
 
@@ -722,22 +320,508 @@
     <div class="article-info article-info-index">
       
       
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">UI</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
       
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2018/11/08/iOS绘图/">展开全文 >></a>
+          <a class="article-more-a" href="/2025/02/15/高并发场景下的秒杀系统优化实践：从Redis到消息队列/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
+    <article id="post-最终一致性实战" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2024/12/05/最终一致性实战/">最终一致性实战</a>
+    </h1>
+  
+
+        
+        <a href="/2024/12/05/最终一致性实战/" class="archive-article-date">
+  	<time datetime="2024-12-05T13:00:31.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2024-12-05</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h2><p>在分布式系统中，数据一致性一直是核心挑战。CAP 定理告诉我们，在分布式系统中，一致性（Consistency）、可用性（Availability）和分区容错性（Partition tolerance）三者不可兼得。为了保障可用性和分区容错性，许多系统选择放弃强一致性，转而追求<strong>最终一致性</strong>。</p>
+<p>最终一致性是 BASE 理论（Basically Available, Soft state, Eventually consistent）的核心，它承诺如果没有新的更新，系统最终会达到一致状态。这种模型被广泛应用于互联网大规模系统，如电商、社交网络、缓存同步等。本文将从理论出发，通过实际代码示例演示如何基于消息队列实现最终一致性，并探讨常见挑战与解决方案。</p>
+<hr>
+<h2 id="1-什么是最终一致性？"><a href="#1-什么是最终一致性？" class="headerlink" title="1. 什么是最终一致性？"></a>1. 什么是最终一致性？</h2><p>最终一致性是一种弱一致性模型，它允许系统在一段时间内存在数据不一致，但保证在某个时间点之后，所有副本的数据最终会保持一致。这个“一段时间”可以很短（毫秒级），也可以较长（秒级或分钟级），取决于系统设计。</p>
+<h3 id="1-1-与强一致性的对比"><a href="#1-1-与强一致性的对比" class="headerlink" title="1.1 与强一致性的对比"></a>1.1 与强一致性的对比</h3><ul>
+<li><strong>强一致性</strong>：任何读取操作都能读到最新写入的结果，如同单机系统（例如关系型数据库的主从同步通常采用半同步）。</li>
+<li><strong>最终一致性</strong>：允许短暂的不一致，但保证最终所有副本一致（例如 DNS 解析、缓存与数据库同步）。</li>
+</ul>
+<h3 id="1-2-应用场景"><a href="#1-2-应用场景" class="headerlink" title="1.2 应用场景"></a>1.2 应用场景</h3><ul>
+<li><strong>订单与库存</strong>：用户下单后扣减库存，即使库存服务短暂延迟，最终能同步。</li>
+<li><strong>社交动态</strong>：用户发布动态，粉丝的 Feed 流可能延迟几秒收到。</li>
+<li><strong>跨数据中心复制</strong>：主从异步复制，数据最终一致。</li>
+</ul>
+<hr>
+<h2 id="2-实现最终一致性的常见模式"><a href="#2-实现最终一致性的常见模式" class="headerlink" title="2. 实现最终一致性的常见模式"></a>2. 实现最终一致性的常见模式</h2><h3 id="2-1-异步复制"><a href="#2-1-异步复制" class="headerlink" title="2.1 异步复制"></a>2.1 异步复制</h3><p>主节点处理写请求后异步将数据复制到从节点，从节点最终与主节点一致（如 MySQL 异步复制）。</p>
+<h3 id="2-2-事件驱动与消息队列"><a href="#2-2-事件驱动与消息队列" class="headerlink" title="2.2 事件驱动与消息队列"></a>2.2 事件驱动与消息队列</h3><p>通过可靠消息传递，将状态变更以事件形式广播给相关服务，各服务独立更新本地数据，并通过重试和幂等保证最终一致。</p>
+<h3 id="2-3-补偿事务（Saga）"><a href="#2-3-补偿事务（Saga）" class="headerlink" title="2.3 补偿事务（Saga）"></a>2.3 补偿事务（Saga）</h3><p>将长事务拆分为多个本地事务，每个事务执行后发布事件，若某步失败则执行补偿操作（如订单取消）。</p>
+<h3 id="2-4-版本向量与冲突解决"><a href="#2-4-版本向量与冲突解决" class="headerlink" title="2.4 版本向量与冲突解决"></a>2.4 版本向量与冲突解决</h3><p>在无主复制系统中，使用版本向量检测冲突，并通过最后写入胜利（LWW）或合并算法解决。</p>
+<p>本文将聚焦于<strong>消息队列</strong>模式，因为它简单且广泛应用于微服务架构。</p>
+<hr>
+<h2 id="3-案例：订单与库存的最终一致性"><a href="#3-案例：订单与库存的最终一致性" class="headerlink" title="3. 案例：订单与库存的最终一致性"></a>3. 案例：订单与库存的最终一致性</h2><h3 id="3-1-场景描述"><a href="#3-1-场景描述" class="headerlink" title="3.1 场景描述"></a>3.1 场景描述</h3><p>用户下单时，订单服务创建订单，库存服务扣减库存。这两个操作必须保持最终一致：要么订单创建且库存扣减成功，要么都不成功。传统强一致方案可使用分布式事务（如 XA、TCC），但性能较差。我们采用最终一致性方案：</p>
+<ul>
+<li>订单服务在本地事务中插入订单记录，并发送一条“扣减库存”消息到消息队列。</li>
+<li>库存服务消费消息，执行本地扣减库存操作。</li>
+<li>如果库存服务执行失败，消息将被重试或进入死信队列，触发人工干预或补偿。</li>
+</ul>
+<h3 id="3-2-技术选型"><a href="#3-2-技术选型" class="headerlink" title="3.2 技术选型"></a>3.2 技术选型</h3><ul>
+<li>消息队列：Apache RocketMQ（支持事务消息，可保证本地事务与消息发送原子性）</li>
+<li>框架：Spring Boot + MyBatis</li>
+</ul>
+<h3 id="3-3-实现步骤"><a href="#3-3-实现步骤" class="headerlink" title="3.3 实现步骤"></a>3.3 实现步骤</h3><h4 id="3-3-1-创建订单表与库存表"><a href="#3-3-1-创建订单表与库存表" class="headerlink" title="3.3.1 创建订单表与库存表"></a>3.3.1 创建订单表与库存表</h4><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 订单库</span></span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> <span class="string">`order`</span> (</span><br><span class="line">  <span class="string">`id`</span> <span class="built_in">bigint</span> PRIMARY <span class="keyword">KEY</span> AUTO_INCREMENT,</span><br><span class="line">  <span class="string">`user_id`</span> <span class="built_in">bigint</span> <span class="keyword">NOT</span> <span class="literal">NULL</span>,</span><br><span class="line">  <span class="string">`product_id`</span> <span class="built_in">bigint</span> <span class="keyword">NOT</span> <span class="literal">NULL</span>,</span><br><span class="line">  <span class="string">`quantity`</span> <span class="built_in">int</span> <span class="keyword">NOT</span> <span class="literal">NULL</span>,</span><br><span class="line">  <span class="string">`status`</span> <span class="built_in">tinyint</span> <span class="keyword">DEFAULT</span> <span class="number">0</span> <span class="keyword">COMMENT</span> <span class="string">'0-待支付,1-已支付,2-已取消'</span>,</span><br><span class="line">  <span class="string">`create_time`</span> datetime <span class="keyword">DEFAULT</span> <span class="keyword">CURRENT_TIMESTAMP</span></span><br><span class="line">);</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 库存库（可独立数据库）</span></span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> <span class="string">`inventory`</span> (</span><br><span class="line">  <span class="string">`product_id`</span> <span class="built_in">bigint</span> PRIMARY <span class="keyword">KEY</span>,</span><br><span class="line">  <span class="string">`stock`</span> <span class="built_in">int</span> <span class="keyword">NOT</span> <span class="literal">NULL</span>,</span><br><span class="line">  <span class="string">`version`</span> <span class="built_in">int</span> <span class="keyword">DEFAULT</span> <span class="number">0</span></span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2024/12/05/最终一致性实战/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
+    <article id="post-分布式事务全景解析" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2024/11/15/分布式事务全景解析/">分布式事务全景解析</a>
+    </h1>
+  
+
+        
+        <a href="/2024/11/15/分布式事务全景解析/" class="archive-article-date">
+  	<time datetime="2024-11-15T14:03:45.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2024-11-15</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h2><p>在微服务架构中，一个业务操作往往涉及多个独立的服务，每个服务拥有自己的数据库。传统的本地事务（ACID）无法跨服务保证一致性，这就引入了<strong>分布式事务</strong>的难题。分布式事务的目标是确保多个服务的数据操作要么全部成功，要么全部失败，从而维持数据最终一致或强一致。</p>
+<p>然而，分布式事务并非银弹，它需要在一致性、可用性和性能之间做出权衡。本文将从理论出发，深入剖析几种主流分布式事务方案（2PC、TCC、事务消息、Saga），并附上基于 Spring Boot 和 Seata 的代码示例，帮助你在实际项目中做出合理选型。</p>
+<hr>
+<h2 id="1-分布式事务理论基础"><a href="#1-分布式事务理论基础" class="headerlink" title="1. 分布式事务理论基础"></a>1. 分布式事务理论基础</h2><h3 id="1-1-CAP-与-BASE"><a href="#1-1-CAP-与-BASE" class="headerlink" title="1.1 CAP 与 BASE"></a>1.1 CAP 与 BASE</h3><ul>
+<li><strong>CAP 定理</strong>：分布式系统无法同时满足一致性（C）、可用性（A）和分区容错性（P）。大多数系统选择 AP，牺牲强一致性换取可用性。</li>
+<li><strong>BASE 理论</strong>：基本可用（Basically Available）、软状态（Soft State）、最终一致性（Eventually Consistent）。分布式事务往往遵循 BASE，追求最终一致。</li>
+</ul>
+<h3 id="1-2-XA-与-2PC"><a href="#1-2-XA-与-2PC" class="headerlink" title="1.2 XA 与 2PC"></a>1.2 XA 与 2PC</h3><p>XA 是 X/Open 组织定义的分布式事务规范，基于<strong>两阶段提交（2PC）</strong>：</p>
+<ol>
+<li><strong>准备阶段</strong>：事务协调者询问所有参与者是否可提交，参与者锁定资源并响应。</li>
+<li><strong>提交/回滚阶段</strong>：若所有参与者同意，则协调者通知提交；否则回滚。</li>
+</ol>
+<p>2PC 能保证强一致性，但存在<strong>同步阻塞</strong>、<strong>单点故障</strong>、<strong>数据不一致</strong>（协调者宕机）等问题，性能较差，不适合高并发场景。</p>
+<hr>
+<h2 id="2-主流分布式事务方案"><a href="#2-主流分布式事务方案" class="headerlink" title="2. 主流分布式事务方案"></a>2. 主流分布式事务方案</h2><h3 id="2-1-基于-2PC-的-XA-方案（以-Seata-AT-模式为例）"><a href="#2-1-基于-2PC-的-XA-方案（以-Seata-AT-模式为例）" class="headerlink" title="2.1 基于 2PC 的 XA 方案（以 Seata AT 模式为例）"></a>2.1 基于 2PC 的 XA 方案（以 Seata AT 模式为例）</h3><p>Seata（Simple Extensible Autonomous Transaction Architecture）是阿里开源的一站式分布式事务解决方案。其 AT 模式是对 2PC 的优化，通过代理数据源，自动生成回滚日志（UNDO_LOG），实现了非侵入式的分布式事务。</p>
+<h4 id="代码示例：Spring-Boot-集成-Seata-AT-模式"><a href="#代码示例：Spring-Boot-集成-Seata-AT-模式" class="headerlink" title="代码示例：Spring Boot 集成 Seata AT 模式"></a>代码示例：Spring Boot 集成 Seata AT 模式</h4><p><strong>依赖（pom.xml）</strong>：<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>io.seata<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>seata-spring-boot-starter<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>1.6.1<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2024/11/15/分布式事务全景解析/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
+    <article id="post-服务发现与注册：微服务架构的基石" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2024/10/05/服务发现与注册：微服务架构的基石/">服务发现与注册：微服务架构的基石</a>
+    </h1>
+  
+
+        
+        <a href="/2024/10/05/服务发现与注册：微服务架构的基石/" class="archive-article-date">
+  	<time datetime="2024-10-05T14:07:19.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2024-10-05</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h2><p>在微服务架构中，一个应用往往被拆分为多个小型服务，每个服务独立部署、独立扩展。随着服务数量的增长，服务的网络地址（IP和端口）变得动态变化——实例的上线、下线、扩容、缩容频繁发生。如果客户端硬编码服务地址，维护成本极高，系统也失去弹性。这就引入了<strong>服务发现与注册</strong>机制。</p>
+<p>服务发现的核心是让服务消费者能够动态获取服务提供者的网络位置，从而实现松耦合和自动化管理。本文将介绍服务发现的基本概念，并通过 Spring Cloud Netflix Eureka 演示一个完整的实战案例，最后对比主流注册中心供你选型参考。</p>
+<hr>
+<h2 id="1-核心概念"><a href="#1-核心概念" class="headerlink" title="1. 核心概念"></a>1. 核心概念</h2><h3 id="1-1-服务注册"><a href="#1-1-服务注册" class="headerlink" title="1.1 服务注册"></a>1.1 服务注册</h3><p>服务提供者在启动时，将自己的网络地址（IP、端口）以及服务标识注册到<strong>注册中心</strong>，并定期发送心跳以续约。在关闭时主动注销。</p>
+<h3 id="1-2-服务发现"><a href="#1-2-服务发现" class="headerlink" title="1.2 服务发现"></a>1.2 服务发现</h3><p>服务消费者从注册中心获取某个服务的最新实例列表，并根据负载均衡策略选择一个发起调用。发现模式分为两种：</p>
+<ul>
+<li><strong>客户端发现</strong>：消费者直接查询注册中心，自行负载均衡（如 Netflix Eureka + Ribbon）。</li>
+<li><strong>服务端发现</strong>：通过中间件（如 Nginx、Kubernetes Service）代理，消费者请求中间件，由中间件转发到可用实例。</li>
+</ul>
+<h3 id="1-3-注册中心"><a href="#1-3-注册中心" class="headerlink" title="1.3 注册中心"></a>1.3 注册中心</h3><p>注册中心是服务发现的核心组件，负责存储服务实例信息，提供健康检查、服务变更通知等功能。常见的注册中心有：</p>
+<ul>
+<li><strong>Eureka</strong>：Netflix 开源，AP 系统，强调可用性。</li>
+<li><strong>Consul</strong>：HashiCorp 开源，CP 系统，内置健康检查、KV 存储。</li>
+<li><strong>ZooKeeper</strong>：经典分布式协调服务，CP 系统，常用于 Dubbo。</li>
+<li><strong>Nacos</strong>：阿里巴巴开源，支持 AP 和 CP 模式，功能丰富。</li>
+</ul>
+<hr>
+<h2 id="2-基于-Eureka-的实战"><a href="#2-基于-Eureka-的实战" class="headerlink" title="2. 基于 Eureka 的实战"></a>2. 基于 Eureka 的实战</h2><p>我们将使用 Spring Cloud Netflix Eureka 构建一个简单的服务注册与发现示例。项目包含三个部分：</p>
+<ul>
+<li><code>eureka-server</code>：注册中心服务端</li>
+<li><code>user-service</code>：服务提供者（用户服务）</li>
+<li><code>order-service</code>：服务消费者（订单服务，调用用户服务）</li>
+</ul>
+<h3 id="2-1-环境准备"><a href="#2-1-环境准备" class="headerlink" title="2.1 环境准备"></a>2.1 环境准备</h3><p>确保 JDK 8+ 和 Maven 已安装。创建 Spring Boot 项目，引入依赖（以 <code>user-service</code> 为例，其他类似）。</p>
+<p><strong>pom.xml 核心依赖</strong>：<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">parent</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-parent<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>2.7.12<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">parent</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">properties</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">spring-cloud.version</span>&gt;</span>2021.0.5<span class="tag">&lt;/<span class="name">spring-cloud.version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">properties</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">dependencies</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.cloud<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-cloud-starter-netflix-eureka-client<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-web<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependencies</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">dependencyManagement</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">dependencies</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.cloud<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-cloud-dependencies<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">version</span>&gt;</span>$&#123;spring-cloud.version&#125;<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">type</span>&gt;</span>pom<span class="tag">&lt;/<span class="name">type</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">scope</span>&gt;</span>import<span class="tag">&lt;/<span class="name">scope</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">dependencies</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependencyManagement</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2024/10/05/服务发现与注册：微服务架构的基石/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
+    <article id="post-Elasticsearch：构建你的搜索引擎" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2024/09/12/Elasticsearch：构建你的搜索引擎/">Elasticsearch：构建你的搜索引擎</a>
+    </h1>
+  
+
+        
+        <a href="/2024/09/12/Elasticsearch：构建你的搜索引擎/" class="archive-article-date">
+  	<time datetime="2024-09-12T13:11:14.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2024-09-12</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h2><p>在当今数据爆炸的时代，如何从海量数据中快速准确地检索信息成为许多应用的核心需求。传统的关系型数据库在模糊查询、全文检索和数据分析方面往往力不从心。Elasticsearch 应运而生，它是一个基于 Lucene 的分布式搜索和分析引擎，提供近实时的全文搜索、结构化搜索以及数据分析能力，被广泛应用于日志分析（ELK Stack）、全文检索（电商、文档）、指标监控等场景。</p>
+<p>本文将带你了解 Elasticsearch 的核心概念，通过 REST API 和 Java 客户端演示索引数据、搜索和分析的全过程，助你快速上手这一强大的工具。</p>
+<hr>
+<h2 id="1-核心概念"><a href="#1-核心概念" class="headerlink" title="1. 核心概念"></a>1. 核心概念</h2><ul>
+<li><strong>索引（Index）</strong>：相当于关系数据库中的“数据库”，是拥有相似特征的文档集合。</li>
+<li><strong>文档（Document）</strong>：可被索引的基本信息单元，以 JSON 格式表示，相当于数据库中的“行”。</li>
+<li><strong>映射（Mapping）</strong>：定义文档及其字段如何存储和索引，相当于数据库的“表结构”。</li>
+<li><strong>节点（Node）</strong>：一个 Elasticsearch 实例，参与集群。</li>
+<li><strong>集群（Cluster）</strong>：由一个或多个节点组成，共同持有全部数据。</li>
+<li><strong>分片（Shard）</strong>：索引可以分成多个分片，分布在集群不同节点上，实现水平扩展。</li>
+<li><strong>副本（Replica）</strong>：分片的副本，提供高可用和读吞吐量。</li>
+</ul>
+<p>Elasticsearch 的底层是<strong>倒排索引</strong>，它根据词项快速定位包含该词项的文档，从而实现高效全文检索。</p>
+<hr>
+<h2 id="2-安装与运行"><a href="#2-安装与运行" class="headerlink" title="2. 安装与运行"></a>2. 安装与运行</h2><p>最简单的方式是使用 Docker：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -d --name elasticsearch -p 9200:9200 -e <span class="string">"discovery.type=single-node"</span> elasticsearch:7.17.10</span><br></pre></td></tr></table></figure>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2024/09/12/Elasticsearch：构建你的搜索引擎/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
+    <article id="post-系统可观测性：从指标、日志到分布式追踪" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2024/08/25/系统可观测性：从指标、日志到分布式追踪/">系统可观测性：从指标、日志到分布式追踪</a>
+    </h1>
+  
+
+        
+        <a href="/2024/08/25/系统可观测性：从指标、日志到分布式追踪/" class="archive-article-date">
+  	<time datetime="2024-08-25T12:15:03.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2024-08-25</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h2><p>在单体应用时代，监控通常意味着收集 CPU、内存等系统指标，以及查看日志文件。但在微服务和云原生架构下，系统由数十甚至数百个服务组成，调用关系复杂，故障定位变得异常困难。传统的监控（Monitoring）已经无法满足需求，我们需要的是一种能够深入理解系统内部状态的能力——<strong>可观测性（Observability）</strong>。</p>
+<p>可观测性源于控制理论，指通过外部输出推断系统内部状态的程度。在软件工程中，它通常由三大支柱构成：<strong>指标（Metrics）、日志（Logs）、追踪（Traces）</strong>。本文将深入介绍这三大支柱，并通过 Spring Boot 应用示例展示如何集成 Prometheus、Loki 和 Jaeger，打造一个可观测的系统。</p>
+<hr>
+<h2 id="1-三大支柱概览"><a href="#1-三大支柱概览" class="headerlink" title="1. 三大支柱概览"></a>1. 三大支柱概览</h2><h3 id="1-1-指标（Metrics）"><a href="#1-1-指标（Metrics）" class="headerlink" title="1.1 指标（Metrics）"></a>1.1 指标（Metrics）</h3><p>指标是量化的、聚合的数值，例如请求速率、错误率、响应延迟、CPU 使用率。它们以时间序列形式存储，适合用于告警和趋势分析。常用工具：Prometheus、Graphite。</p>
+<h3 id="1-2-日志（Logs）"><a href="#1-2-日志（Logs）" class="headerlink" title="1.2 日志（Logs）"></a>1.2 日志（Logs）</h3><p>日志是离散的、带时间戳的事件记录，通常包含详细的上下文信息（如异常堆栈、用户 ID）。日志是最传统的观测手段，适合排查具体问题。常用工具：ELK（Elasticsearch, Logstash, Kibana）、Loki。</p>
+<h3 id="1-3-追踪（Traces）"><a href="#1-3-追踪（Traces）" class="headerlink" title="1.3 追踪（Traces）"></a>1.3 追踪（Traces）</h3><p>追踪用于记录一个请求在分布式系统中的完整路径，包括跨服务的调用链、每个服务处理的时间、是否成功等。追踪能够帮助理解服务间的依赖和性能瓶颈。常用工具：Jaeger、Zipkin、SkyWalking。</p>
+<p>三者相辅相成：指标告诉你系统出问题了，日志告诉你具体错误，追踪告诉你问题发生在哪个服务、哪个调用环节。</p>
+<hr>
+<h2 id="2-指标实战：Prometheus-Micrometer"><a href="#2-指标实战：Prometheus-Micrometer" class="headerlink" title="2. 指标实战：Prometheus + Micrometer"></a>2. 指标实战：Prometheus + Micrometer</h2><h3 id="2-1-引入依赖"><a href="#2-1-引入依赖" class="headerlink" title="2.1 引入依赖"></a>2.1 引入依赖</h3><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>io.micrometer<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>micrometer-registry-prometheus<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-actuator<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2024/08/25/系统可观测性：从指标、日志到分布式追踪/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
+    <article id="post-Spark：快速掌握大数据计算框架" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2024/07/15/Spark：快速掌握大数据计算框架/">Spark：快速掌握大数据计算框架</a>
+    </h1>
+  
+
+        
+        <a href="/2024/07/15/Spark：快速掌握大数据计算框架/" class="archive-article-date">
+  	<time datetime="2024-07-15T14:19:11.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2024-07-15</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h2><p>在大数据时代，处理海量数据成为企业日常挑战。Hadoop MapReduce 虽开创了分布式计算先河，但其磁盘迭代计算导致性能瓶颈。Apache Spark 凭借<strong>内存计算</strong>、<strong>统一编程模型</strong>和<strong>丰富的API</strong>脱颖而出，成为当今最流行的大数据处理引擎。无论是批处理、实时流计算、机器学习还是图计算，Spark 都能提供高效且易用的解决方案。</p>
+<p>本文将带你了解 Spark 的核心概念，并通过 PySpark（Spark Python API）代码示例，从 RDD 基础到 DataFrame 高级操作，最后完成一个真实的 Web 日志分析案例。无论你是初学者还是有一定经验的开发者，都能从中获得实用的知识和代码片段。</p>
+<hr>
+<h2 id="1-Spark-核心概念"><a href="#1-Spark-核心概念" class="headerlink" title="1. Spark 核心概念"></a>1. Spark 核心概念</h2><h3 id="1-1-集群架构"><a href="#1-1-集群架构" class="headerlink" title="1.1 集群架构"></a>1.1 集群架构</h3><ul>
+<li><strong>Driver</strong>：运行 main() 函数，负责创建 SparkContext，规划作业执行，将任务分发到 Executor。</li>
+<li><strong>Executor</strong>：工作节点上的进程，负责执行任务并将结果返回 Driver。</li>
+<li><strong>Cluster Manager</strong>：资源管理器（Standalone、YARN、Mesos），负责分配资源给应用。</li>
+</ul>
+<h3 id="1-2-核心抽象：RDD"><a href="#1-2-核心抽象：RDD" class="headerlink" title="1.2 核心抽象：RDD"></a>1.2 核心抽象：RDD</h3><p><strong>RDD（Resilient Distributed Dataset）</strong> 是 Spark 的基础数据抽象，代表一个不可变、可分区、可并行计算的集合。RDD 具备：</p>
+<ul>
+<li><strong>弹性</strong>：通过血缘关系（Lineage）可重新计算丢失分区。</li>
+<li><strong>分区</strong>：数据分布在集群各节点。</li>
+<li><strong>只读</strong>：只能通过转换操作生成新的 RDD。</li>
+</ul>
+<h3 id="1-3-DataFrame-与-Dataset"><a href="#1-3-DataFrame-与-Dataset" class="headerlink" title="1.3 DataFrame 与 Dataset"></a>1.3 DataFrame 与 Dataset</h3><ul>
+<li><strong>DataFrame</strong>：以列（列名、类型）组织的分布式数据集合，类似于关系表，提供更丰富的优化（Catalyst 优化器）。</li>
+<li><strong>Dataset</strong>：结合 RDD 的类型安全和 DataFrame 的优化，仅在 Scala/Java 中可用。</li>
+</ul>
+<h3 id="1-4-算子：转换与行动"><a href="#1-4-算子：转换与行动" class="headerlink" title="1.4 算子：转换与行动"></a>1.4 算子：转换与行动</h3><ul>
+<li><strong>转换（Transformation）</strong>：懒执行，构建 DAG，如 <code>map</code>、<code>filter</code>、<code>groupBy</code>。</li>
+<li><strong>行动（Action）</strong>：触发实际计算，如 <code>count</code>、<code>collect</code>、<code>save</code>。</li>
+</ul>
+<hr>
+<h2 id="2-环境准备"><a href="#2-环境准备" class="headerlink" title="2. 环境准备"></a>2. 环境准备</h2><p>本文所有示例基于 PySpark，推荐使用本地模式快速体验。</p>
+<h3 id="2-1-安装-Spark"><a href="#2-1-安装-Spark" class="headerlink" title="2.1 安装 Spark"></a>2.1 安装 Spark</h3><p>下载 Spark 预编译包（如 spark-3.3.0-bin-hadoop3），解压，并设置环境变量：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">export</span> SPARK_HOME=/path/to/spark</span><br><span class="line"><span class="built_in">export</span> PATH=<span class="variable">$SPARK_HOME</span>/bin:<span class="variable">$PATH</span></span><br></pre></td></tr></table></figure></p>
+<h3 id="2-2-启动-PySpark-Shell"><a href="#2-2-启动-PySpark-Shell" class="headerlink" title="2.2 启动 PySpark Shell"></a>2.2 启动 PySpark Shell</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pyspark</span><br></pre></td></tr></table></figure>
+<p>进入交互式环境，可直接运行下面代码。</p>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2024/07/15/Spark：快速掌握大数据计算框架/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
+    <article id="post-MySQL分库分表实战：从单库到分布式存储" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2024/05/03/MySQL分库分表实战：从单库到分布式存储/">MySQL分库分表实战：从单库到分布式存储</a>
+    </h1>
+  
+
+        
+        <a href="/2024/05/03/MySQL分库分表实战：从单库到分布式存储/" class="archive-article-date">
+  	<time datetime="2024-05-03T12:58:01.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2024-05-03</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h2><p>随着业务规模的增长，单库单表的 MySQL 架构逐渐暴露出瓶颈：数据量过大导致查询缓慢、索引维护成本高；高并发场景下数据库连接数有限，响应变慢；存储空间也面临上限。为了解决这些问题，我们需要对数据库进行<strong>分库分表</strong>，将数据分散到多个数据库实例和表中，从而提升系统的扩展性和性能。</p>
+<p>本文将系统介绍分库分表的核心策略、实现方式，并通过 ShardingSphere-JDBC 给出完整的代码示例，最后讨论分库分表后面临的挑战与解决方案。</p>
+<hr>
+<h2 id="1-为什么要分库分表？"><a href="#1-为什么要分库分表？" class="headerlink" title="1. 为什么要分库分表？"></a>1. 为什么要分库分表？</h2><h3 id="1-1-单库瓶颈"><a href="#1-1-单库瓶颈" class="headerlink" title="1.1 单库瓶颈"></a>1.1 单库瓶颈</h3><ul>
+<li><strong>数据量过大</strong>：单表数据量达到千万甚至亿级，即使有索引，B+树高度增加，磁盘 IO 次数增多，查询性能下降。</li>
+<li><strong>连接数限制</strong>：MySQL 默认最大连接数约 150~200，高并发场景下连接池易耗尽。</li>
+<li><strong>存储空间</strong>：单库磁盘容量有限，无法水平扩展。</li>
+</ul>
+<h3 id="1-2-分库分表的目标"><a href="#1-2-分库分表的目标" class="headerlink" title="1.2 分库分表的目标"></a>1.2 分库分表的目标</h3><ul>
+<li><strong>分散负载</strong>：将读写压力分布到多个数据库节点。</li>
+<li><strong>突破单库容量</strong>：通过水平拆分，每个库只存储部分数据，总容量无限扩展。</li>
+<li><strong>提高可用性</strong>：部分节点故障不影响整体服务（配合主从复制）。</li>
+</ul>
+<hr>
+<h2 id="2-分库分表策略"><a href="#2-分库分表策略" class="headerlink" title="2. 分库分表策略"></a>2. 分库分表策略</h2><h3 id="2-1-垂直拆分"><a href="#2-1-垂直拆分" class="headerlink" title="2.1 垂直拆分"></a>2.1 垂直拆分</h3><p><strong>垂直分库</strong>：按照业务模块拆分，例如将用户表、订单表、商品表分别放入 user_db、order_db、product_db。每个库独立部署，降低耦合。</p>
+<p><strong>垂直分表</strong>：将一张宽表按字段访问频率拆分成多张表，例如把常用的字段放在主表，不常用的大字段（如 text/blob）放到扩展表，通过主键关联。</p>
+<h3 id="2-2-水平拆分"><a href="#2-2-水平拆分" class="headerlink" title="2.2 水平拆分"></a>2.2 水平拆分</h3><p><strong>水平分库</strong>：将同一个表的数据按照某种规则分散到多个数据库中，每个库的表结构相同，但数据不同。</p>
+<p><strong>水平分表</strong>：将单个数据库中的一张表拆分成多张表，通常与分库结合使用，如将订单表按用户 ID 取模分到 16 个库，每个库再分成 64 张表。</p>
+<p><strong>常见的分片算法</strong>：</p>
+<ul>
+<li><strong>取模/哈希</strong>：<code>shard_id = key % shard_num</code>，简单均匀。</li>
+<li><strong>范围</strong>：按时间范围或 ID 范围拆分，便于范围查询，但可能数据倾斜。</li>
+<li><strong>一致性哈希</strong>：减少扩缩容时的数据迁移量。
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2024/05/03/MySQL分库分表实战：从单库到分布式存储/">展开全文 >></a>
         </p>
       
 
