@@ -6,15 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="https://cxlhaha.github.io">
-  <title>常鑫亮的博客</title>
+  <title>分布式锁的设计与实现 | 常鑫亮的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="常鑫亮的博客">
-<meta property="og:url" content="https://cxlhaha.github.io/index.html">
+  <meta name="description" content="分布式锁的设计与实现：从Redis到ZooKeeper引言在分布式系统中，多个节点同时访问共享资源（如数据库、文件、缓存）时，需要一种机制来保证数据的一致性和操作的互斥性。传统的本地锁（如Java的synchronized）只能作用于单个进程，无法跨节点协调。这时，我们就需要分布式锁。 分布式锁是一种跨进程、跨机器的互斥锁，它协调多个客户端对共享资源的访问。本文将探讨分布式锁的核心要求，并通过两种">
+<meta property="og:type" content="article">
+<meta property="og:title" content="分布式锁的设计与实现">
+<meta property="og:url" content="https://cxlhaha.github.io/2025/11/13/分布式锁的设计与实现/index.html">
 <meta property="og:site_name" content="常鑫亮的博客">
+<meta property="og:description" content="分布式锁的设计与实现：从Redis到ZooKeeper引言在分布式系统中，多个节点同时访问共享资源（如数据库、文件、缓存）时，需要一种机制来保证数据的一致性和操作的互斥性。传统的本地锁（如Java的synchronized）只能作用于单个进程，无法跨节点协调。这时，我们就需要分布式锁。 分布式锁是一种跨进程、跨机器的互斥锁，它协调多个客户端对共享资源的访问。本文将探讨分布式锁的核心要求，并通过两种">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2026-03-05T03:26:06.420Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="常鑫亮的博客">
+<meta name="twitter:title" content="分布式锁的设计与实现">
+<meta name="twitter:description" content="分布式锁的设计与实现：从Redis到ZooKeeper引言在分布式系统中，多个节点同时访问共享资源（如数据库、文件、缓存）时，需要一种机制来保证数据的一致性和操作的互斥性。传统的本地锁（如Java的synchronized）只能作用于单个进程，无法跨节点协调。这时，我们就需要分布式锁。 分布式锁是一种跨进程、跨机器的互斥锁，它协调多个客户端对共享资源的访问。本文将探讨分布式锁的核心要求，并通过两种">
   
     <link rel="alternative" href="/atom.xml" title="常鑫亮的博客" type="application/atom+xml">
   
@@ -138,282 +142,14 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-    <article id="post-技术债治理：从“破窗效应”到可持续开发" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+            <article id="post-分布式锁的设计与实现" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2026/02/08/技术债治理：从“破窗效应”到可持续开发/">技术债治理：从“破窗效应”到可持续开发</a>
-    </h1>
-  
-
-        
-        <a href="/2026/02/08/技术债治理：从“破窗效应”到可持续开发/" class="archive-article-date">
-  	<time datetime="2026-02-08T11:19:02.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2026-02-08</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="技术债治理：从“破窗效应”到可持续开发"><a href="#技术债治理：从“破窗效应”到可持续开发" class="headerlink" title="技术债治理：从“破窗效应”到可持续开发"></a>技术债治理：从“破窗效应”到可持续开发</h1><h2 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h2><p>技术债（Technical Debt）是软件开发中一个形象的比喻，由Ward Cunningham提出。就像金融债务一样，为了快速交付功能而采取“捷径”（如编写混乱的代码、跳过测试、忽视架构），虽然短期内获得了速度，但未来需要支付“利息”——更高的维护成本、更慢的特性开发、更多的缺陷。如果技术债长期不偿还，系统将陷入“破窗效应”，最终导致重构甚至重写的巨大代价。</p>
-<p>然而，技术债并非洪水猛兽，关键在于有效治理。本文将探讨技术债的成因、识别方法，并通过实际代码示例展示如何逐步偿还技术债，建立可持续的开发节奏。</p>
-<hr>
-<h2 id="1-技术债的类型与成因"><a href="#1-技术债的类型与成因" class="headerlink" title="1. 技术债的类型与成因"></a>1. 技术债的类型与成因</h2><p>技术债可以出现在软件开发的各个层面：</p>
-<ul>
-<li><strong>代码债务</strong>：重复代码、过长函数、复杂的条件嵌套、命名不规范等。</li>
-<li><strong>设计债务</strong>：过度耦合、内聚性差、缺乏抽象、硬编码等。</li>
-<li><strong>测试债务</strong>：缺少单元测试、测试覆盖率低、脆弱的测试用例。</li>
-<li><strong>文档债务</strong>：过时的注释、缺乏架构文档、API文档缺失。</li>
-<li><strong>基础设施债务</strong>：构建脚本混乱、部署流程手工操作、环境不一致。</li>
-</ul>
-<p>成因通常包括：紧迫的项目期限、需求变更未及时重构、缺乏代码规范、团队新人加入留下“临时方案”等。</p>
-<hr>
-<h2 id="2-识别技术债：让问题可视化"><a href="#2-识别技术债：让问题可视化" class="headerlink" title="2. 识别技术债：让问题可视化"></a>2. 识别技术债：让问题可视化</h2><p>治理的第一步是识别。我们可以借助工具和代码审查来发现技术债。</p>
-<h3 id="2-1-静态代码分析工具"><a href="#2-1-静态代码分析工具" class="headerlink" title="2.1 静态代码分析工具"></a>2.1 静态代码分析工具</h3><p>SonarQube、Checkstyle、PMD等工具可以自动扫描代码中的坏味道。例如，SonarQube会标记复杂度高的方法、重复代码块、潜在bug等。</p>
-<h3 id="2-2-代码审查"><a href="#2-2-代码审查" class="headerlink" title="2.2 代码审查"></a>2.2 代码审查</h3><p>通过同行评审，从可读性、可维护性角度发现设计问题。</p>
-<h3 id="2-3-代码坏味道示例"><a href="#2-3-代码坏味道示例" class="headerlink" title="2.3 代码坏味道示例"></a>2.3 代码坏味道示例</h3><p>下面是一个典型的“长函数”坏味道，它包含了多个职责，难以理解和测试：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">OrderService</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">processOrder</span><span class="params">(Order order)</span> </span>&#123;</span><br><span class="line">        <span class="comment">// 验证订单</span></span><br><span class="line">        <span class="keyword">if</span> (order == <span class="keyword">null</span> || order.getItems().isEmpty()) &#123;</span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> IllegalArgumentException(<span class="string">"订单无效"</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span> (OrderItem item : order.getItems()) &#123;</span><br><span class="line">            <span class="keyword">if</span> (item.getQuantity() &lt;= <span class="number">0</span>) &#123;</span><br><span class="line">                <span class="keyword">throw</span> <span class="keyword">new</span> IllegalArgumentException(<span class="string">"商品数量必须大于0"</span>);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 计算总价</span></span><br><span class="line">        <span class="keyword">double</span> total = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (OrderItem item : order.getItems()) &#123;</span><br><span class="line">            total += item.getPrice() * item.getQuantity();</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 应用折扣</span></span><br><span class="line">        <span class="keyword">if</span> (order.getCustomer().isVIP()) &#123;</span><br><span class="line">            total = total * <span class="number">0.9</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 保存订单到数据库</span></span><br><span class="line">        order.setTotal(total);</span><br><span class="line">        order.setStatus(OrderStatus.PROCESSED);</span><br><span class="line">        orderDao.save(order);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 发送通知</span></span><br><span class="line">        emailService.sendOrderConfirmation(order);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2026/02/08/技术债治理：从“破窗效应”到可持续开发/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-  
-    <article id="post-构建高可用微服务系统：原理、模式与实战" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2026/02/04/构建高可用微服务系统：原理、模式与实战/">构建高可用微服务系统：原理、模式与实战</a>
-    </h1>
-  
-
-        
-        <a href="/2026/02/04/构建高可用微服务系统：原理、模式与实战/" class="archive-article-date">
-  	<time datetime="2026-02-04T09:26:55.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2026-02-04</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h2><p>在当今的互联网时代，系统高可用性（High Availability，HA）已经成为软件架构设计的核心目标之一。从电商的大促秒杀，到金融系统的实时交易，任何短暂的服务不可用都可能造成巨大的经济损失和用户流失。通常，我们用“几个9”来衡量可用性：99.9%（三个9）意味着全年停机不超过8.76小时，而99.99%（四个9）则要求全年停机不超过52.56分钟。要达到这样的标准，单靠硬件冗余远远不够，必须在软件架构层面进行精心的设计。</p>
-<p>微服务架构将单体应用拆分为多个独立部署的服务，这带来了灵活性，但也增加了系统的复杂性——网络延迟、服务依赖、部分故障等问题变得突出。本文将深入探讨构建高可用微服务系统的核心原则与实战模式，并结合代码示例（基于Spring Cloud生态和Resilience4j）展示具体实现。</p>
-<hr>
-<h2 id="一、高可用设计原则"><a href="#一、高可用设计原则" class="headerlink" title="一、高可用设计原则"></a>一、高可用设计原则</h2><p>在深入代码之前，我们需要先理解几个顶层设计原则，它们是所有高可用实践的基石。</p>
-<h3 id="1-冗余与无状态"><a href="#1-冗余与无状态" class="headerlink" title="1. 冗余与无状态"></a>1. 冗余与无状态</h3><ul>
-<li><strong>冗余</strong>：每个服务组件（包括应用实例、数据库、中间件）都应部署多个副本，避免单点故障（SPOF）。</li>
-<li><strong>无状态</strong>：应用实例不存储任何会话或业务状态，状态全部外移到分布式缓存（如Redis）或数据库。这样任何实例都可以处理任何请求，故障时流量可瞬间切换到其他实例。</li>
-</ul>
-<h3 id="2-故障隔离（舱壁模式）"><a href="#2-故障隔离（舱壁模式）" class="headerlink" title="2. 故障隔离（舱壁模式）"></a>2. 故障隔离（舱壁模式）</h3><p>将系统拆分为独立的舱室，一个舱室的故障不会蔓延到其他舱室。例如：为每个下游服务配置独立的线程池或连接池，防止某个慢服务耗尽整个容器的资源。</p>
-<h3 id="3-可观测性"><a href="#3-可观测性" class="headerlink" title="3. 可观测性"></a>3. 可观测性</h3><p>没有监控，就谈不上高可用。必须建立完善的日志、度量和追踪系统，以便快速发现故障、定位原因。指标（如QPS、延迟、错误率）应实时采集并配置告警。</p>
-<h3 id="4-自动化"><a href="#4-自动化" class="headerlink" title="4. 自动化"></a>4. 自动化</h3><p>故障恢复的过程必须自动化。无论是弹性伸缩、服务重启，还是数据库主从切换，都应通过编排工具（如Kubernetes）或自动化脚本完成，减少人工介入时间。</p>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2026/02/04/构建高可用微服务系统：原理、模式与实战/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-  
-    <article id="post-高并发场景下的秒杀系统优化实践：从Redis到消息队列" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2026/01/15/高并发场景下的秒杀系统优化实践：从Redis到消息队列/">高并发场景下的秒杀系统优化实践：从Redis到消息队列</a>
-    </h1>
-  
-
-        
-        <a href="/2026/01/15/高并发场景下的秒杀系统优化实践：从Redis到消息队列/" class="archive-article-date">
-  	<time datetime="2026-01-15T03:17:21.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2026-01-15</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="高并发场景下的秒杀系统优化实践：从Redis到消息队列"><a href="#高并发场景下的秒杀系统优化实践：从Redis到消息队列" class="headerlink" title="高并发场景下的秒杀系统优化实践：从Redis到消息队列"></a>高并发场景下的秒杀系统优化实践：从Redis到消息队列</h1><h2 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h2><p>秒杀系统是互联网中典型的高并发场景，例如双十一秒杀、限量抢购等。这类系统的特点是：瞬间涌入大量请求，热点数据（如库存）集中读写，对系统的性能和一致性要求极高。如果直接使用传统的关系型数据库处理所有请求，数据库将不堪重负，甚至出现超卖、响应慢等问题。</p>
-<p>本文将通过一个简化的秒杀系统案例，介绍如何利用<strong>Redis</strong>预减库存和<strong>消息队列</strong>异步下单来优化高并发处理能力，并给出核心代码片段。</p>
-<hr>
-<h2 id="1-传统架构的痛点"><a href="#1-传统架构的痛点" class="headerlink" title="1. 传统架构的痛点"></a>1. 传统架构的痛点</h2><p>一个最基础的秒杀系统通常包含以下流程：</p>
-<ol>
-<li>用户点击秒杀按钮，请求进入后端。</li>
-<li>后端查询数据库中的库存，判断是否足够。</li>
-<li>如果库存足够，扣减库存并创建订单。</li>
-<li>返回秒杀结果。</li>
-</ol>
-<p>这种方式在低并发下没有问题，但在高并发时会出现：</p>
-<ul>
-<li><strong>数据库行锁竞争</strong>：多个请求同时更新同一行库存记录，导致锁等待，性能急剧下降。</li>
-<li><strong>超卖风险</strong>：由于查询和更新并非原子操作，在并发下可能读取到过期库存，导致扣减超出实际库存。</li>
-<li><strong>响应延迟</strong>：数据库连接池被占满，请求超时。</li>
-</ul>
-<p>因此，我们需要引入更高效的技术组件来保护数据库，并提升吞吐量。</p>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2026/01/15/高并发场景下的秒杀系统优化实践：从Redis到消息队列/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-  
-    <article id="post-云原生转型实战" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2025/12/06/云原生转型实战/">云原生转型实战</a>
-    </h1>
-  
-
-        
-        <a href="/2025/12/06/云原生转型实战/" class="archive-article-date">
-  	<time datetime="2025-12-06T11:22:49.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2025-12-06</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="云原生转型实战：从传统Spring-Boot应用到Kubernetes集群"><a href="#云原生转型实战：从传统Spring-Boot应用到Kubernetes集群" class="headerlink" title="云原生转型实战：从传统Spring Boot应用到Kubernetes集群"></a>云原生转型实战：从传统Spring Boot应用到Kubernetes集群</h1><h2 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h2><p>云原生（Cloud Native）是当前软件架构的主流方向，它倡导将应用设计为弹性、可伸缩、可观测的微服务，并充分利用云平台的自动化能力。根据CNCF的定义，云原生技术包括容器、服务网格、微服务、不可变基础设施和声明式API等。</p>
-<p>然而，许多团队仍然维护着传统的单体应用，运行在物理机或虚拟机上，面临着部署慢、扩展难、环境不一致等问题。将传统应用迁移到云原生架构并非一蹴而就，而是一个逐步演进的过程。本文将以一个典型的Spring Boot应用为例，展示如何将其容器化并部署到Kubernetes集群，实现云原生的初步转型。</p>
-<hr>
-<h2 id="1-传统应用的痛点"><a href="#1-传统应用的痛点" class="headerlink" title="1. 传统应用的痛点"></a>1. 传统应用的痛点</h2><p>假设我们有一个基于Spring Boot的订单服务（Order Service），传统部署方式如下：</p>
-<ul>
-<li>打包成JAR包，通过脚本或Ansible部署到多台服务器。</li>
-<li>配置文件通过环境变量或外部配置文件管理。</li>
-<li>负载均衡使用Nginx，健康检查依赖自定义脚本。</li>
-<li>扩缩容需要手动复制服务并调整Nginx配置。</li>
-</ul>
-<p>这种方式存在以下问题：</p>
-<ul>
-<li><strong>环境不一致</strong>：开发、测试、生产环境配置差异导致“在我机器上能跑”现象。</li>
-<li><strong>部署复杂</strong>：每次发布需要停机或手动重启，容易出错。</li>
-<li><strong>资源利用率低</strong>：服务独占虚拟机，无法精细调度。</li>
-<li><strong>弹性不足</strong>：面对突发流量，无法快速自动扩容。</li>
-</ul>
-<hr>
-<h2 id="2-容器化改造：编写Dockerfile"><a href="#2-容器化改造：编写Dockerfile" class="headerlink" title="2. 容器化改造：编写Dockerfile"></a>2. 容器化改造：编写Dockerfile</h2><p>容器化是云原生的第一步。我们将Spring Boot应用打包成Docker镜像，实现环境一致和轻量级交付。</p>
-<h3 id="2-1-准备Spring-Boot应用"><a href="#2-1-准备Spring-Boot应用" class="headerlink" title="2.1 准备Spring Boot应用"></a>2.1 准备Spring Boot应用</h3><p>一个典型的Spring Boot项目结构：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">order-service/</span><br><span class="line">├── src/</span><br><span class="line">├── pom.xml</span><br><span class="line">└── target/order-service-1.0.0.jar</span><br></pre></td></tr></table></figure></p>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2025/12/06/云原生转型实战/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-  
-    <article id="post-分布式锁的设计与实现" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2025/11/13/分布式锁的设计与实现/">分布式锁的设计与实现</a>
+    <h1 class="article-title" itemprop="name">
+      分布式锁的设计与实现
     </h1>
   
 
@@ -440,313 +176,88 @@
 <hr>
 <h2 id="2-基于Redis的分布式锁"><a href="#2-基于Redis的分布式锁" class="headerlink" title="2. 基于Redis的分布式锁"></a>2. 基于Redis的分布式锁</h2><p>Redis凭借其高性能和原子操作，常被用于实现分布式锁。核心思想是利用<code>SETNX</code>（SET if Not eXists）命令和过期时间。</p>
 <h3 id="2-1-简单实现：SET-NX-过期时间"><a href="#2-1-简单实现：SET-NX-过期时间" class="headerlink" title="2.1 简单实现：SET NX + 过期时间"></a>2.1 简单实现：SET NX + 过期时间</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> redis.clients.jedis.Jedis;</span><br><span class="line"><span class="keyword">import</span> java.util.Collections;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">RedisDistributedLock</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> String LOCK_SUCCESS = <span class="string">"OK"</span>;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> String SET_IF_NOT_EXIST = <span class="string">"NX"</span>;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> String SET_WITH_EXPIRE_TIME = <span class="string">"PX"</span>; <span class="comment">// 毫秒</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> Long RELEASE_SUCCESS = <span class="number">1L</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> Jedis jedis;</span><br><span class="line">    <span class="keyword">private</span> String lockKey;</span><br><span class="line">    <span class="keyword">private</span> String requestId; <span class="comment">// 唯一标识，用于安全释放锁</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> expireTime;    <span class="comment">// 过期时间（毫秒）</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">RedisDistributedLock</span><span class="params">(Jedis jedis, String lockKey, String requestId, <span class="keyword">int</span> expireTime)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.jedis = jedis;</span><br><span class="line">        <span class="keyword">this</span>.lockKey = lockKey;</span><br><span class="line">        <span class="keyword">this</span>.requestId = requestId;</span><br><span class="line">        <span class="keyword">this</span>.expireTime = expireTime;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 尝试获取锁</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span> 是否成功</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">tryLock</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="comment">// SET key value NX PX expireTime</span></span><br><span class="line">        String result = jedis.set(lockKey, requestId, SET_IF_NOT_EXIST, SET_WITH_EXPIRE_TIME, expireTime);</span><br><span class="line">        <span class="keyword">return</span> LOCK_SUCCESS.equals(result);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 释放锁（使用Lua脚本保证原子性）</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">unlock</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        String script = <span class="string">"if redis.call('get', KEYS[1]) == ARGV[1] then "</span> +</span><br><span class="line">                        <span class="string">"return redis.call('del', KEYS[1]) "</span> +</span><br><span class="line">                        <span class="string">"else return 0 end"</span>;</span><br><span class="line">        Object result = jedis.eval(script, Collections.singletonList(lockKey), </span><br><span class="line">                                   Collections.singletonList(requestId));</span><br><span class="line">        <span class="keyword">return</span> RELEASE_SUCCESS.equals(result);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2025/11/13/分布式锁的设计与实现/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-  
-    <article id="post-深入浅出RPC框架：原理与手写实现" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2025/10/25/深入浅出RPC框架：原理与手写实现/">深入浅出RPC框架：原理与手写实现</a>
-    </h1>
-  
-
-        
-        <a href="/2025/10/25/深入浅出RPC框架：原理与手写实现/" class="archive-article-date">
-  	<time datetime="2025-10-25T13:27:11.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2025-10-25</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="深入浅出RPC框架：原理与手写实现"><a href="#深入浅出RPC框架：原理与手写实现" class="headerlink" title="深入浅出RPC框架：原理与手写实现"></a>深入浅出RPC框架：原理与手写实现</h1><h2 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h2><p>在分布式系统中，服务之间的调用是家常便饭。传统的HTTP接口虽然简单，但在性能、灵活性和易用性上往往不够理想。RPC（Remote Procedure Call，远程过程调用）框架应运而生，它让开发者像调用本地方法一样调用远程服务，屏蔽了网络通信、序列化、寻址等底层细节。</p>
-<p>本文将介绍RPC的核心原理，并通过一个简单的Java实现展示其工作流程，最后对比主流RPC框架的选型。</p>
-<hr>
-<h2 id="1-RPC的核心原理"><a href="#1-RPC的核心原理" class="headerlink" title="1. RPC的核心原理"></a>1. RPC的核心原理</h2><p>RPC框架的目标是让远程调用像本地调用一样简单。其核心流程包括以下几个步骤：</p>
-<ol>
-<li><strong>客户端调用</strong>：客户端通过本地代理（Stub）调用方法。</li>
-<li><strong>序列化</strong>：将方法名、参数等信息序列化成二进制数据。</li>
-<li><strong>网络传输</strong>：将数据通过网络发送到服务端。</li>
-<li><strong>服务端接收</strong>：服务端代理（Skeleton）接收请求，反序列化。</li>
-<li><strong>服务调用</strong>：根据方法名和参数调用本地服务实现。</li>
-<li><strong>结果返回</strong>：将执行结果序列化后返回给客户端。</li>
-<li><strong>客户端反序列化</strong>：客户端得到结果，完成调用。</li>
-</ol>
-<p>为了实现这一过程，RPC框架通常包含以下组件：</p>
+<a id="more"></a>
+<p><strong>使用示例</strong>：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">Jedis jedis = <span class="keyword">new</span> Jedis(<span class="string">"localhost"</span>, <span class="number">6379</span>);</span><br><span class="line">String requestId = UUID.randomUUID().toString();</span><br><span class="line">RedisDistributedLock lock = <span class="keyword">new</span> RedisDistributedLock(jedis, <span class="string">"resource_key"</span>, requestId, <span class="number">10000</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> (lock.tryLock()) &#123;</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">        <span class="comment">// 执行业务逻辑</span></span><br><span class="line">    &#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">        lock.unlock();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p><strong>关键点</strong>：</p>
 <ul>
-<li><strong>动态代理</strong>：生成服务接口的代理对象，拦截方法调用。</li>
-<li><strong>序列化/反序列化</strong>：将数据结构转换为字节流（如JSON、Protobuf、Hessian）。</li>
-<li><strong>网络传输</strong>：基于TCP或HTTP进行通信（如Netty、Socket）。</li>
-<li><strong>服务注册与发现</strong>：让客户端找到服务端地址（如ZooKeeper、Nacos）。</li>
+<li><code>requestId</code>用于标识锁的持有者，防止误删其他客户端持有的锁。</li>
+<li>释放锁使用Lua脚本，确保“检查-删除”的原子性。</li>
+<li>设置过期时间防止死锁。</li>
+</ul>
+<h3 id="2-2-存在的问题与改进"><a href="#2-2-存在的问题与改进" class="headerlink" title="2.2 存在的问题与改进"></a>2.2 存在的问题与改进</h3><ul>
+<li><strong>锁过期问题</strong>：业务执行时间超过锁过期时间，导致锁自动释放，其他客户端可能获取锁造成并发问题。解决方案：启动守护线程自动续租（如Redisson的<code>watch dog</code>机制）。</li>
+<li><strong>单点故障</strong>：Redis主从切换可能导致锁丢失。Redlock算法（多Redis节点独立加锁）提供了更可靠的方案，但实现复杂且存在争议。</li>
+<li><strong>性能</strong>：Redis基于内存，性能极高，适合高并发场景。</li>
 </ul>
 <hr>
-<h2 id="2-手写一个简易RPC框架"><a href="#2-手写一个简易RPC框架" class="headerlink" title="2. 手写一个简易RPC框架"></a>2. 手写一个简易RPC框架</h2><p>为了加深理解，我们来动手实现一个极简的RPC框架。我们将使用Java原生序列化（<code>ObjectOutputStream</code>）和Socket通信，并借助动态代理完成客户端调用。</p>
-<h3 id="2-1-定义服务接口"><a href="#2-1-定义服务接口" class="headerlink" title="2.1 定义服务接口"></a>2.1 定义服务接口</h3><p>首先定义一个简单的服务接口，例如用户查询服务：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">UserService</span> </span>&#123;</span><br><span class="line">    <span class="function">User <span class="title">getUserById</span><span class="params">(<span class="keyword">int</span> id)</span></span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 实体类（必须实现Serializable）</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">User</span> <span class="keyword">implements</span> <span class="title">Serializable</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> id;</span><br><span class="line">    <span class="keyword">private</span> String name;</span><br><span class="line">    <span class="comment">// getter/setter/toString 省略</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2025/10/25/深入浅出RPC框架：原理与手写实现/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-  
-    <article id="post-容器化你的应用" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2025/09/16/容器化你的应用/">容器化你的应用</a>
-    </h1>
-  
-
-        
-        <a href="/2025/09/16/容器化你的应用/" class="archive-article-date">
-  	<time datetime="2025-09-16T12:29:26.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2025-09-16</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="Docker从入门到实践：容器化你的应用"><a href="#Docker从入门到实践：容器化你的应用" class="headerlink" title="Docker从入门到实践：容器化你的应用"></a>Docker从入门到实践：容器化你的应用</h1><h2 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h2><p>在软件开发中，我们经常遇到这样的问题：“它在我的机器上可以运行！”——环境不一致导致的部署失败、依赖冲突、版本差异等让人头疼。Docker的出现解决了这一痛点。Docker是一个开源的容器化平台，它允许开发者将应用及其依赖打包成一个轻量级、可移植的容器，然后在任何支持Docker的环境中运行，真正做到“一次构建，到处运行”。</p>
-<p>本文将通过一个Node.js应用示例，带你从零开始学习Docker的核心概念、Dockerfile编写、容器运行，以及使用Docker Compose编排多容器应用。</p>
-<hr>
-<h2 id="1-Docker核心概念"><a href="#1-Docker核心概念" class="headerlink" title="1. Docker核心概念"></a>1. Docker核心概念</h2><ul>
-<li><strong>镜像（Image）</strong>：一个只读的模板，包含运行应用所需的文件系统、依赖、配置等。可以理解为应用的“安装包”。</li>
-<li><strong>容器（Container）</strong>：镜像的运行实例，是一个独立的、可执行的进程。容器之间相互隔离。</li>
-<li><strong>仓库（Repository）</strong>：存储镜像的地方，最著名的是Docker Hub（官方公共仓库）。</li>
+<h2 id="3-基于ZooKeeper的分布式锁"><a href="#3-基于ZooKeeper的分布式锁" class="headerlink" title="3. 基于ZooKeeper的分布式锁"></a>3. 基于ZooKeeper的分布式锁</h2><p>ZooKeeper是一个分布式协调服务，其ZNode节点和Watcher机制天然适合实现分布式锁。常用的是<strong>临时顺序节点</strong>：每个客户端在锁目录下创建临时顺序节点，编号最小的节点获得锁。</p>
+<h3 id="3-1-使用Apache-Curator实现"><a href="#3-1-使用Apache-Curator实现" class="headerlink" title="3.1 使用Apache Curator实现"></a>3.1 使用Apache Curator实现</h3><p>Curator是ZooKeeper的客户端封装，提供了简洁的分布式锁API。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> org.apache.curator.framework.CuratorFramework;</span><br><span class="line"><span class="keyword">import</span> org.apache.curator.framework.CuratorFrameworkFactory;</span><br><span class="line"><span class="keyword">import</span> org.apache.curator.framework.recipes.locks.InterProcessMutex;</span><br><span class="line"><span class="keyword">import</span> org.apache.curator.retry.ExponentialBackoffRetry;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ZookeeperDistributedLock</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> CuratorFramework client;</span><br><span class="line">    <span class="keyword">private</span> InterProcessMutex lock;</span><br><span class="line">    <span class="keyword">private</span> String lockPath = <span class="string">"/distributed-lock"</span>;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">ZookeeperDistributedLock</span><span class="params">(String zkAddress)</span> </span>&#123;</span><br><span class="line">        client = CuratorFrameworkFactory.newClient(zkAddress, </span><br><span class="line">                <span class="keyword">new</span> ExponentialBackoffRetry(<span class="number">1000</span>, <span class="number">3</span>));</span><br><span class="line">        client.start();</span><br><span class="line">        lock = <span class="keyword">new</span> InterProcessMutex(client, lockPath);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 尝试获取锁（阻塞直到成功）</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">lock</span><span class="params">()</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">        lock.acquire();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 尝试获取锁，超时返回false</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">tryLock</span><span class="params">(<span class="keyword">long</span> time, TimeUnit unit)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> lock.acquire(time, unit);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 释放锁</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">unlock</span><span class="params">()</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">        lock.release();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">close</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        client.close();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>使用示例</strong>：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">ZookeeperDistributedLock zkLock = <span class="keyword">new</span> ZookeeperDistributedLock(<span class="string">"localhost:2181"</span>);</span><br><span class="line"><span class="keyword">try</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (zkLock.tryLock(<span class="number">5</span>, TimeUnit.SECONDS)) &#123;</span><br><span class="line">        <span class="comment">// 执行业务逻辑</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">    zkLock.unlock();</span><br><span class="line">    zkLock.close();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h3 id="3-2-原理分析"><a href="#3-2-原理分析" class="headerlink" title="3.2 原理分析"></a>3.2 原理分析</h3><ul>
+<li>所有客户端在<code>/distributed-lock</code>下创建<strong>临时顺序节点</strong>，如<code>lock-0000000001</code>、<code>lock-0000000002</code>。</li>
+<li>每个客户端判断自己创建的节点是否为最小节点，若是则获得锁；否则监听前一个节点的删除事件。</li>
+<li>当前一个节点被删除（锁释放或会话过期）时，客户端收到通知并再次尝试获取锁。</li>
+<li>临时节点特性：客户端会话结束（崩溃）时自动删除节点，避免死锁。</li>
+</ul>
+<h3 id="3-3-优缺点"><a href="#3-3-优缺点" class="headerlink" title="3.3 优缺点"></a>3.3 优缺点</h3><ul>
+<li><strong>优点</strong>：强一致性（ZooKeeper的ZAB协议保证），自动释放锁（临时节点），无需设置过期时间，可靠性高。</li>
+<li><strong>缺点</strong>：性能不如Redis（磁盘写入、网络多轮交互），部署相对复杂。</li>
 </ul>
 <hr>
-<h2 id="2-安装Docker"><a href="#2-安装Docker" class="headerlink" title="2. 安装Docker"></a>2. 安装Docker</h2><p>根据你的操作系统，访问<a href="https://docs.docker.com/get-docker/" target="_blank" rel="noopener">Docker官网</a>下载并安装Docker Desktop（Windows/Mac）或使用包管理器安装Docker Engine（Linux）。安装完成后，在终端运行以下命令验证：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker --version</span><br></pre></td></tr></table></figure>
-<hr>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2025/09/16/容器化你的应用/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-  
-    <article id="post-Kafka实战：构建高吞吐消息系统" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2025/08/03/Kafka实战：构建高吞吐消息系统/">Kafka实战：构建高吞吐消息系统</a>
-    </h1>
-  
-
-        
-        <a href="/2025/08/03/Kafka实战：构建高吞吐消息系统/" class="archive-article-date">
-  	<time datetime="2025-08-03T12:44:01.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2025-08-03</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="Kafka实战：构建高吞吐消息系统"><a href="#Kafka实战：构建高吞吐消息系统" class="headerlink" title="Kafka实战：构建高吞吐消息系统"></a>Kafka实战：构建高吞吐消息系统</h1><h2 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h2><p>在大数据和分布式系统盛行的今天，消息队列作为系统解耦、异步处理、流量削峰的核心组件，扮演着至关重要的角色。Apache Kafka 是一个分布式、分区的、多副本的、基于 ZooKeeper 协调的分布式消息系统，它以高吞吐、持久化、水平扩展等特性，成为实时数据流处理的事实标准。</p>
-<p>本文将带你从零开始认识 Kafka 的核心概念，并通过 Java 客户端示例展示生产者和消费者的基本用法，最后探讨一些高级特性与最佳实践。</p>
-<hr>
-<h2 id="1-Kafka-核心概念"><a href="#1-Kafka-核心概念" class="headerlink" title="1. Kafka 核心概念"></a>1. Kafka 核心概念</h2><ul>
-<li><strong>Producer</strong>：消息生产者，向 Kafka 主题发送消息。</li>
-<li><strong>Consumer</strong>：消息消费者，从 Kafka 主题拉取消息。</li>
-<li><strong>Topic</strong>：主题，消息的分类。一个 Topic 可以有多个 Partition。</li>
-<li><strong>Partition</strong>：分区，实现 Topic 的并行处理和数据冗余。每个分区是一个有序的、不可变的日志序列。</li>
-<li><strong>Broker</strong>：Kafka 集群中的一台服务器，负责存储消息和处理客户端请求。</li>
-<li><strong>Consumer Group</strong>：消费者组，一个组内的消费者共同消费一个 Topic 的消息，每条消息只会被组内一个消费者处理，实现负载均衡。</li>
-<li><strong>Offset</strong>：偏移量，分区内每条消息的唯一标识，消费者通过提交偏移量记录消费位置。</li>
+<h2 id="4-Redis-vs-ZooKeeper：如何选择？"><a href="#4-Redis-vs-ZooKeeper：如何选择？" class="headerlink" title="4. Redis vs ZooKeeper：如何选择？"></a>4. Redis vs ZooKeeper：如何选择？</h2><table>
+<thead>
+<tr>
+<th>维度</th>
+<th>Redis</th>
+<th>ZooKeeper</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>一致性模型</strong></td>
+<td>AP（最终一致性）</td>
+<td>CP（强一致性）</td>
+</tr>
+<tr>
+<td><strong>性能</strong></td>
+<td>极高（纯内存操作）</td>
+<td>中等（需要磁盘持久化和Leader选举）</td>
+</tr>
+<tr>
+<td><strong>可靠性</strong></td>
+<td>依赖主从复制，可能锁丢失</td>
+<td>高（ZAB协议保证数据一致）</td>
+</tr>
+<tr>
+<td><strong>实现复杂度</strong></td>
+<td>简单（需处理续租、原子释放）</td>
+<td>Curator封装后也很简单</td>
+</tr>
+<tr>
+<td><strong>适用场景</strong></td>
+<td>对性能要求极高，可容忍极短时间的不一致</td>
+<td>对一致性要求极高，如金融交易、配置中心</td>
+</tr>
+</tbody>
+</table>
+<p><strong>建议</strong>：</p>
+<ul>
+<li>如果业务允许短暂的不一致（例如秒杀库存扣减），Redis是首选，因为性能优势明显。</li>
+<li>如果对数据一致性要求严苛（如分布式调度任务、主节点选举），ZooKeeper更可靠。</li>
 </ul>
 <hr>
-<h2 id="2-环境准备"><a href="#2-环境准备" class="headerlink" title="2. 环境准备"></a>2. 环境准备</h2><h3 id="2-1-启动-Kafka"><a href="#2-1-启动-Kafka" class="headerlink" title="2.1 启动 Kafka"></a>2.1 启动 Kafka</h3><p>使用 Docker Compose 快速启动 Kafka（包含 ZooKeeper）：</p>
-<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">version:</span> <span class="string">'2'</span></span><br><span class="line"><span class="attr">services:</span></span><br><span class="line">  <span class="attr">zookeeper:</span></span><br><span class="line">    <span class="attr">image:</span> <span class="string">confluentinc/cp-zookeeper:latest</span></span><br><span class="line">    <span class="attr">environment:</span></span><br><span class="line">      <span class="attr">ZOOKEEPER_CLIENT_PORT:</span> <span class="number">2181</span></span><br><span class="line">      <span class="attr">ZOOKEEPER_TICK_TIME:</span> <span class="number">2000</span></span><br><span class="line">    <span class="attr">ports:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="number">2181</span><span class="string">:2181</span></span><br><span class="line"></span><br><span class="line">  <span class="attr">kafka:</span></span><br><span class="line">    <span class="attr">image:</span> <span class="string">confluentinc/cp-kafka:latest</span></span><br><span class="line">    <span class="attr">depends_on:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">zookeeper</span></span><br><span class="line">    <span class="attr">ports:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="number">9092</span><span class="string">:9092</span></span><br><span class="line">    <span class="attr">environment:</span></span><br><span class="line">      <span class="attr">KAFKA_BROKER_ID:</span> <span class="number">1</span></span><br><span class="line">      <span class="attr">KAFKA_ZOOKEEPER_CONNECT:</span> <span class="string">zookeeper:2181</span></span><br><span class="line">      <span class="attr">KAFKA_ADVERTISED_LISTENERS:</span> <span class="string">PLAINTEXT://localhost:9092</span></span><br><span class="line">      <span class="attr">KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR:</span> <span class="number">1</span></span><br></pre></td></tr></table></figure>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2025/08/03/Kafka实战：构建高吞吐消息系统/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-  
-    <article id="post-动态添加属性-Associated Object" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/03/13/动态添加属性-Associated Object/">动态添加属性-Associated Object</a>
-    </h1>
-  
-
-        
-        <a href="/2020/03/13/动态添加属性-Associated Object/" class="archive-article-date">
-  	<time datetime="2020-03-13T09:56:26.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-13</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>从今天开始,我们将要开始逐步接近OC的动态特性,慢慢揭开OC底层runtime系统的神秘面纱,超强的动态特性,是OC和一般面向对象的语言最明显的区别,也是这门古老的语言最具魅力的地方,如果可以正确的利用动态特性,那么可以帮助我们方便的解决很多棘手的问题.</p>
-<p>我们今天来看的呢,是runtime库里非常有用的一组函数,Associated Object动态关联对象.这个功能,能够让我们动态的对一个对象绑定相关联的数据.</p>
-<p>有了这个功能,我们不仅能够为自己编写的类添加属性,还能够为系统框架里的类动态添加我们需要的属性,甚至能够在分类里动态添加属性.我们这就来看看这个方便又强大的功能吧.<br>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/03/13/动态添加属性-Associated Object/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-  
-    <article id="post-技术支持" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/01/12/技术支持/">技术支持</a>
-    </h1>
-  
-
-        
-        <a href="/2020/01/12/技术支持/" class="archive-article-date">
-  	<time datetime="2020-01-12T08:39:09.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-01-12</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>If you have any questions, you can either leave a message or send the questions to your email address. We will answer them for you in the first time.</p>
-<p>Address:<a href="mailto:changxlhaha1@163.com" target="_blank" rel="noopener">changxlhaha1@163.com</a></p>
-<p>thank you</p>
+<h2 id="5-总结"><a href="#5-总结" class="headerlink" title="5. 总结"></a>5. 总结</h2><p>分布式锁是分布式系统的基础设施之一。本文通过Redis和ZooKeeper两种实现展示了其核心设计思想：</p>
+<ul>
+<li>Redis利用<code>SETNX</code>和过期时间，高性能但需谨慎处理锁续租和故障场景。</li>
+<li>ZooKeeper利用临时顺序节点，强一致但性能稍弱。</li>
+</ul>
+<p>在实际项目中，你可以直接使用成熟的开源库，如Redisson（Redis）或Curator（ZooKeeper），它们已经封装了上述细节并提供了更多高级特性（如可重入锁、读写锁）。</p>
+<p>最后，没有银弹，选择哪种方案需要结合业务场景对性能、一致性、可用性的权衡。希望本文能帮助你更好地理解分布式锁，并在实际系统中做出合适的选择。</p>
+<hr>
+<h2 id="附录：Redisson快速上手"><a href="#附录：Redisson快速上手" class="headerlink" title="附录：Redisson快速上手"></a>附录：Redisson快速上手</h2><p>Redisson是Redis官方推荐的Java客户端，内置了分布式锁实现（支持自动续租）。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 引入依赖（Maven）</span></span><br><span class="line">&lt;dependency&gt;</span><br><span class="line">    &lt;groupId&gt;org.redisson&lt;/groupId&gt;</span><br><span class="line">    &lt;artifactId&gt;redisson&lt;/artifactId&gt;</span><br><span class="line">    &lt;version&gt;3.16.8&lt;/version&gt;</span><br><span class="line">&lt;/dependency&gt;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 使用示例</span></span><br><span class="line">Config config = <span class="keyword">new</span> Config();</span><br><span class="line">config.useSingleServer().setAddress(<span class="string">"redis://127.0.0.1:6379"</span>);</span><br><span class="line">RedissonClient redisson = Redisson.create(config);</span><br><span class="line"></span><br><span class="line">RLock lock = redisson.getLock(<span class="string">"anyLock"</span>);</span><br><span class="line"><span class="keyword">try</span> &#123;</span><br><span class="line">    <span class="comment">// 尝试加锁，最多等待100秒，锁定后10秒自动解锁</span></span><br><span class="line">    <span class="keyword">if</span> (lock.tryLock(<span class="number">100</span>, <span class="number">10</span>, TimeUnit.SECONDS)) &#123;</span><br><span class="line">        <span class="comment">// 业务逻辑</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</span><br><span class="line">    e.printStackTrace();</span><br><span class="line">&#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">    lock.unlock();</span><br><span class="line">&#125;</span><br><span class="line">redisson.shutdown();</span><br></pre></td></tr></table></figure>
+<p>Redisson的<code>watch dog</code>默认会每10秒检查一次，如果锁仍被持有则续期30秒，有效防止业务执行过长导致锁过期。</p>
 
       
 
@@ -758,18 +269,83 @@
       
 
       
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/01/12/技术支持/">展开全文 >></a>
-        </p>
-      
 
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="http://s.jiathis.com/qrcode.php?url=https://cxlhaha.github.io/2025/11/13/分布式锁的设计与实现/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
       
       <div class="clearfix"></div>
     </div>
   </div>
 </article>
 
-
+  
+<nav id="article-nav">
+  
+    <a href="/2025/12/06/云原生转型实战/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          云原生转型实战
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2025/10/25/深入浅出RPC框架：原理与手写实现/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">深入浅出RPC框架：原理与手写实现</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
 
 
 
@@ -777,11 +353,28 @@
 
 
   
+  <div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="分布式锁的设计与实现" data-title="分布式锁的设计与实现" data-url="https://cxlhaha.github.io/2025/11/13/分布式锁的设计与实现/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"cxlhaha"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
   
-    <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
-    </nav>
-  
+
+
 
 
           </div>
@@ -803,8 +396,8 @@
     <script>
 	var yiliaConfig = {
 		mathjax: true,
-		isHome: true,
-		isPost: false,
+		isHome: false,
+		isPost: true,
 		isArchive: false,
 		isTag: false,
 		isCategory: false,

@@ -11,11 +11,11 @@
   <meta name="description" content="引言在当今的互联网时代，系统高可用性（High Availability，HA）已经成为软件架构设计的核心目标之一。从电商的大促秒杀，到金融系统的实时交易，任何短暂的服务不可用都可能造成巨大的经济损失和用户流失。通常，我们用“几个9”来衡量可用性：99.9%（三个9）意味着全年停机不超过8.76小时，而99.99%（四个9）则要求全年停机不超过52.56分钟。要达到这样的标准，单靠硬件冗余远远不够">
 <meta property="og:type" content="article">
 <meta property="og:title" content="构建高可用微服务系统：原理、模式与实战">
-<meta property="og:url" content="https://cxlhaha.github.io/2026/03/04/构建高可用微服务系统：原理、模式与实战/index.html">
+<meta property="og:url" content="https://cxlhaha.github.io/2026/02/04/构建高可用微服务系统：原理、模式与实战/index.html">
 <meta property="og:site_name" content="常鑫亮的博客">
 <meta property="og:description" content="引言在当今的互联网时代，系统高可用性（High Availability，HA）已经成为软件架构设计的核心目标之一。从电商的大促秒杀，到金融系统的实时交易，任何短暂的服务不可用都可能造成巨大的经济损失和用户流失。通常，我们用“几个9”来衡量可用性：99.9%（三个9）意味着全年停机不超过8.76小时，而99.99%（四个9）则要求全年停机不超过52.56分钟。要达到这样的标准，单靠硬件冗余远远不够">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2026-03-04T09:27:53.386Z">
+<meta property="og:updated_time" content="2026-03-05T03:19:37.348Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="构建高可用微服务系统：原理、模式与实战">
 <meta name="twitter:description" content="引言在当今的互联网时代，系统高可用性（High Availability，HA）已经成为软件架构设计的核心目标之一。从电商的大促秒杀，到金融系统的实时交易，任何短暂的服务不可用都可能造成巨大的经济损失和用户流失。通常，我们用“几个9”来衡量可用性：99.9%（三个9）意味着全年停机不超过8.76小时，而99.99%（四个9）则要求全年停机不超过52.56分钟。要达到这样的标准，单靠硬件冗余远远不够">
@@ -154,8 +154,8 @@
   
 
         
-        <a href="/2026/03/04/构建高可用微服务系统：原理、模式与实战/" class="archive-article-date">
-  	<time datetime="2026-03-04T09:26:55.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2026-03-04</time>
+        <a href="/2026/02/04/构建高可用微服务系统：原理、模式与实战/" class="archive-article-date">
+  	<time datetime="2026-02-04T09:26:55.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2026-02-04</time>
 </a>
         
       </header>
@@ -173,6 +173,7 @@
 <h3 id="2-故障隔离（舱壁模式）"><a href="#2-故障隔离（舱壁模式）" class="headerlink" title="2. 故障隔离（舱壁模式）"></a>2. 故障隔离（舱壁模式）</h3><p>将系统拆分为独立的舱室，一个舱室的故障不会蔓延到其他舱室。例如：为每个下游服务配置独立的线程池或连接池，防止某个慢服务耗尽整个容器的资源。</p>
 <h3 id="3-可观测性"><a href="#3-可观测性" class="headerlink" title="3. 可观测性"></a>3. 可观测性</h3><p>没有监控，就谈不上高可用。必须建立完善的日志、度量和追踪系统，以便快速发现故障、定位原因。指标（如QPS、延迟、错误率）应实时采集并配置告警。</p>
 <h3 id="4-自动化"><a href="#4-自动化" class="headerlink" title="4. 自动化"></a>4. 自动化</h3><p>故障恢复的过程必须自动化。无论是弹性伸缩、服务重启，还是数据库主从切换，都应通过编排工具（如Kubernetes）或自动化脚本完成，减少人工介入时间。</p>
+<a id="more"></a>
 <hr>
 <h2 id="二、核心模式与代码实现"><a href="#二、核心模式与代码实现" class="headerlink" title="二、核心模式与代码实现"></a>二、核心模式与代码实现</h2><p>下面我们将围绕几个关键的高可用模式，给出具体的代码示例。为简化演示，假设我们有一个订单服务（Order Service），它需要调用库存服务（Inventory Service）来扣减库存。</p>
 <h3 id="1-服务发现与负载均衡"><a href="#1-服务发现与负载均衡" class="headerlink" title="1. 服务发现与负载均衡"></a>1. 服务发现与负载均衡</h3><p>在微服务架构中，服务实例的地址是动态变化的（例如容器重启、扩缩容）。因此，客户端需要一种机制来发现可用的服务实例，并在它们之间均衡地分发请求。</p>
@@ -297,7 +298,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="http://s.jiathis.com/qrcode.php?url=https://cxlhaha.github.io/2026/03/04/构建高可用微服务系统：原理、模式与实战/" alt="微信分享二维码">
+      <img src="http://s.jiathis.com/qrcode.php?url=https://cxlhaha.github.io/2026/02/04/构建高可用微服务系统：原理、模式与实战/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -311,9 +312,18 @@
   
 <nav id="article-nav">
   
+    <a href="/2026/02/08/技术债治理：从“破窗效应”到可持续开发/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          技术债治理：从“破窗效应”到可持续开发
+        
+      </div>
+    </a>
   
-    <a href="/2020/03/13/动态添加属性-Associated Object/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">动态添加属性-Associated Object</div>
+  
+    <a href="/2026/01/15/高并发场景下的秒杀系统优化实践：从Redis到消息队列/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">高并发场景下的秒杀系统优化实践：从Redis到消息队列</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -327,7 +337,7 @@
   
   <div class="duoshuo">
 	<!-- 多说评论框 start -->
-	<div class="ds-thread" data-thread-key="构建高可用微服务系统：原理、模式与实战" data-title="构建高可用微服务系统：原理、模式与实战" data-url="https://cxlhaha.github.io/2026/03/04/构建高可用微服务系统：原理、模式与实战/"></div>
+	<div class="ds-thread" data-thread-key="构建高可用微服务系统：原理、模式与实战" data-title="构建高可用微服务系统：原理、模式与实战" data-url="https://cxlhaha.github.io/2026/02/04/构建高可用微服务系统：原理、模式与实战/"></div>
 	<!-- 多说评论框 end -->
 	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
 	<script type="text/javascript">

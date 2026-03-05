@@ -6,19 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="https://cxlhaha.github.io">
-  <title>动态添加属性-Associated Object | 常鑫亮的博客</title>
+  <title>Kafka实战：构建高吞吐消息系统 | 常鑫亮的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="前言从今天开始,我们将要开始逐步接近OC的动态特性,慢慢揭开OC底层runtime系统的神秘面纱,超强的动态特性,是OC和一般面向对象的语言最明显的区别,也是这门古老的语言最具魅力的地方,如果可以正确的利用动态特性,那么可以帮助我们方便的解决很多棘手的问题. 我们今天来看的呢,是runtime库里非常有用的一组函数,Associated Object动态关联对象.这个功能,能够让我们动态的对一个对">
+  <meta name="description" content="Kafka实战：构建高吞吐消息系统引言在大数据和分布式系统盛行的今天，消息队列作为系统解耦、异步处理、流量削峰的核心组件，扮演着至关重要的角色。Apache Kafka 是一个分布式、分区的、多副本的、基于 ZooKeeper 协调的分布式消息系统，它以高吞吐、持久化、水平扩展等特性，成为实时数据流处理的事实标准。 本文将带你从零开始认识 Kafka 的核心概念，并通过 Java 客户端示例展示生">
 <meta property="og:type" content="article">
-<meta property="og:title" content="动态添加属性-Associated Object">
-<meta property="og:url" content="https://cxlhaha.github.io/2020/03/13/动态添加属性-Associated Object/index.html">
+<meta property="og:title" content="Kafka实战：构建高吞吐消息系统">
+<meta property="og:url" content="https://cxlhaha.github.io/2025/08/03/Kafka实战：构建高吞吐消息系统/index.html">
 <meta property="og:site_name" content="常鑫亮的博客">
-<meta property="og:description" content="前言从今天开始,我们将要开始逐步接近OC的动态特性,慢慢揭开OC底层runtime系统的神秘面纱,超强的动态特性,是OC和一般面向对象的语言最明显的区别,也是这门古老的语言最具魅力的地方,如果可以正确的利用动态特性,那么可以帮助我们方便的解决很多棘手的问题. 我们今天来看的呢,是runtime库里非常有用的一组函数,Associated Object动态关联对象.这个功能,能够让我们动态的对一个对">
+<meta property="og:description" content="Kafka实战：构建高吞吐消息系统引言在大数据和分布式系统盛行的今天，消息队列作为系统解耦、异步处理、流量削峰的核心组件，扮演着至关重要的角色。Apache Kafka 是一个分布式、分区的、多副本的、基于 ZooKeeper 协调的分布式消息系统，它以高吞吐、持久化、水平扩展等特性，成为实时数据流处理的事实标准。 本文将带你从零开始认识 Kafka 的核心概念，并通过 Java 客户端示例展示生">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2026-03-04T09:02:15.675Z">
+<meta property="og:updated_time" content="2026-03-05T03:45:30.782Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="动态添加属性-Associated Object">
-<meta name="twitter:description" content="前言从今天开始,我们将要开始逐步接近OC的动态特性,慢慢揭开OC底层runtime系统的神秘面纱,超强的动态特性,是OC和一般面向对象的语言最明显的区别,也是这门古老的语言最具魅力的地方,如果可以正确的利用动态特性,那么可以帮助我们方便的解决很多棘手的问题. 我们今天来看的呢,是runtime库里非常有用的一组函数,Associated Object动态关联对象.这个功能,能够让我们动态的对一个对">
+<meta name="twitter:title" content="Kafka实战：构建高吞吐消息系统">
+<meta name="twitter:description" content="Kafka实战：构建高吞吐消息系统引言在大数据和分布式系统盛行的今天，消息队列作为系统解耦、异步处理、流量削峰的核心组件，扮演着至关重要的角色。Apache Kafka 是一个分布式、分区的、多副本的、基于 ZooKeeper 协调的分布式消息系统，它以高吞吐、持久化、水平扩展等特性，成为实时数据流处理的事实标准。 本文将带你从零开始认识 Kafka 的核心概念，并通过 Java 客户端示例展示生">
   
     <link rel="alternative" href="/atom.xml" title="常鑫亮的博客" type="application/atom+xml">
   
@@ -142,88 +142,89 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-动态添加属性-Associated Object" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-Kafka实战：构建高吞吐消息系统" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      动态添加属性-Associated Object
+      Kafka实战：构建高吞吐消息系统
     </h1>
   
 
         
-        <a href="/2020/03/13/动态添加属性-Associated Object/" class="archive-article-date">
-  	<time datetime="2020-03-13T09:56:26.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-13</time>
+        <a href="/2025/08/03/Kafka实战：构建高吞吐消息系统/" class="archive-article-date">
+  	<time datetime="2025-08-03T12:44:01.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2025-08-03</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>从今天开始,我们将要开始逐步接近OC的动态特性,慢慢揭开OC底层runtime系统的神秘面纱,超强的动态特性,是OC和一般面向对象的语言最明显的区别,也是这门古老的语言最具魅力的地方,如果可以正确的利用动态特性,那么可以帮助我们方便的解决很多棘手的问题.</p>
-<p>我们今天来看的呢,是runtime库里非常有用的一组函数,Associated Object动态关联对象.这个功能,能够让我们动态的对一个对象绑定相关联的数据.</p>
-<p>有了这个功能,我们不仅能够为自己编写的类添加属性,还能够为系统框架里的类动态添加我们需要的属性,甚至能够在分类里动态添加属性.我们这就来看看这个方便又强大的功能吧.<br><a id="more"></a></p>
-<h2 id="Associated-Object使用场景"><a href="#Associated-Object使用场景" class="headerlink" title="Associated Object使用场景"></a>Associated Object使用场景</h2><p>我们都有这样的经验,我们希望在既有的类上添加新的属性,通常情况下:</p>
-<p>如果这个类是我们自己编写的,那么我们就可以方便的在文件中添加对应的属性就可以</p>
-<p>如果这个类是系统框架的,而并非我们自己编写的,那么,我们通常会采取集成该系统类,产生新的类,添加我们需要的方法和属性</p>
-<p>但是,很多时候,某个对象并不是我们产生,而是通过其它机制产生的,比如,系统为我们返回了一个系统类的实例,但是,我们却希望在这个实例加上这个类原本并没有的属性,来记录或存储一些数据,在这个时候我们按照常规的方法就不好解决了.</p>
-<p>这时,我们的<strong>Associated Object</strong>就要发挥它的作用了.</p>
-<h2 id="相关函数"><a href="#相关函数" class="headerlink" title="相关函数"></a>相关函数</h2><p>Associated Object的相关函数在runtime.h 文件中,使用前,我们需要先引入该库.而该库中和<strong>Associated Object</strong>相关的函数有三个:</p>
-<ol>
-<li><strong>objc_setAssociatedObject:</strong>用来给对象动态绑定关联对象(也就是添加相应属性)</li>
-<li><strong>objc_getAssociatedObject:</strong>用来读取对某对象动态绑定的关联对象(读取相应属性)</li>
-<li><strong>objc_removeAssociatedObjects:</strong>这个函数是用来解除某对象的<strong>所有关联对象</strong>这项操作会将该对象所有的关联对象都全部删除.使用时,我们要格外注意.</li>
-</ol>
-<h2 id="Associated-Object存储策略"><a href="#Associated-Object存储策略" class="headerlink" title="Associated Object存储策略:"></a>Associated Object存储策略:</h2><p>在调用<strong>objc_setAssociatedObject:</strong>函数时,我们需要设置关联对象的存储策略,这类似于<strong>property属性</strong>的存储策略关键字,这些存储策略名称从字面上就可以轻易的与<strong>property属性</strong>的存储策略关键字轻松匹配,相信大家一定可以选对的.我就不再一一举例了.</p>
-<table>
-<thead>
-<tr>
-<th>Associated Object存储策略</th>
-<th>property属性存储策略关键字</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>OBJC_ASSOCIATION_ASSIGN</td>
-<td>assign</td>
-</tr>
-<tr>
-<td>OBJC_ASSOCIATION_RETAIN_NONATOMIC</td>
-<td>nonatomic, strong</td>
-</tr>
-<tr>
-<td>OBJC_ASSOCIATION_COPY_NONATOMIC</td>
-<td>copy, nonatomic</td>
-</tr>
-<tr>
-<td>OBJC_ASSOCIATION_RETAIN</td>
-<td>strong</td>
-</tr>
-<tr>
-<td>OBJC_ASSOCIATION_COPY</td>
-<td>copy</td>
-</tr>
-</tbody>
-</table>
-<h2 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h2><p>说了这么多,我们通过一个小小的例子,来感受下<strong>Associated Object</strong>的妙用吧</p>
-<p>我们都有过这样的经历,我们需要在用户进行过某些操作的时候触发一个提醒框,即AlertView.</p>
-<p>通常代码会像这个样子:</p>
-<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">-(<span class="keyword">void</span>)click</span><br><span class="line">&#123;</span><br><span class="line">    <span class="built_in">UIAlertView</span> *alert=[[<span class="built_in">UIAlertView</span> alloc]initWithTitle:<span class="string">@"alert"</span> message:<span class="string">@"msg"</span> delegate:<span class="keyword">self</span> cancelButtonTitle:<span class="string">@"cancle"</span> otherButtonTitles:<span class="string">@"confirm"</span>, <span class="literal">nil</span>];</span><br><span class="line">    </span><br><span class="line">    [alert show];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">-(<span class="keyword">void</span>)alertView:(<span class="built_in">UIAlertView</span> *)alertView clickedButtonAtIndex:(<span class="built_in">NSInteger</span>)buttonIndex</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">if</span> (buttonIndex==<span class="number">0</span>) &#123;</span><br><span class="line">        <span class="built_in">NSLog</span>(<span class="string">@"do someThing"</span>);</span><br><span class="line">    &#125;<span class="keyword">else</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">NSLog</span>(<span class="string">@"do otherThing"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>但是经常我们会在一个控制器中有多个潜在将会触发的提醒框,如果是这样,那么我们通常会为alertView指定tag,在代理方法里区分不同的提醒框,做不同处理,那么代码就会变成这个样子.</p>
-<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line">-(<span class="keyword">void</span>)alertView:(<span class="built_in">UIAlertView</span> *)alertView clickedButtonAtIndex:(<span class="built_in">NSInteger</span>)buttonIndex</span><br><span class="line">&#123;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">if</span> (alertView.tag==<span class="number">0</span>) &#123;</span><br><span class="line">        <span class="keyword">if</span> (buttonIndex==<span class="number">0</span>) &#123;</span><br><span class="line">            <span class="built_in">NSLog</span>(<span class="string">@"do someThing"</span>);</span><br><span class="line">        &#125;<span class="keyword">else</span></span><br><span class="line">        &#123;</span><br><span class="line">            <span class="built_in">NSLog</span>(<span class="string">@"do otherThing"</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;<span class="keyword">else</span> <span class="keyword">if</span> (alertView.tag==<span class="number">1</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span> (buttonIndex==<span class="number">0</span>) &#123;</span><br><span class="line">            <span class="built_in">NSLog</span>(<span class="string">@"do someThing"</span>);</span><br><span class="line">        &#125;<span class="keyword">else</span></span><br><span class="line">        &#123;</span><br><span class="line">            <span class="built_in">NSLog</span>(<span class="string">@"do otherThing"</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">    &#125;<span class="keyword">else</span> <span class="keyword">if</span> (alertView.tag==<span class="number">2</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span> (buttonIndex==<span class="number">0</span>) &#123;</span><br><span class="line">            <span class="built_in">NSLog</span>(<span class="string">@"do someThing"</span>);</span><br><span class="line">        &#125;<span class="keyword">else</span></span><br><span class="line">        &#123;</span><br><span class="line">            <span class="built_in">NSLog</span>(<span class="string">@"do otherThing"</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;<span class="keyword">else</span> <span class="keyword">if</span> (alertView.tag==<span class="number">3</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span> (buttonIndex==<span class="number">0</span>) &#123;</span><br><span class="line">            <span class="built_in">NSLog</span>(<span class="string">@"do someThing"</span>);</span><br><span class="line">        &#125;<span class="keyword">else</span></span><br><span class="line">        &#123;</span><br><span class="line">            <span class="built_in">NSLog</span>(<span class="string">@"do otherThing"</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>这样的代码,不仅繁琐冗长,并不利于我们的代码可读性和高内聚低耦合的设计原则</p>
-<p>我们将要通过Associated Object方式,对该情况进行处理</p>
-<p>大概思路为,在编写alertView时为每一个alertView关联一个处理Block,在代理方法中我们只要调用alertView关联的处理block就可以了,这样的代码将会变得异常清晰,而且具有极高的可读性我们一起来看一下吧:</p>
-<p>我们需要先导入需要的文件,并声明一个用来充当关联Key的字符常量:</p>
-<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="meta">#import <span class="meta-string">&lt;objc/runtime.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">static</span> <span class="keyword">char</span> <span class="keyword">const</span> alertDealBlockKey;</span><br></pre></td></tr></table></figure>
-<p>然后在编写提示框的时候,我们需要编写一个处理alertView的block,并和alertView进行关联:</p>
-<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">-(<span class="keyword">void</span>)click</span><br><span class="line">&#123;</span><br><span class="line">    <span class="built_in">UIAlertView</span> *alert=[[<span class="built_in">UIAlertView</span> alloc]initWithTitle:<span class="string">@"alert"</span> message:<span class="string">@"msg"</span> delegate:<span class="keyword">self</span> cancelButtonTitle:<span class="string">@"cancle"</span> otherButtonTitles:<span class="string">@"confirm"</span>, <span class="literal">nil</span>];</span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">    <span class="keyword">void</span> (^alertDealBlock)(<span class="built_in">NSInteger</span> btnIndex)=^(<span class="built_in">NSInteger</span> btnIndex)&#123;</span><br><span class="line">      </span><br><span class="line">        <span class="keyword">if</span> (btnIndex==<span class="number">0</span>) &#123;</span><br><span class="line">            <span class="built_in">NSLog</span>(<span class="string">@"do someThing"</span>);</span><br><span class="line">        &#125;<span class="keyword">else</span></span><br><span class="line">        &#123;</span><br><span class="line">            <span class="built_in">NSLog</span>(<span class="string">@"do otherThing"</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;;</span><br><span class="line">    </span><br><span class="line">    objc_setAssociatedObject(alert, &amp;alertDealBlockKey, alertDealBlock, OBJC_ASSOCIATION_COPY_NONATOMIC);</span><br><span class="line">    [alert show];</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
-<p>这样处理过得alertView中就会绑定一个处理的block了,接下来我们在alertview的代理方法中,仅仅需要将这个block取出并调用,就可以了:</p>
-<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">-(<span class="keyword">void</span>)alertView:(<span class="built_in">UIAlertView</span> *)alertView clickedButtonAtIndex:(<span class="built_in">NSInteger</span>)buttonIndex</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">void</span> (^alertDealBlock)(<span class="built_in">NSInteger</span> btnIndex)=objc_getAssociatedObject(alertView, &amp;alertDealBlockKey);</span><br><span class="line">    </span><br><span class="line">    alertDealBlock(buttonIndex);</span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>这样无论该文件中将有多少个alertView,我们的代理方法中也只需要这样短短两行的代码就可以处理,是不是很简单呢,而且,在编写alertView的时候我们就可以顺便把处理方式编写好,可读性也大大提高,是不是还是很优雅的呢?</p>
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>上面的这个例子只是一个<strong>Associated Object</strong>一个简单使用,还有很多妙用等待大家发现,<strong>Associated Object</strong>之所以能够动态的为实例添加关联对象,这要依附于我们强大的运行时系统,这点大家要好好理解,最后虽然<strong>Associated Object</strong>非常好用,但是也不建议大家滥用,只有在别的方式都不可行的情况下才建议大家使用关联对象处理,因为如果你的编码有误,产生问题将非常难于查找,因为编译器并不能够检测出运行时才会关联的对象的相关问题,对于关联对象,编译器是有心无力的,保证它的正确性只能我们人为去检测验证</p>
+        <h1 id="Kafka实战：构建高吞吐消息系统"><a href="#Kafka实战：构建高吞吐消息系统" class="headerlink" title="Kafka实战：构建高吞吐消息系统"></a>Kafka实战：构建高吞吐消息系统</h1><h2 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h2><p>在大数据和分布式系统盛行的今天，消息队列作为系统解耦、异步处理、流量削峰的核心组件，扮演着至关重要的角色。Apache Kafka 是一个分布式、分区的、多副本的、基于 ZooKeeper 协调的分布式消息系统，它以高吞吐、持久化、水平扩展等特性，成为实时数据流处理的事实标准。</p>
+<p>本文将带你从零开始认识 Kafka 的核心概念，并通过 Java 客户端示例展示生产者和消费者的基本用法，最后探讨一些高级特性与最佳实践。</p>
+<hr>
+<h2 id="1-Kafka-核心概念"><a href="#1-Kafka-核心概念" class="headerlink" title="1. Kafka 核心概念"></a>1. Kafka 核心概念</h2><ul>
+<li><strong>Producer</strong>：消息生产者，向 Kafka 主题发送消息。</li>
+<li><strong>Consumer</strong>：消息消费者，从 Kafka 主题拉取消息。</li>
+<li><strong>Topic</strong>：主题，消息的分类。一个 Topic 可以有多个 Partition。</li>
+<li><strong>Partition</strong>：分区，实现 Topic 的并行处理和数据冗余。每个分区是一个有序的、不可变的日志序列。</li>
+<li><strong>Broker</strong>：Kafka 集群中的一台服务器，负责存储消息和处理客户端请求。</li>
+<li><strong>Consumer Group</strong>：消费者组，一个组内的消费者共同消费一个 Topic 的消息，每条消息只会被组内一个消费者处理，实现负载均衡。</li>
+<li><strong>Offset</strong>：偏移量，分区内每条消息的唯一标识，消费者通过提交偏移量记录消费位置。</li>
+</ul>
+<hr>
+<h2 id="2-环境准备"><a href="#2-环境准备" class="headerlink" title="2. 环境准备"></a>2. 环境准备</h2><h3 id="2-1-启动-Kafka"><a href="#2-1-启动-Kafka" class="headerlink" title="2.1 启动 Kafka"></a>2.1 启动 Kafka</h3><p>使用 Docker Compose 快速启动 Kafka（包含 ZooKeeper）：</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">version:</span> <span class="string">'2'</span></span><br><span class="line"><span class="attr">services:</span></span><br><span class="line">  <span class="attr">zookeeper:</span></span><br><span class="line">    <span class="attr">image:</span> <span class="string">confluentinc/cp-zookeeper:latest</span></span><br><span class="line">    <span class="attr">environment:</span></span><br><span class="line">      <span class="attr">ZOOKEEPER_CLIENT_PORT:</span> <span class="number">2181</span></span><br><span class="line">      <span class="attr">ZOOKEEPER_TICK_TIME:</span> <span class="number">2000</span></span><br><span class="line">    <span class="attr">ports:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="number">2181</span><span class="string">:2181</span></span><br><span class="line"></span><br><span class="line">  <span class="attr">kafka:</span></span><br><span class="line">    <span class="attr">image:</span> <span class="string">confluentinc/cp-kafka:latest</span></span><br><span class="line">    <span class="attr">depends_on:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">zookeeper</span></span><br><span class="line">    <span class="attr">ports:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="number">9092</span><span class="string">:9092</span></span><br><span class="line">    <span class="attr">environment:</span></span><br><span class="line">      <span class="attr">KAFKA_BROKER_ID:</span> <span class="number">1</span></span><br><span class="line">      <span class="attr">KAFKA_ZOOKEEPER_CONNECT:</span> <span class="string">zookeeper:2181</span></span><br><span class="line">      <span class="attr">KAFKA_ADVERTISED_LISTENERS:</span> <span class="string">PLAINTEXT://localhost:9092</span></span><br><span class="line">      <span class="attr">KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR:</span> <span class="number">1</span></span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+<p>在 <code>docker-compose.yml</code> 所在目录执行：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker-compose up -d</span><br></pre></td></tr></table></figure>
+<h3 id="2-2-创建-Topic"><a href="#2-2-创建-Topic" class="headerlink" title="2.2 创建 Topic"></a>2.2 创建 Topic</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">docker <span class="built_in">exec</span> -it kafka kafka-topics --create \</span><br><span class="line">  --bootstrap-server localhost:9092 \</span><br><span class="line">  --replication-factor 1 \</span><br><span class="line">  --partitions 3 \</span><br><span class="line">  --topic <span class="built_in">test</span>-topic</span><br></pre></td></tr></table></figure>
+<p>查看 Topic 列表：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker <span class="built_in">exec</span> -it kafka kafka-topics --list --bootstrap-server localhost:9092</span><br></pre></td></tr></table></figure>
+<hr>
+<h2 id="3-Java-客户端使用示例"><a href="#3-Java-客户端使用示例" class="headerlink" title="3. Java 客户端使用示例"></a>3. Java 客户端使用示例</h2><h3 id="3-1-添加依赖（Maven）"><a href="#3-1-添加依赖（Maven）" class="headerlink" title="3.1 添加依赖（Maven）"></a>3.1 添加依赖（Maven）</h3><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.apache.kafka<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>kafka-clients<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>3.4.0<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h3 id="3-2-生产者代码"><a href="#3-2-生产者代码" class="headerlink" title="3.2 生产者代码"></a>3.2 生产者代码</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> org.apache.kafka.clients.producer.*;</span><br><span class="line"><span class="keyword">import</span> java.util.Properties;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">KafkaProducerExample</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        <span class="comment">// 1. 配置生产者属性</span></span><br><span class="line">        Properties props = <span class="keyword">new</span> Properties();</span><br><span class="line">        props.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, <span class="string">"localhost:9092"</span>);</span><br><span class="line">        props.put(ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG, </span><br><span class="line">                  <span class="string">"org.apache.kafka.common.serialization.StringSerializer"</span>);</span><br><span class="line">        props.put(ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG, </span><br><span class="line">                  <span class="string">"org.apache.kafka.common.serialization.StringSerializer"</span>);</span><br><span class="line">        <span class="comment">// 开启幂等性（保证 exactly-once）</span></span><br><span class="line">        props.put(ProducerConfig.ENABLE_IDEMPOTENCE_CONFIG, <span class="keyword">true</span>);</span><br><span class="line">        <span class="comment">// 设置确认机制</span></span><br><span class="line">        props.put(ProducerConfig.ACKS_CONFIG, <span class="string">"all"</span>);</span><br><span class="line">        <span class="comment">// 重试次数</span></span><br><span class="line">        props.put(ProducerConfig.RETRIES_CONFIG, <span class="number">3</span>);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 2. 创建生产者</span></span><br><span class="line">        Producer&lt;String, String&gt; producer = <span class="keyword">new</span> KafkaProducer&lt;&gt;(props);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 3. 发送消息</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">10</span>; i++) &#123;</span><br><span class="line">            String key = <span class="string">"key-"</span> + i;</span><br><span class="line">            String value = <span class="string">"message-"</span> + i;</span><br><span class="line">            ProducerRecord&lt;String, String&gt; record = </span><br><span class="line">                <span class="keyword">new</span> ProducerRecord&lt;&gt;(<span class="string">"test-topic"</span>, key, value);</span><br><span class="line"></span><br><span class="line">            <span class="comment">// 异步发送，带回调</span></span><br><span class="line">            producer.send(record, (metadata, exception) -&gt; &#123;</span><br><span class="line">                <span class="keyword">if</span> (exception == <span class="keyword">null</span>) &#123;</span><br><span class="line">                    System.out.printf(<span class="string">"消息发送成功：topic=%s, partition=%d, offset=%d%n"</span>,</span><br><span class="line">                            metadata.topic(), metadata.partition(), metadata.offset());</span><br><span class="line">                &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                    exception.printStackTrace();</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 4. 关闭生产者（会等待所有发送完成）</span></span><br><span class="line">        producer.close();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>关键点</strong>：</p>
+<ul>
+<li><code>BOOTSTRAP_SERVERS_CONFIG</code>：Kafka 集群地址。</li>
+<li>序列化器：将键值序列化为字节数组。</li>
+<li>幂等性：确保消息不会重复（仅一次语义）。</li>
+<li><code>ACKS=all</code>：等待所有副本确认，保证消息不丢失。</li>
+<li>回调：处理发送结果或异常。</li>
+</ul>
+<h3 id="3-3-消费者代码"><a href="#3-3-消费者代码" class="headerlink" title="3.3 消费者代码"></a>3.3 消费者代码</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> org.apache.kafka.clients.consumer.*;</span><br><span class="line"><span class="keyword">import</span> org.apache.kafka.common.serialization.StringDeserializer;</span><br><span class="line"><span class="keyword">import</span> java.time.Duration;</span><br><span class="line"><span class="keyword">import</span> java.util.Collections;</span><br><span class="line"><span class="keyword">import</span> java.util.Properties;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">KafkaConsumerExample</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        <span class="comment">// 1. 配置消费者属性</span></span><br><span class="line">        Properties props = <span class="keyword">new</span> Properties();</span><br><span class="line">        props.put(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, <span class="string">"localhost:9092"</span>);</span><br><span class="line">        props.put(ConsumerConfig.GROUP_ID_CONFIG, <span class="string">"test-group"</span>);</span><br><span class="line">        props.put(ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG, </span><br><span class="line">                  StringDeserializer<span class="class">.<span class="keyword">class</span>.<span class="title">getName</span>())</span>;</span><br><span class="line">        props.put(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, </span><br><span class="line">                  StringDeserializer<span class="class">.<span class="keyword">class</span>.<span class="title">getName</span>())</span>;</span><br><span class="line">        <span class="comment">// 自动提交偏移量（默认 true）</span></span><br><span class="line">        props.put(ConsumerConfig.ENABLE_AUTO_COMMIT_CONFIG, <span class="keyword">false</span>);</span><br><span class="line">        <span class="comment">// 从最早的消息开始消费（如果无偏移量记录）</span></span><br><span class="line">        props.put(ConsumerConfig.AUTO_OFFSET_RESET_CONFIG, <span class="string">"earliest"</span>);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 2. 创建消费者</span></span><br><span class="line">        Consumer&lt;String, String&gt; consumer = <span class="keyword">new</span> KafkaConsumer&lt;&gt;(props);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 3. 订阅主题</span></span><br><span class="line">        consumer.subscribe(Collections.singletonList(<span class="string">"test-topic"</span>));</span><br><span class="line"></span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            <span class="keyword">while</span> (<span class="keyword">true</span>) &#123;</span><br><span class="line">                <span class="comment">// 拉取消息，超时时间1秒</span></span><br><span class="line">                ConsumerRecords&lt;String, String&gt; records = consumer.poll(Duration.ofMillis(<span class="number">1000</span>));</span><br><span class="line">                <span class="keyword">for</span> (ConsumerRecord&lt;String, String&gt; record : records) &#123;</span><br><span class="line">                    System.out.printf(<span class="string">"收到消息：partition=%d, offset=%d, key=%s, value=%s%n"</span>,</span><br><span class="line">                            record.partition(), record.offset(), record.key(), record.value());</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="comment">// 手动同步提交偏移量（处理完所有消息后）</span></span><br><span class="line">                consumer.commitSync();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">            consumer.close();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>关键点</strong>：</p>
+<ul>
+<li><code>GROUP_ID_CONFIG</code>：消费者组名，相同组内的消费者共同分担分区。</li>
+<li>关闭自动提交，手动提交以确保消息处理完成才提交偏移量（至少一次语义）。</li>
+<li><code>AUTO_OFFSET_RESET_CONFIG</code>：当没有初始偏移量或当前偏移量不存在时，从最早的消息开始消费。</li>
+</ul>
+<hr>
+<h2 id="4-高级特性"><a href="#4-高级特性" class="headerlink" title="4. 高级特性"></a>4. 高级特性</h2><h3 id="4-1-消息有序性"><a href="#4-1-消息有序性" class="headerlink" title="4.1 消息有序性"></a>4.1 消息有序性</h3><p>Kafka 保证同一个分区内的消息有序。要实现全局有序，可以将 Topic 设置为 1 个分区，但会牺牲并行度。通常做法是，保证需要有序的消息（如同一订单的操作）发送到同一个分区（例如通过 key 的哈希）。</p>
+<h3 id="4-2-幂等性与事务"><a href="#4-2-幂等性与事务" class="headerlink" title="4.2 幂等性与事务"></a>4.2 幂等性与事务</h3><ul>
+<li><strong>幂等性</strong>（<code>enable.idempotence=true</code>）确保生产者在单次会话中发送的消息不会重复，严格按顺序写入。</li>
+<li><strong>事务</strong>：允许生产者将多个消息作为一个原子操作发送，要么全部成功要么全部失败。消费者可以通过设置<code>isolation.level=read_committed</code>只读取已提交的事务消息。</li>
+</ul>
+<h3 id="4-3-流处理（Kafka-Streams）"><a href="#4-3-流处理（Kafka-Streams）" class="headerlink" title="4.3 流处理（Kafka Streams）"></a>4.3 流处理（Kafka Streams）</h3><p>Kafka 提供了轻量级的流处理库 Kafka Streams，允许对消息进行实时转换、聚合、连接等操作。示例：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">KStreamBuilder builder = <span class="keyword">new</span> KStreamBuilder();</span><br><span class="line">KStream&lt;String, String&gt; stream = builder.stream(<span class="string">"input-topic"</span>);</span><br><span class="line">stream.mapValues(value -&gt; value.toUpperCase()).to(<span class="string">"output-topic"</span>);</span><br></pre></td></tr></table></figure>
+<h3 id="4-4-连接器（Kafka-Connect）"><a href="#4-4-连接器（Kafka-Connect）" class="headerlink" title="4.4 连接器（Kafka Connect）"></a>4.4 连接器（Kafka Connect）</h3><p>Kafka Connect 用于与外部系统（如数据库、HDFS、Elasticsearch）集成，通过配置即可将数据导入/导出 Kafka。</p>
+<hr>
+<h2 id="5-最佳实践"><a href="#5-最佳实践" class="headerlink" title="5. 最佳实践"></a>5. 最佳实践</h2><ul>
+<li><strong>合理设置分区数</strong>：分区数影响吞吐量，一般设置为 Broker 数的倍数，但过多会增加文件句柄和 Leader 选举开销。</li>
+<li><strong>监控消费者延迟</strong>：使用 Kafka 自带的 <code>kafka-consumer-groups</code> 工具查看滞后（Lag），及时扩容消费者。</li>
+<li><strong>消息大小限制</strong>：默认单条消息最大 1MB，可根据业务调整 <code>max.message.bytes</code> 和 <code>max.partition.fetch.bytes</code>。</li>
+<li><strong>可靠性配置</strong>：<ul>
+<li>生产者：<code>acks=all</code> + <code>min.insync.replicas</code> + 幂等性。</li>
+<li>消费者：手动提交 + 处理逻辑幂等。</li>
+</ul>
+</li>
+<li><strong>磁盘容量规划</strong>：根据消息保留时间（<code>log.retention.hours</code>）和流量估算磁盘空间，并监控磁盘使用。</li>
+</ul>
+<hr>
+<h2 id="6-总结"><a href="#6-总结" class="headerlink" title="6. 总结"></a>6. 总结</h2><p>Kafka 凭借其高吞吐、持久化、分布式架构，成为现代数据架构的基石。本文从核心概念入手，通过 Java 示例展示了基本的发布订阅模式，并介绍了高级特性和最佳实践。掌握 Kafka 不仅能帮助你构建可靠的消息系统，还能为实时流处理、事件驱动架构打下坚实基础。</p>
+<p>下一步，你可以尝试集成 Kafka Streams 进行实时分析，或者使用 Kafka Connect 同步数据到数据湖。希望本文能成为你 Kafka 学习之路的起点！</p>
 
       
 
@@ -282,7 +283,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="http://s.jiathis.com/qrcode.php?url=https://cxlhaha.github.io/2020/03/13/动态添加属性-Associated Object/" alt="微信分享二维码">
+      <img src="http://s.jiathis.com/qrcode.php?url=https://cxlhaha.github.io/2025/08/03/Kafka实战：构建高吞吐消息系统/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -296,18 +297,18 @@
   
 <nav id="article-nav">
   
-    <a href="/2025/08/03/Kafka实战：构建高吞吐消息系统/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2025/09/16/容器化你的应用/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          Kafka实战：构建高吞吐消息系统
+          容器化你的应用
         
       </div>
     </a>
   
   
-    <a href="/2020/01/12/技术支持/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">技术支持</div>
+    <a href="/2020/03/13/动态添加属性-Associated Object/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">动态添加属性-Associated Object</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -321,7 +322,7 @@
   
   <div class="duoshuo">
 	<!-- 多说评论框 start -->
-	<div class="ds-thread" data-thread-key="动态添加属性-Associated Object" data-title="动态添加属性-Associated Object" data-url="https://cxlhaha.github.io/2020/03/13/动态添加属性-Associated Object/"></div>
+	<div class="ds-thread" data-thread-key="Kafka实战：构建高吞吐消息系统" data-title="Kafka实战：构建高吞吐消息系统" data-url="https://cxlhaha.github.io/2025/08/03/Kafka实战：构建高吞吐消息系统/"></div>
 	<!-- 多说评论框 end -->
 	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
 	<script type="text/javascript">
