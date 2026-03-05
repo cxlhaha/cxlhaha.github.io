@@ -8,17 +8,17 @@
   <link rel="dns-prefetch" href="https://cxlhaha.github.io">
   <title>容器化你的应用 | 常鑫亮的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Docker从入门到实践：容器化你的应用引言在软件开发中，我们经常遇到这样的问题：“它在我的机器上可以运行！”——环境不一致导致的部署失败、依赖冲突、版本差异等让人头疼。Docker的出现解决了这一痛点。Docker是一个开源的容器化平台，它允许开发者将应用及其依赖打包成一个轻量级、可移植的容器，然后在任何支持Docker的环境中运行，真正做到“一次构建，到处运行”。 本文将通过一个Node.js">
+  <meta name="description" content="引言在软件开发中，我们经常遇到这样的问题：“它在我的机器上可以运行！”——环境不一致导致的部署失败、依赖冲突、版本差异等让人头疼。Docker的出现解决了这一痛点。Docker是一个开源的容器化平台，它允许开发者将应用及其依赖打包成一个轻量级、可移植的容器，然后在任何支持Docker的环境中运行，真正做到“一次构建，到处运行”。 本文将通过一个Node.js应用示例，带你从零开始学习Docker的">
 <meta property="og:type" content="article">
 <meta property="og:title" content="容器化你的应用">
 <meta property="og:url" content="https://cxlhaha.github.io/2025/09/16/容器化你的应用/index.html">
 <meta property="og:site_name" content="常鑫亮的博客">
-<meta property="og:description" content="Docker从入门到实践：容器化你的应用引言在软件开发中，我们经常遇到这样的问题：“它在我的机器上可以运行！”——环境不一致导致的部署失败、依赖冲突、版本差异等让人头疼。Docker的出现解决了这一痛点。Docker是一个开源的容器化平台，它允许开发者将应用及其依赖打包成一个轻量级、可移植的容器，然后在任何支持Docker的环境中运行，真正做到“一次构建，到处运行”。 本文将通过一个Node.js">
+<meta property="og:description" content="引言在软件开发中，我们经常遇到这样的问题：“它在我的机器上可以运行！”——环境不一致导致的部署失败、依赖冲突、版本差异等让人头疼。Docker的出现解决了这一痛点。Docker是一个开源的容器化平台，它允许开发者将应用及其依赖打包成一个轻量级、可移植的容器，然后在任何支持Docker的环境中运行，真正做到“一次构建，到处运行”。 本文将通过一个Node.js应用示例，带你从零开始学习Docker的">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2026-03-05T03:40:26.180Z">
+<meta property="og:updated_time" content="2026-03-05T06:09:18.135Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="容器化你的应用">
-<meta name="twitter:description" content="Docker从入门到实践：容器化你的应用引言在软件开发中，我们经常遇到这样的问题：“它在我的机器上可以运行！”——环境不一致导致的部署失败、依赖冲突、版本差异等让人头疼。Docker的出现解决了这一痛点。Docker是一个开源的容器化平台，它允许开发者将应用及其依赖打包成一个轻量级、可移植的容器，然后在任何支持Docker的环境中运行，真正做到“一次构建，到处运行”。 本文将通过一个Node.js">
+<meta name="twitter:description" content="引言在软件开发中，我们经常遇到这样的问题：“它在我的机器上可以运行！”——环境不一致导致的部署失败、依赖冲突、版本差异等让人头疼。Docker的出现解决了这一痛点。Docker是一个开源的容器化平台，它允许开发者将应用及其依赖打包成一个轻量级、可移植的容器，然后在任何支持Docker的环境中运行，真正做到“一次构建，到处运行”。 本文将通过一个Node.js应用示例，带你从零开始学习Docker的">
   
     <link rel="alternative" href="/atom.xml" title="常鑫亮的博客" type="application/atom+xml">
   
@@ -162,7 +162,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="Docker从入门到实践：容器化你的应用"><a href="#Docker从入门到实践：容器化你的应用" class="headerlink" title="Docker从入门到实践：容器化你的应用"></a>Docker从入门到实践：容器化你的应用</h1><h2 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h2><p>在软件开发中，我们经常遇到这样的问题：“它在我的机器上可以运行！”——环境不一致导致的部署失败、依赖冲突、版本差异等让人头疼。Docker的出现解决了这一痛点。Docker是一个开源的容器化平台，它允许开发者将应用及其依赖打包成一个轻量级、可移植的容器，然后在任何支持Docker的环境中运行，真正做到“一次构建，到处运行”。</p>
+        <h2 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h2><p>在软件开发中，我们经常遇到这样的问题：“它在我的机器上可以运行！”——环境不一致导致的部署失败、依赖冲突、版本差异等让人头疼。Docker的出现解决了这一痛点。Docker是一个开源的容器化平台，它允许开发者将应用及其依赖打包成一个轻量级、可移植的容器，然后在任何支持Docker的环境中运行，真正做到“一次构建，到处运行”。</p>
 <p>本文将通过一个Node.js应用示例，带你从零开始学习Docker的核心概念、Dockerfile编写、容器运行，以及使用Docker Compose编排多容器应用。</p>
 <hr>
 <h2 id="1-Docker核心概念"><a href="#1-Docker核心概念" class="headerlink" title="1. Docker核心概念"></a>1. Docker核心概念</h2><ul>

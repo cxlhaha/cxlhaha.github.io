@@ -140,6 +140,348 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-iOS绘图之贝塞尔曲线（UIBezierPath）" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/10/26/iOS绘图之贝塞尔曲线（UIBezierPath）/">iOS绘图之贝塞尔曲线（UIBezierPath）</a>
+    </h1>
+  
+
+        
+        <a href="/2018/10/26/iOS绘图之贝塞尔曲线（UIBezierPath）/" class="archive-article-date">
+  	<time datetime="2018-10-26T03:19:57.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-10-26</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h2><p><strong>UIBezierPath</strong>是UIKit对Core Graphics中关于path的一个封装，UIBezierPath提供给我们很多非常便捷的API，可以满足我们绝大多数对路径绘制的需求，利用UIBezierPath我们绝大多数情况下可以不用再去利用Core Graphics库中的C语言API去绘制路径。</p>
+<p>所以当我们有绘制需求的时候，我们应该优先考虑<strong>UIBezierPath</strong></p>
+<h2 id="上手练习"><a href="#上手练习" class="headerlink" title="上手练习"></a>上手练习</h2><p>我们先创建一个用于测试的UIView，并重写它的<strong>drawRect：</strong>方法：</p>
+<ul>
+<li><strong>绘制一个矩形：</strong></li>
+</ul>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">-(<span class="keyword">void</span>)drawRect:(<span class="built_in">CGRect</span>)rect</span><br><span class="line">&#123;    </span><br><span class="line">    <span class="built_in">UIBezierPath</span> *path = [<span class="built_in">UIBezierPath</span> bezierPathWithRect:<span class="built_in">CGRectMake</span>(<span class="number">30</span>, <span class="number">30</span>, <span class="number">100</span>, <span class="number">100</span>)];</span><br><span class="line">    [path stroke];   </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>效果如下：</p>
+<img src="/2018/10/26/iOS绘图之贝塞尔曲线（UIBezierPath）/1.png" title="矩形图片">
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">UI</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/10/26/iOS绘图之贝塞尔曲线（UIBezierPath）/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
+    <article id="post-事件分发和响应者链条" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/10/19/事件分发和响应者链条/">事件分发和响应者链条</a>
+    </h1>
+  
+
+        
+        <a href="/2018/10/19/事件分发和响应者链条/" class="archive-article-date">
+  	<time datetime="2018-10-19T10:06:54.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-10-19</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>作为UI部分的第一篇文章，我决定写这篇关于事件分发，和响应者链条传递的过程的博文，因为这块知识是UI部分最基础的，但也是最容易让我们所忽视的，直到，当我们写页面时，发现我们认为该响应点击的控件并没有如我们想象，我们才发现自己对这一块知识我们其实并没有吃透，想当然的以为会按照看起来应该的方式响应。</p>
+<h2 id="简述区别"><a href="#简述区别" class="headerlink" title="简述区别"></a>简述区别</h2><p>事件分发和响应者链条，完完全全是两件事，两个过程，同学们不能把它混为一谈，虽然，先进行事件分发，然后再通过响应者链条查找到响应者，这两个过程加起来完成了一次对事件的处理，但它们绝不是一回事。</p>
+<p>简单来说，这两个过程所做的事情：</p>
+<ul>
+<li><p><strong>事件分发</strong>：自上而下的由UIApplication开始，一路往最具体的View查找，直到找到最应该处理并且能够处理事件的那个控件。</p>
+</li>
+<li><p><strong>响应者链条</strong>：当找到那个最应该处理并且能够处理事件的那个控件以后，如果这个控件确实处理了这个事件，那么这个事件的就到此处理完毕，但是很有可能出现的情况是，虽然这个控件最应该处理，也能够处理事件，但是它并没有处理事件，那么这时这个事件就要传给下一个响应者处理，下一个响应者还不处理，那就再下一个，这个事件就沿着这条响应者链条找直到响应者确实处理了这个事件（并中断了事件传递，就是在touch方法里没有调用下一个响应者的touch方法）为止</p>
+</li>
+</ul>
+<p>很<strong>重要</strong>的一点：事件的分发路径和响应者链条的路径<strong>并不是</strong>同一条路从两头走的关系。<br>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">UI</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/10/19/事件分发和响应者链条/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
+    <article id="post-NSNotification-深入探究" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/10/18/NSNotification-深入探究/">NSNotification 深入探究</a>
+    </h1>
+  
+
+        
+        <a href="/2018/10/18/NSNotification-深入探究/" class="archive-article-date">
+  	<time datetime="2018-10-18T07:41:45.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-10-18</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="使用背景"><a href="#使用背景" class="headerlink" title="使用背景"></a>使用背景</h2><p>通常情况下，我们一个对象想要调用另外一个对象的方法，便是向这个对象传递消息，那么有个前提是，我们需要能找到这个对象，或者和这个对象有联系（这个对象传递给我一个block，或者是我的观察者等）。</p>
+<p>那如果这响应消息的对象和我们当前对象并没有什么关系，处于两个独立的子系统，或者我们不知道它是谁，有几个对象需要相应这个消息，那么通知机制就应运而生，它就是为了处理这样的情况。</p>
+<h2 id="常规使用"><a href="#常规使用" class="headerlink" title="常规使用"></a>常规使用</h2><p>我们在最常用的通知使用方式中，一般为以下三个步骤：</p>
+<p><strong>1.添加通知的观察者和相应方法</strong></p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[[<span class="built_in">NSNotificationCenter</span> defaultCenter]addObserver:<span class="keyword">self</span> selector:<span class="keyword">@selector</span>(reciveNotification:) name:<span class="string">@"test"</span> object:<span class="literal">nil</span>];</span><br><span class="line"></span><br><span class="line">-(<span class="keyword">void</span>)reciveNotification:(<span class="built_in">NSNotification</span> *)notification&#123;</span><br><span class="line">    <span class="built_in">NSLog</span>(<span class="string">@"%@"</span>,notification);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">OC</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/10/18/NSNotification-深入探究/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
+    <article id="post-分类（category）和类扩展（extension）" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/10/10/分类（category）和类扩展（extension）/">分类（category）和类扩展（extension）</a>
+    </h1>
+  
+
+        
+        <a href="/2018/10/10/分类（category）和类扩展（extension）/" class="archive-article-date">
+  	<time datetime="2018-10-10T10:51:20.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-10-10</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="分类（category）"><a href="#分类（category）" class="headerlink" title="分类（category）"></a>分类（category）</h1><h2 id="应用场景"><a href="#应用场景" class="headerlink" title="应用场景"></a>应用场景</h2><p>在我们开发中经常会有这样的问题：</p>
+<ul>
+<li>多个人同时维护同一个类 ，彼此之间交叉修改同一个文件，导致冲突以及文件臃肿。</li>
+<li>想给已经封装好的类（或者是系统类，第三方库的类）增加方法，而又不想使用继承后的子类。</li>
+<li>希望拆分一个过于庞大的类。</li>
+</ul>
+<p><strong>分类（category）</strong>可以很好的解决这些问题。<br>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">OC</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/10/10/分类（category）和类扩展（extension）/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
+    <article id="post-KVO" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/10/09/KVO/">KVO</a>
+    </h1>
+  
+
+        
+        <a href="/2018/10/09/KVO/" class="archive-article-date">
+  	<time datetime="2018-10-09T06:32:15.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-10-09</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>今天和大家讨论一下OC中<strong>KVO（KeyValueObserving）键值观察</strong></p>
+<h2 id="KVO定义"><a href="#KVO定义" class="headerlink" title="KVO定义"></a>KVO定义</h2><p>KVO是iOS开发中的一套事件通知机制，它允许OC对象对另一个对象的属性进行监听，而不需要在被监听的对象中插入任何代码，是iOS开发实现观察者模式的一种方式。<br>KVO不仅可以监听某个单一属性，也可以监听集合属性，例如NSArray，NSSet。它们内部结构发生改变时也能接收到通知。</p>
+<p>观察者模式，就是被观测的对象属性发生改变时，主动通知观察者，通过观察者模式可以很好的将观察者和被观察者解耦。</p>
+<h2 id="KVO原理"><a href="#KVO原理" class="headerlink" title="KVO原理"></a>KVO原理</h2><p>KVC和KVO的底层机制都是<strong>isa-swizzling</strong>，在我们使用KVO时，底层会在运行时动态的创建一个新类，这个类是被观察对象类的子类，这个新类会重写原类的set方法，在set方法中对观察者进行通知，也会重写class方法，返回的class依然是原类，通过这样伪装成原类。然后篡改被观察对象的isa指针，让他指向新类。这样，这个被观察的对象就变成新类的对象了，将会在set方法通知观察者。所以我们平时不应该依赖isa确定类的继承关系，而应该使用class方法。</p>
+<p>下面我们用代码来验证：<br>我们建立一个Person类，</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">@interface</span> <span class="title">Person</span> : <span class="title">NSObject</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">@property</span> (<span class="keyword">nonatomic</span>,<span class="keyword">copy</span>)<span class="built_in">NSString</span> *name;</span><br><span class="line"></span><br><span class="line"><span class="keyword">@property</span> (<span class="keyword">nonatomic</span>,<span class="keyword">strong</span>)<span class="built_in">NSMutableArray</span> *friends;</span><br><span class="line"></span><br><span class="line"><span class="keyword">@end</span></span><br></pre></td></tr></table></figure>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">OC</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/10/09/KVO/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
     <article id="post-KVC" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -435,171 +777,9 @@
 
 
   
-    <article id="post-几种常见的排序算法" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/03/19/几种常见的排序算法/">几种常见的排序算法</a>
-    </h1>
-  
-
-        
-        <a href="/2017/03/19/几种常见的排序算法/" class="archive-article-date">
-  	<time datetime="2017-03-19T04:24:30.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-19</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="一-快速排序"><a href="#一-快速排序" class="headerlink" title="一 快速排序"></a>一 快速排序</h2><p>快速排序是我们平常最常使用的一种排序算法,因为它速度快,效率高,是最优秀的一种排序算法.</p>
-<p>它的平均时间复杂度为:<strong>O(nlgn)</strong></p>
-<h4 id="原理"><a href="#原理" class="headerlink" title="原理:"></a>原理:</h4><p>快速排序采用的是一种分治的思想,它先找一个基准数,然后将比这个基准数小的数字都放到它的左边,然后再递归调用,分别对左右两边快速排序,直到每一边只有一个数字.整个排序就完成了.</p>
-<h4 id="OC实现"><a href="#OC实现" class="headerlink" title="OC实现:"></a>OC实现:</h4><figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">-(<span class="keyword">void</span>)quickSort:(<span class="built_in">NSMutableArray</span> *)list startIndex:(<span class="built_in">NSInteger</span> )startIndex endIndex:(<span class="built_in">NSInteger</span>)endIndex</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">if</span> (list==<span class="literal">nil</span>||startIndex&gt;=endIndex) &#123;</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="built_in">NSInteger</span> tempIndex=startIndex;</span><br><span class="line">    <span class="built_in">NSNumber</span> *tempNumber=list[startIndex];</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span> (<span class="built_in">NSInteger</span> i=startIndex+<span class="number">1</span>; i&lt;=endIndex; i++) &#123;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">if</span> ([tempNumber integerValue]&gt;[list[i] integerValue]) &#123;</span><br><span class="line">            tempIndex++;</span><br><span class="line">            [list exchangeObjectAtIndex:tempIndex withObjectAtIndex:i];</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    [list exchangeObjectAtIndex:startIndex withObjectAtIndex:tempIndex];</span><br><span class="line">    </span><br><span class="line">    [<span class="keyword">self</span> quickSort:list startIndex:startIndex endIndex:tempIndex<span class="number">-1</span>];</span><br><span class="line">    [<span class="keyword">self</span> quickSort:list startIndex:tempIndex+<span class="number">1</span> endIndex:endIndex];</span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/03/19/几种常见的排序算法/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-  
-    <article id="post-看破property-属性" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/03/10/看破property-属性/">看破property-属性</a>
-    </h1>
-  
-
-        
-        <a href="/2017/03/10/看破property-属性/" class="archive-article-date">
-  	<time datetime="2017-03-10T05:57:38.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-10</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>今天和大家一起来探讨一下OC中的property(属性)这一概念.</p>
-<p>OC用property来封装对象里的数据,通过property,可以让编译器创建一个实例变量来保存数据,并且创建对应的一对存取器方法,来进行对该数据的访问.</p>
-<p>有了property之后,我们便可以方便的使用点语法来访问对象中所封装的数据了,实在是方便的很.</p>
-<p>不过property还是有诸多细节值得我们讨论的,下面,我们一一对其探讨.<br>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/03/10/看破property-属性/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-  
-    <article id="post-不一样的oc" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/03/09/不一样的oc/">不一样的OC</a>
-    </h1>
-  
-
-        
-        <a href="/2017/03/09/不一样的oc/" class="archive-article-date">
-  	<time datetime="2017-03-09T09:01:15.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-09</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>想了很久第一篇技术博客从什么地方写起呢,最后决定还是从我们iOS开发中每天都要使用的OC聊起.</p>
-<p>这门语言我想大部分iOS开发者对它都是既熟悉又陌生的,熟悉是因为它我们已经习惯了它那与众不同的语法格式,甚至时间长了,我们还觉得这种长长的方法名调用,还是蛮优雅的么,对它的接口,扩展,分类,协议,这些常规用法都熟悉的不得了,但是说它陌生,是因为在有了ARC(自动引用计数)技术之后,我们对它的引用计数规则就开始一知半解;对它和C语言的关系呢也不太看得明白,对那神奇的动态特性更是望而却步.</p>
-<p>今天我就和大家一起慢慢回首看一下我们每天都在使用的,既熟悉又陌生的OC,一睹它的真容.</p>
-<p>因为内容较多,我会在后面的博文中,重点对OC的一些关键技术做详细探讨,在这里不过早展开讨论.
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/03/09/不一样的oc/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-  
   
     <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/page/2/">&laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span>
+      <a class="extend prev" rel="prev" href="/page/2/">&laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/4/">Next &raquo;</a>
     </nav>
   
 

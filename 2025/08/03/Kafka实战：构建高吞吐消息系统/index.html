@@ -8,17 +8,17 @@
   <link rel="dns-prefetch" href="https://cxlhaha.github.io">
   <title>Kafka实战：构建高吞吐消息系统 | 常鑫亮的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Kafka实战：构建高吞吐消息系统引言在大数据和分布式系统盛行的今天，消息队列作为系统解耦、异步处理、流量削峰的核心组件，扮演着至关重要的角色。Apache Kafka 是一个分布式、分区的、多副本的、基于 ZooKeeper 协调的分布式消息系统，它以高吞吐、持久化、水平扩展等特性，成为实时数据流处理的事实标准。 本文将带你从零开始认识 Kafka 的核心概念，并通过 Java 客户端示例展示生">
+  <meta name="description" content="引言在大数据和分布式系统盛行的今天，消息队列作为系统解耦、异步处理、流量削峰的核心组件，扮演着至关重要的角色。Apache Kafka 是一个分布式、分区的、多副本的、基于 ZooKeeper 协调的分布式消息系统，它以高吞吐、持久化、水平扩展等特性，成为实时数据流处理的事实标准。 本文将带你从零开始认识 Kafka 的核心概念，并通过 Java 客户端示例展示生产者和消费者的基本用法，最后探讨一">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Kafka实战：构建高吞吐消息系统">
 <meta property="og:url" content="https://cxlhaha.github.io/2025/08/03/Kafka实战：构建高吞吐消息系统/index.html">
 <meta property="og:site_name" content="常鑫亮的博客">
-<meta property="og:description" content="Kafka实战：构建高吞吐消息系统引言在大数据和分布式系统盛行的今天，消息队列作为系统解耦、异步处理、流量削峰的核心组件，扮演着至关重要的角色。Apache Kafka 是一个分布式、分区的、多副本的、基于 ZooKeeper 协调的分布式消息系统，它以高吞吐、持久化、水平扩展等特性，成为实时数据流处理的事实标准。 本文将带你从零开始认识 Kafka 的核心概念，并通过 Java 客户端示例展示生">
+<meta property="og:description" content="引言在大数据和分布式系统盛行的今天，消息队列作为系统解耦、异步处理、流量削峰的核心组件，扮演着至关重要的角色。Apache Kafka 是一个分布式、分区的、多副本的、基于 ZooKeeper 协调的分布式消息系统，它以高吞吐、持久化、水平扩展等特性，成为实时数据流处理的事实标准。 本文将带你从零开始认识 Kafka 的核心概念，并通过 Java 客户端示例展示生产者和消费者的基本用法，最后探讨一">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2026-03-05T03:45:30.782Z">
+<meta property="og:updated_time" content="2026-03-05T06:09:34.124Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Kafka实战：构建高吞吐消息系统">
-<meta name="twitter:description" content="Kafka实战：构建高吞吐消息系统引言在大数据和分布式系统盛行的今天，消息队列作为系统解耦、异步处理、流量削峰的核心组件，扮演着至关重要的角色。Apache Kafka 是一个分布式、分区的、多副本的、基于 ZooKeeper 协调的分布式消息系统，它以高吞吐、持久化、水平扩展等特性，成为实时数据流处理的事实标准。 本文将带你从零开始认识 Kafka 的核心概念，并通过 Java 客户端示例展示生">
+<meta name="twitter:description" content="引言在大数据和分布式系统盛行的今天，消息队列作为系统解耦、异步处理、流量削峰的核心组件，扮演着至关重要的角色。Apache Kafka 是一个分布式、分区的、多副本的、基于 ZooKeeper 协调的分布式消息系统，它以高吞吐、持久化、水平扩展等特性，成为实时数据流处理的事实标准。 本文将带你从零开始认识 Kafka 的核心概念，并通过 Java 客户端示例展示生产者和消费者的基本用法，最后探讨一">
   
     <link rel="alternative" href="/atom.xml" title="常鑫亮的博客" type="application/atom+xml">
   
@@ -162,7 +162,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="Kafka实战：构建高吞吐消息系统"><a href="#Kafka实战：构建高吞吐消息系统" class="headerlink" title="Kafka实战：构建高吞吐消息系统"></a>Kafka实战：构建高吞吐消息系统</h1><h2 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h2><p>在大数据和分布式系统盛行的今天，消息队列作为系统解耦、异步处理、流量削峰的核心组件，扮演着至关重要的角色。Apache Kafka 是一个分布式、分区的、多副本的、基于 ZooKeeper 协调的分布式消息系统，它以高吞吐、持久化、水平扩展等特性，成为实时数据流处理的事实标准。</p>
+        <h2 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h2><p>在大数据和分布式系统盛行的今天，消息队列作为系统解耦、异步处理、流量削峰的核心组件，扮演着至关重要的角色。Apache Kafka 是一个分布式、分区的、多副本的、基于 ZooKeeper 协调的分布式消息系统，它以高吞吐、持久化、水平扩展等特性，成为实时数据流处理的事实标准。</p>
 <p>本文将带你从零开始认识 Kafka 的核心概念，并通过 Java 客户端示例展示生产者和消费者的基本用法，最后探讨一些高级特性与最佳实践。</p>
 <hr>
 <h2 id="1-Kafka-核心概念"><a href="#1-Kafka-核心概念" class="headerlink" title="1. Kafka 核心概念"></a>1. Kafka 核心概念</h2><ul>
@@ -307,8 +307,8 @@
     </a>
   
   
-    <a href="/2020/03/13/动态添加属性-Associated Object/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">动态添加属性-Associated Object</div>
+    <a href="/2025/07/22/构建你的第一个大数据处理应用/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">构建你的第一个大数据处理应用</div>
       <i class="icon-circle-right"></i>
     </a>
   

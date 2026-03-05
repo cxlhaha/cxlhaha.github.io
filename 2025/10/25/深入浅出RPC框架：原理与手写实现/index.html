@@ -8,17 +8,17 @@
   <link rel="dns-prefetch" href="https://cxlhaha.github.io">
   <title>深入浅出RPC框架：原理与手写实现 | 常鑫亮的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="深入浅出RPC框架：原理与手写实现引言在分布式系统中，服务之间的调用是家常便饭。传统的HTTP接口虽然简单，但在性能、灵活性和易用性上往往不够理想。RPC（Remote Procedure Call，远程过程调用）框架应运而生，它让开发者像调用本地方法一样调用远程服务，屏蔽了网络通信、序列化、寻址等底层细节。 本文将介绍RPC的核心原理，并通过一个简单的Java实现展示其工作流程，最后对比主流RP">
+  <meta name="description" content="引言在分布式系统中，服务之间的调用是家常便饭。传统的HTTP接口虽然简单，但在性能、灵活性和易用性上往往不够理想。RPC（Remote Procedure Call，远程过程调用）框架应运而生，它让开发者像调用本地方法一样调用远程服务，屏蔽了网络通信、序列化、寻址等底层细节。 本文将介绍RPC的核心原理，并通过一个简单的Java实现展示其工作流程，最后对比主流RPC框架的选型。  1. RPC的核">
 <meta property="og:type" content="article">
 <meta property="og:title" content="深入浅出RPC框架：原理与手写实现">
 <meta property="og:url" content="https://cxlhaha.github.io/2025/10/25/深入浅出RPC框架：原理与手写实现/index.html">
 <meta property="og:site_name" content="常鑫亮的博客">
-<meta property="og:description" content="深入浅出RPC框架：原理与手写实现引言在分布式系统中，服务之间的调用是家常便饭。传统的HTTP接口虽然简单，但在性能、灵活性和易用性上往往不够理想。RPC（Remote Procedure Call，远程过程调用）框架应运而生，它让开发者像调用本地方法一样调用远程服务，屏蔽了网络通信、序列化、寻址等底层细节。 本文将介绍RPC的核心原理，并通过一个简单的Java实现展示其工作流程，最后对比主流RP">
+<meta property="og:description" content="引言在分布式系统中，服务之间的调用是家常便饭。传统的HTTP接口虽然简单，但在性能、灵活性和易用性上往往不够理想。RPC（Remote Procedure Call，远程过程调用）框架应运而生，它让开发者像调用本地方法一样调用远程服务，屏蔽了网络通信、序列化、寻址等底层细节。 本文将介绍RPC的核心原理，并通过一个简单的Java实现展示其工作流程，最后对比主流RPC框架的选型。  1. RPC的核">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2026-03-05T03:28:20.854Z">
+<meta property="og:updated_time" content="2026-03-05T06:09:22.742Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="深入浅出RPC框架：原理与手写实现">
-<meta name="twitter:description" content="深入浅出RPC框架：原理与手写实现引言在分布式系统中，服务之间的调用是家常便饭。传统的HTTP接口虽然简单，但在性能、灵活性和易用性上往往不够理想。RPC（Remote Procedure Call，远程过程调用）框架应运而生，它让开发者像调用本地方法一样调用远程服务，屏蔽了网络通信、序列化、寻址等底层细节。 本文将介绍RPC的核心原理，并通过一个简单的Java实现展示其工作流程，最后对比主流RP">
+<meta name="twitter:description" content="引言在分布式系统中，服务之间的调用是家常便饭。传统的HTTP接口虽然简单，但在性能、灵活性和易用性上往往不够理想。RPC（Remote Procedure Call，远程过程调用）框架应运而生，它让开发者像调用本地方法一样调用远程服务，屏蔽了网络通信、序列化、寻址等底层细节。 本文将介绍RPC的核心原理，并通过一个简单的Java实现展示其工作流程，最后对比主流RPC框架的选型。  1. RPC的核">
   
     <link rel="alternative" href="/atom.xml" title="常鑫亮的博客" type="application/atom+xml">
   
@@ -162,7 +162,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="深入浅出RPC框架：原理与手写实现"><a href="#深入浅出RPC框架：原理与手写实现" class="headerlink" title="深入浅出RPC框架：原理与手写实现"></a>深入浅出RPC框架：原理与手写实现</h1><h2 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h2><p>在分布式系统中，服务之间的调用是家常便饭。传统的HTTP接口虽然简单，但在性能、灵活性和易用性上往往不够理想。RPC（Remote Procedure Call，远程过程调用）框架应运而生，它让开发者像调用本地方法一样调用远程服务，屏蔽了网络通信、序列化、寻址等底层细节。</p>
+        <h2 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h2><p>在分布式系统中，服务之间的调用是家常便饭。传统的HTTP接口虽然简单，但在性能、灵活性和易用性上往往不够理想。RPC（Remote Procedure Call，远程过程调用）框架应运而生，它让开发者像调用本地方法一样调用远程服务，屏蔽了网络通信、序列化、寻址等底层细节。</p>
 <p>本文将介绍RPC的核心原理，并通过一个简单的Java实现展示其工作流程，最后对比主流RPC框架的选型。</p>
 <hr>
 <h2 id="1-RPC的核心原理"><a href="#1-RPC的核心原理" class="headerlink" title="1. RPC的核心原理"></a>1. RPC的核心原理</h2><p>RPC框架的目标是让远程调用像本地调用一样简单。其核心流程包括以下几个步骤：</p>

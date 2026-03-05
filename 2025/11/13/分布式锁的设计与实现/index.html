@@ -8,17 +8,17 @@
   <link rel="dns-prefetch" href="https://cxlhaha.github.io">
   <title>分布式锁的设计与实现 | 常鑫亮的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="分布式锁的设计与实现：从Redis到ZooKeeper引言在分布式系统中，多个节点同时访问共享资源（如数据库、文件、缓存）时，需要一种机制来保证数据的一致性和操作的互斥性。传统的本地锁（如Java的synchronized）只能作用于单个进程，无法跨节点协调。这时，我们就需要分布式锁。 分布式锁是一种跨进程、跨机器的互斥锁，它协调多个客户端对共享资源的访问。本文将探讨分布式锁的核心要求，并通过两种">
+  <meta name="description" content="引言在分布式系统中，多个节点同时访问共享资源（如数据库、文件、缓存）时，需要一种机制来保证数据的一致性和操作的互斥性。传统的本地锁（如Java的synchronized）只能作用于单个进程，无法跨节点协调。这时，我们就需要分布式锁。 分布式锁是一种跨进程、跨机器的互斥锁，它协调多个客户端对共享资源的访问。本文将探讨分布式锁的核心要求，并通过两种主流实现方式——Redis和ZooKeeper——展示">
 <meta property="og:type" content="article">
 <meta property="og:title" content="分布式锁的设计与实现">
 <meta property="og:url" content="https://cxlhaha.github.io/2025/11/13/分布式锁的设计与实现/index.html">
 <meta property="og:site_name" content="常鑫亮的博客">
-<meta property="og:description" content="分布式锁的设计与实现：从Redis到ZooKeeper引言在分布式系统中，多个节点同时访问共享资源（如数据库、文件、缓存）时，需要一种机制来保证数据的一致性和操作的互斥性。传统的本地锁（如Java的synchronized）只能作用于单个进程，无法跨节点协调。这时，我们就需要分布式锁。 分布式锁是一种跨进程、跨机器的互斥锁，它协调多个客户端对共享资源的访问。本文将探讨分布式锁的核心要求，并通过两种">
+<meta property="og:description" content="引言在分布式系统中，多个节点同时访问共享资源（如数据库、文件、缓存）时，需要一种机制来保证数据的一致性和操作的互斥性。传统的本地锁（如Java的synchronized）只能作用于单个进程，无法跨节点协调。这时，我们就需要分布式锁。 分布式锁是一种跨进程、跨机器的互斥锁，它协调多个客户端对共享资源的访问。本文将探讨分布式锁的核心要求，并通过两种主流实现方式——Redis和ZooKeeper——展示">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2026-03-05T03:26:06.420Z">
+<meta property="og:updated_time" content="2026-03-05T06:09:00.535Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="分布式锁的设计与实现">
-<meta name="twitter:description" content="分布式锁的设计与实现：从Redis到ZooKeeper引言在分布式系统中，多个节点同时访问共享资源（如数据库、文件、缓存）时，需要一种机制来保证数据的一致性和操作的互斥性。传统的本地锁（如Java的synchronized）只能作用于单个进程，无法跨节点协调。这时，我们就需要分布式锁。 分布式锁是一种跨进程、跨机器的互斥锁，它协调多个客户端对共享资源的访问。本文将探讨分布式锁的核心要求，并通过两种">
+<meta name="twitter:description" content="引言在分布式系统中，多个节点同时访问共享资源（如数据库、文件、缓存）时，需要一种机制来保证数据的一致性和操作的互斥性。传统的本地锁（如Java的synchronized）只能作用于单个进程，无法跨节点协调。这时，我们就需要分布式锁。 分布式锁是一种跨进程、跨机器的互斥锁，它协调多个客户端对共享资源的访问。本文将探讨分布式锁的核心要求，并通过两种主流实现方式——Redis和ZooKeeper——展示">
   
     <link rel="alternative" href="/atom.xml" title="常鑫亮的博客" type="application/atom+xml">
   
@@ -162,7 +162,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="分布式锁的设计与实现：从Redis到ZooKeeper"><a href="#分布式锁的设计与实现：从Redis到ZooKeeper" class="headerlink" title="分布式锁的设计与实现：从Redis到ZooKeeper"></a>分布式锁的设计与实现：从Redis到ZooKeeper</h1><h2 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h2><p>在分布式系统中，多个节点同时访问共享资源（如数据库、文件、缓存）时，需要一种机制来保证数据的一致性和操作的互斥性。传统的本地锁（如Java的<code>synchronized</code>）只能作用于单个进程，无法跨节点协调。这时，我们就需要<strong>分布式锁</strong>。</p>
+        <h2 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h2><p>在分布式系统中，多个节点同时访问共享资源（如数据库、文件、缓存）时，需要一种机制来保证数据的一致性和操作的互斥性。传统的本地锁（如Java的<code>synchronized</code>）只能作用于单个进程，无法跨节点协调。这时，我们就需要<strong>分布式锁</strong>。</p>
 <p>分布式锁是一种跨进程、跨机器的互斥锁，它协调多个客户端对共享资源的访问。本文将探讨分布式锁的核心要求，并通过两种主流实现方式——<strong>Redis</strong>和<strong>ZooKeeper</strong>——展示其设计与代码实现，最后对比它们的优缺点及适用场景。</p>
 <hr>
 <h2 id="1-分布式锁的基本要求"><a href="#1-分布式锁的基本要求" class="headerlink" title="1. 分布式锁的基本要求"></a>1. 分布式锁的基本要求</h2><p>一个合格的分布式锁应满足以下特性：</p>

@@ -6,19 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="https://cxlhaha.github.io">
-  <title>高并发场景下的秒杀系统优化实践：从Redis到消息队列 | 常鑫亮的博客</title>
+  <title>LLM_API_集成指南 | 常鑫亮的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="引言秒杀系统是互联网中典型的高并发场景，例如双十一秒杀、限量抢购等。这类系统的特点是：瞬间涌入大量请求，热点数据（如库存）集中读写，对系统的性能和一致性要求极高。如果直接使用传统的关系型数据库处理所有请求，数据库将不堪重负，甚至出现超卖、响应慢等问题。 本文将通过一个简化的秒杀系统案例，介绍如何利用Redis预减库存和消息队列异步下单来优化高并发处理能力，并给出核心代码片段。  1. 传统架构的痛">
+  <meta name="description" content="引言随着 OpenAI 的 ChatGPT 引爆全球，大语言模型（LLM）已经渗透到各个领域：智能客服、内容生成、代码辅助、数据分析等。对于开发者而言，如何将 LLM 的能力集成到自己的应用中，成为一项必备技能。本文将详细介绍 LLM API 的集成方法，包括基础调用、流式输出、对话管理以及高级功能——函数调用（Function Calling），并通过 Python 代码示例帮助你快速上手。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="高并发场景下的秒杀系统优化实践：从Redis到消息队列">
-<meta property="og:url" content="https://cxlhaha.github.io/2026/01/15/高并发场景下的秒杀系统优化实践：从Redis到消息队列/index.html">
+<meta property="og:title" content="LLM_API_集成指南">
+<meta property="og:url" content="https://cxlhaha.github.io/2025/05/11/LLM-API-集成指南/index.html">
 <meta property="og:site_name" content="常鑫亮的博客">
-<meta property="og:description" content="引言秒杀系统是互联网中典型的高并发场景，例如双十一秒杀、限量抢购等。这类系统的特点是：瞬间涌入大量请求，热点数据（如库存）集中读写，对系统的性能和一致性要求极高。如果直接使用传统的关系型数据库处理所有请求，数据库将不堪重负，甚至出现超卖、响应慢等问题。 本文将通过一个简化的秒杀系统案例，介绍如何利用Redis预减库存和消息队列异步下单来优化高并发处理能力，并给出核心代码片段。  1. 传统架构的痛">
+<meta property="og:description" content="引言随着 OpenAI 的 ChatGPT 引爆全球，大语言模型（LLM）已经渗透到各个领域：智能客服、内容生成、代码辅助、数据分析等。对于开发者而言，如何将 LLM 的能力集成到自己的应用中，成为一项必备技能。本文将详细介绍 LLM API 的集成方法，包括基础调用、流式输出、对话管理以及高级功能——函数调用（Function Calling），并通过 Python 代码示例帮助你快速上手。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2026-03-05T06:09:05.688Z">
+<meta property="og:updated_time" content="2026-03-05T06:45:12.186Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="高并发场景下的秒杀系统优化实践：从Redis到消息队列">
-<meta name="twitter:description" content="引言秒杀系统是互联网中典型的高并发场景，例如双十一秒杀、限量抢购等。这类系统的特点是：瞬间涌入大量请求，热点数据（如库存）集中读写，对系统的性能和一致性要求极高。如果直接使用传统的关系型数据库处理所有请求，数据库将不堪重负，甚至出现超卖、响应慢等问题。 本文将通过一个简化的秒杀系统案例，介绍如何利用Redis预减库存和消息队列异步下单来优化高并发处理能力，并给出核心代码片段。  1. 传统架构的痛">
+<meta name="twitter:title" content="LLM_API_集成指南">
+<meta name="twitter:description" content="引言随着 OpenAI 的 ChatGPT 引爆全球，大语言模型（LLM）已经渗透到各个领域：智能客服、内容生成、代码辅助、数据分析等。对于开发者而言，如何将 LLM 的能力集成到自己的应用中，成为一项必备技能。本文将详细介绍 LLM API 的集成方法，包括基础调用、流式输出、对话管理以及高级功能——函数调用（Function Calling），并通过 Python 代码示例帮助你快速上手。">
   
     <link rel="alternative" href="/atom.xml" title="常鑫亮的博客" type="application/atom+xml">
   
@@ -142,94 +142,96 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-高并发场景下的秒杀系统优化实践：从Redis到消息队列" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-LLM-API-集成指南" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      高并发场景下的秒杀系统优化实践：从Redis到消息队列
+      LLM_API_集成指南
     </h1>
   
 
         
-        <a href="/2026/01/15/高并发场景下的秒杀系统优化实践：从Redis到消息队列/" class="archive-article-date">
-  	<time datetime="2026-01-15T03:17:21.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2026-01-15</time>
+        <a href="/2025/05/11/LLM-API-集成指南/" class="archive-article-date">
+  	<time datetime="2025-05-11T13:43:44.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2025-05-11</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h2><p>秒杀系统是互联网中典型的高并发场景，例如双十一秒杀、限量抢购等。这类系统的特点是：瞬间涌入大量请求，热点数据（如库存）集中读写，对系统的性能和一致性要求极高。如果直接使用传统的关系型数据库处理所有请求，数据库将不堪重负，甚至出现超卖、响应慢等问题。</p>
-<p>本文将通过一个简化的秒杀系统案例，介绍如何利用<strong>Redis</strong>预减库存和<strong>消息队列</strong>异步下单来优化高并发处理能力，并给出核心代码片段。</p>
+        <h2 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h2><p>随着 OpenAI 的 ChatGPT 引爆全球，大语言模型（LLM）已经渗透到各个领域：智能客服、内容生成、代码辅助、数据分析等。对于开发者而言，如何将 LLM 的能力集成到自己的应用中，成为一项必备技能。本文将详细介绍 LLM API 的集成方法，包括基础调用、流式输出、对话管理以及高级功能——函数调用（Function Calling），并通过 Python 代码示例帮助你快速上手。</p>
 <hr>
-<h2 id="1-传统架构的痛点"><a href="#1-传统架构的痛点" class="headerlink" title="1. 传统架构的痛点"></a>1. 传统架构的痛点</h2><p>一个最基础的秒杀系统通常包含以下流程：</p>
-<ol>
-<li>用户点击秒杀按钮，请求进入后端。</li>
-<li>后端查询数据库中的库存，判断是否足够。</li>
-<li>如果库存足够，扣减库存并创建订单。</li>
-<li>返回秒杀结果。</li>
-</ol>
-<p>这种方式在低并发下没有问题，但在高并发时会出现：</p>
+<h2 id="1-准备工作"><a href="#1-准备工作" class="headerlink" title="1. 准备工作"></a>1. 准备工作</h2><h3 id="1-1-获取-API-密钥"><a href="#1-1-获取-API-密钥" class="headerlink" title="1.1 获取 API 密钥"></a>1.1 获取 API 密钥</h3><p>以 OpenAI API 为例（其他厂商如 Anthropic、百度文心、阿里通义等流程类似），你需要：</p>
 <ul>
-<li><strong>数据库行锁竞争</strong>：多个请求同时更新同一行库存记录，导致锁等待，性能急剧下降。</li>
-<li><strong>超卖风险</strong>：由于查询和更新并非原子操作，在并发下可能读取到过期库存，导致扣减超出实际库存。</li>
-<li><strong>响应延迟</strong>：数据库连接池被占满，请求超时。</li>
+<li>注册 OpenAI 账号</li>
+<li>在 <a href="https://platform.openai.com/api-keys" target="_blank" rel="noopener">API Keys 页面</a> 创建新的密钥</li>
+<li>保存密钥，注意保密</li>
 </ul>
-<p>因此，我们需要引入更高效的技术组件来保护数据库，并提升吞吐量。</p>
+<h3 id="1-2-安装-OpenAI-Python-库"><a href="#1-2-安装-OpenAI-Python-库" class="headerlink" title="1.2 安装 OpenAI Python 库"></a>1.2 安装 OpenAI Python 库</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install openai</span><br></pre></td></tr></table></figure>
 <a id="more"></a>
+<h3 id="1-3-设置环境变量"><a href="#1-3-设置环境变量" class="headerlink" title="1.3 设置环境变量"></a>1.3 设置环境变量</h3><p>建议将 API 密钥存储在环境变量中，避免硬编码：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> os</span><br><span class="line">os.environ[<span class="string">"OPENAI_API_KEY"</span>] = <span class="string">"你的密钥"</span></span><br></pre></td></tr></table></figure>
+<p>或者使用 dotenv 管理。</p>
 <hr>
-<h2 id="2-优化思路：分层架构"><a href="#2-优化思路：分层架构" class="headerlink" title="2. 优化思路：分层架构"></a>2. 优化思路：分层架构</h2><p>优化后的秒杀系统架构分为三层：</p>
+<h2 id="2-基础调用：最简单的文本生成"><a href="#2-基础调用：最简单的文本生成" class="headerlink" title="2. 基础调用：最简单的文本生成"></a>2. 基础调用：最简单的文本生成</h2><p>OpenAI API 的核心是聊天补全接口（Chat Completions）。下面是一个最简单的例子：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> openai <span class="keyword">import</span> OpenAI</span><br><span class="line"></span><br><span class="line">client = OpenAI()  <span class="comment"># 默认从环境变量读取 API 密钥</span></span><br><span class="line"></span><br><span class="line">response = client.chat.completions.create(</span><br><span class="line">    model=<span class="string">"gpt-3.5-turbo"</span>,</span><br><span class="line">    messages=[</span><br><span class="line">        &#123;<span class="string">"role"</span>: <span class="string">"system"</span>, <span class="string">"content"</span>: <span class="string">"你是一个有用的助手。"</span>&#125;,</span><br><span class="line">        &#123;<span class="string">"role"</span>: <span class="string">"user"</span>, <span class="string">"content"</span>: <span class="string">"请介绍一下人工智能的发展历史。"</span>&#125;</span><br><span class="line">    ]</span><br><span class="line">)</span><br><span class="line"></span><br><span class="line">print(response.choices[<span class="number">0</span>].message.content)</span><br></pre></td></tr></table></figure>
 <ul>
-<li><strong>前端层</strong>：限流、静态化页面、按钮置灰。</li>
-<li><strong>应用层</strong>：使用Redis预减库存，快速过滤无效请求；将有效请求放入消息队列，异步处理。</li>
-<li><strong>数据层</strong>：数据库最终通过消息队列的消费者进行落单，保证数据一致性。</li>
+<li><code>model</code>：指定使用的模型，如 <code>gpt-3.5-turbo</code>、<code>gpt-4</code>。</li>
+<li><code>messages</code>：对话列表，每个消息包含 <code>role</code>（<code>system</code>、<code>user</code>、<code>assistant</code>）和 <code>content</code>。</li>
+<li><code>response.choices[0].message.content</code> 提取模型生成的回复。</li>
 </ul>
-<p>核心思想是：<strong>尽可能将请求挡在上游，利用内存的高吞吐处理热点数据，通过异步化削峰填谷。</strong></p>
 <hr>
-<h2 id="3-Redis预减库存"><a href="#3-Redis预减库存" class="headerlink" title="3. Redis预减库存"></a>3. Redis预减库存</h2><h3 id="3-1-为什么用Redis？"><a href="#3-1-为什么用Redis？" class="headerlink" title="3.1 为什么用Redis？"></a>3.1 为什么用Redis？</h3><ul>
-<li>Redis基于内存，单机QPS可达10w+，远高于数据库。</li>
-<li>Redis的<code>DECR</code>等命令是原子操作，能有效防止超卖。</li>
-<li>在秒杀开始前，将库存预先加载到Redis中，后续的库存判断全部在Redis中进行。</li>
-</ul>
-<h3 id="3-2-实现步骤"><a href="#3-2-实现步骤" class="headerlink" title="3.2 实现步骤"></a>3.2 实现步骤</h3><ol>
-<li><strong>系统启动时</strong>，从数据库加载商品库存到Redis（使用<code>SET</code>命令）。</li>
-<li><strong>用户请求到达</strong>，应用层调用Redis的<code>DECR</code>命令尝试扣减库存。</li>
-<li>如果<code>DECR</code>返回的值 &gt;= 0，说明扣减成功，将请求放入消息队列；如果返回值 &lt; 0，说明库存不足，直接返回“已售罄”。</li>
+<h2 id="3-流式输出（Streaming）"><a href="#3-流式输出（Streaming）" class="headerlink" title="3. 流式输出（Streaming）"></a>3. 流式输出（Streaming）</h2><p>对于长回复，用户往往希望逐字看到结果而不是等待全部生成。流式输出可以实现这一效果。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> openai <span class="keyword">import</span> OpenAI</span><br><span class="line"></span><br><span class="line">client = OpenAI()</span><br><span class="line"></span><br><span class="line">stream = client.chat.completions.create(</span><br><span class="line">    model=<span class="string">"gpt-3.5-turbo"</span>,</span><br><span class="line">    messages=[&#123;<span class="string">"role"</span>: <span class="string">"user"</span>, <span class="string">"content"</span>: <span class="string">"写一首关于春天的五言绝句"</span>&#125;],</span><br><span class="line">    stream=<span class="literal">True</span>,  <span class="comment"># 启用流式</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> chunk <span class="keyword">in</span> stream:</span><br><span class="line">    <span class="keyword">if</span> chunk.choices[<span class="number">0</span>].delta.content <span class="keyword">is</span> <span class="keyword">not</span> <span class="literal">None</span>:</span><br><span class="line">        print(chunk.choices[<span class="number">0</span>].delta.content, end=<span class="string">""</span>)</span><br></pre></td></tr></table></figure>
+<p>流式返回的每个 <code>chunk</code> 包含增量的内容，逐步拼接即可。在 Web 应用中，可以通过 Server-Sent Events 将内容推送给前端。</p>
+<hr>
+<h2 id="4-多轮对话管理"><a href="#4-多轮对话管理" class="headerlink" title="4. 多轮对话管理"></a>4. 多轮对话管理</h2><p>要实现连贯的多轮对话，需要在每次请求时携带历史消息。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">chat_with_history</span><span class="params">()</span>:</span></span><br><span class="line">    client = OpenAI()</span><br><span class="line">    messages = [&#123;<span class="string">"role"</span>: <span class="string">"system"</span>, <span class="string">"content"</span>: <span class="string">"你是一个旅游顾问。"</span>&#125;]</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">        user_input = input(<span class="string">"你："</span>)</span><br><span class="line">        <span class="keyword">if</span> user_input.lower() <span class="keyword">in</span> [<span class="string">"退出"</span>, <span class="string">"exit"</span>]:</span><br><span class="line">            <span class="keyword">break</span></span><br><span class="line">        </span><br><span class="line">        messages.append(&#123;<span class="string">"role"</span>: <span class="string">"user"</span>, <span class="string">"content"</span>: user_input&#125;)</span><br><span class="line">        </span><br><span class="line">        response = client.chat.completions.create(</span><br><span class="line">            model=<span class="string">"gpt-3.5-turbo"</span>,</span><br><span class="line">            messages=messages</span><br><span class="line">        )</span><br><span class="line">        </span><br><span class="line">        assistant_reply = response.choices[<span class="number">0</span>].message.content</span><br><span class="line">        print(<span class="string">f"助手：<span class="subst">&#123;assistant_reply&#125;</span>"</span>)</span><br><span class="line">        </span><br><span class="line">        <span class="comment"># 将助手的回复也加入历史</span></span><br><span class="line">        messages.append(&#123;<span class="string">"role"</span>: <span class="string">"assistant"</span>, <span class="string">"content"</span>: assistant_reply&#125;)</span><br></pre></td></tr></table></figure>
+<p>注意：历史消息会消耗 tokens，过长时需截断或使用摘要。</p>
+<hr>
+<h2 id="5-函数调用（Function-Calling）"><a href="#5-函数调用（Function-Calling）" class="headerlink" title="5. 函数调用（Function Calling）"></a>5. 函数调用（Function Calling）</h2><p>函数调用是 LLM 的一项强大功能，它允许模型在需要时请求调用你提供的函数（例如查询数据库、调用外部 API），并返回结果，从而实现与外部世界的交互。</p>
+<h3 id="5-1-定义函数和工具描述"><a href="#5-1-定义函数和工具描述" class="headerlink" title="5.1 定义函数和工具描述"></a>5.1 定义函数和工具描述</h3><p>假设我们有一个获取天气的函数。我们需要向模型描述这个函数的名称、描述和参数结构。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_current_weather</span><span class="params">(location: str, unit: str = <span class="string">"celsius"</span>)</span>:</span></span><br><span class="line">    <span class="string">"""模拟天气查询函数"""</span></span><br><span class="line">    weather_info = &#123;</span><br><span class="line">        <span class="string">"location"</span>: location,</span><br><span class="line">        <span class="string">"temperature"</span>: <span class="string">"25"</span>,</span><br><span class="line">        <span class="string">"unit"</span>: unit,</span><br><span class="line">        <span class="string">"condition"</span>: <span class="string">"晴朗"</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">f"<span class="subst">&#123;location&#125;</span> 的天气是 <span class="subst">&#123;weather_info[<span class="string">'condition'</span>]&#125;</span>，温度 <span class="subst">&#123;weather_info[<span class="string">'temperature'</span>]&#125;</span>°<span class="subst">&#123;unit&#125;</span>。"</span></span><br></pre></td></tr></table></figure>
+<p>工具描述（JSON Schema 格式）：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">tools = [</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="string">"type"</span>: <span class="string">"function"</span>,</span><br><span class="line">        <span class="string">"function"</span>: &#123;</span><br><span class="line">            <span class="string">"name"</span>: <span class="string">"get_current_weather"</span>,</span><br><span class="line">            <span class="string">"description"</span>: <span class="string">"获取指定地点的当前天气"</span>,</span><br><span class="line">            <span class="string">"parameters"</span>: &#123;</span><br><span class="line">                <span class="string">"type"</span>: <span class="string">"object"</span>,</span><br><span class="line">                <span class="string">"properties"</span>: &#123;</span><br><span class="line">                    <span class="string">"location"</span>: &#123;</span><br><span class="line">                        <span class="string">"type"</span>: <span class="string">"string"</span>,</span><br><span class="line">                        <span class="string">"description"</span>: <span class="string">"城市名称，例如 '北京'"</span>,</span><br><span class="line">                    &#125;,</span><br><span class="line">                    <span class="string">"unit"</span>: &#123;</span><br><span class="line">                        <span class="string">"type"</span>: <span class="string">"string"</span>,</span><br><span class="line">                        <span class="string">"enum"</span>: [<span class="string">"celsius"</span>, <span class="string">"fahrenheit"</span>],</span><br><span class="line">                        <span class="string">"description"</span>: <span class="string">"温度单位"</span>,</span><br><span class="line">                    &#125;,</span><br><span class="line">                &#125;,</span><br><span class="line">                <span class="string">"required"</span>: [<span class="string">"location"</span>],</span><br><span class="line">            &#125;,</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+<h3 id="5-2-调用模型并处理函数调用"><a href="#5-2-调用模型并处理函数调用" class="headerlink" title="5.2 调用模型并处理函数调用"></a>5.2 调用模型并处理函数调用</h3><p>流程如下：</p>
+<ol>
+<li>将用户问题和工具描述一起发送给模型。</li>
+<li>如果模型决定调用函数，会在响应中包含 <code>tool_calls</code> 字段。</li>
+<li>解析调用信息，执行对应的函数。</li>
+<li>将函数结果作为新消息发送回模型，让模型生成最终回复。</li>
 </ol>
-<h3 id="3-3-代码示例（Spring-Boot-Redis）"><a href="#3-3-代码示例（Spring-Boot-Redis）" class="headerlink" title="3.3 代码示例（Spring Boot + Redis）"></a>3.3 代码示例（Spring Boot + Redis）</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Service</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SeckillService</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    <span class="keyword">private</span> StringRedisTemplate redisTemplate;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    <span class="keyword">private</span> KafkaTemplate&lt;String, String&gt; kafkaTemplate;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 秒杀接口</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Result <span class="title">seckill</span><span class="params">(<span class="keyword">long</span> goodsId, <span class="keyword">long</span> userId)</span> </span>&#123;</span><br><span class="line">        <span class="comment">// 1. Redis预减库存</span></span><br><span class="line">        String key = <span class="string">"stock:"</span> + goodsId;</span><br><span class="line">        Long stock = redisTemplate.opsForValue().decrement(key);</span><br><span class="line">        <span class="keyword">if</span> (stock == <span class="keyword">null</span> || stock &lt; <span class="number">0</span>) &#123;</span><br><span class="line">            <span class="comment">// 库存不足，需要将Redis中可能扣成负数的值恢复（可选）</span></span><br><span class="line">            <span class="comment">// 实际中通常直接返回失败，由定时任务同步最终库存</span></span><br><span class="line">            <span class="keyword">return</span> Result.error(<span class="string">"库存不足"</span>);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 2. 库存扣减成功，将请求放入消息队列（异步处理下单）</span></span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            SeckillMessage message = <span class="keyword">new</span> SeckillMessage(userId, goodsId);</span><br><span class="line">            kafkaTemplate.send(<span class="string">"seckill-topic"</span>, JSON.toJSONString(message));</span><br><span class="line">        &#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">            <span class="comment">// 发送失败，需要回滚Redis库存（补偿）</span></span><br><span class="line">            redisTemplate.opsForValue().increment(key);</span><br><span class="line">            <span class="keyword">return</span> Result.error(<span class="string">"系统繁忙，请重试"</span>);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> Result.success(<span class="string">"正在排队中"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><strong>注意</strong>：这里使用了<code>decrement</code>的返回值判断库存，如果返回负数说明库存超卖，应当拒绝。但由于并发环境下多个线程同时执行，可能出现短暂的负数，实际最终数据库库存以消息队列消费结果为准。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line">client = OpenAI()</span><br><span class="line"></span><br><span class="line">messages = [&#123;<span class="string">"role"</span>: <span class="string">"user"</span>, <span class="string">"content"</span>: <span class="string">"北京今天天气怎么样？"</span>&#125;]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 第一次调用，传入工具</span></span><br><span class="line">response = client.chat.completions.create(</span><br><span class="line">    model=<span class="string">"gpt-3.5-turbo"</span>,</span><br><span class="line">    messages=messages,</span><br><span class="line">    tools=tools,</span><br><span class="line">    tool_choice=<span class="string">"auto"</span>  <span class="comment"># 让模型自动决定是否调用</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 检查是否有函数调用</span></span><br><span class="line"><span class="keyword">if</span> response.choices[<span class="number">0</span>].message.tool_calls:</span><br><span class="line">    <span class="comment"># 提取函数调用信息</span></span><br><span class="line">    tool_call = response.choices[<span class="number">0</span>].message.tool_calls[<span class="number">0</span>]</span><br><span class="line">    function_name = tool_call.function.name</span><br><span class="line">    arguments = json.loads(tool_call.function.arguments)</span><br><span class="line">    </span><br><span class="line">    <span class="comment"># 执行本地函数</span></span><br><span class="line">    <span class="keyword">if</span> function_name == <span class="string">"get_current_weather"</span>:</span><br><span class="line">        function_response = get_current_weather(**arguments)</span><br><span class="line">    </span><br><span class="line">    <span class="comment"># 将模型请求（含工具调用）和函数结果追加到消息列表</span></span><br><span class="line">    messages.append(response.choices[<span class="number">0</span>].message)  <span class="comment"># 包含 tool_calls</span></span><br><span class="line">    messages.append(&#123;</span><br><span class="line">        <span class="string">"role"</span>: <span class="string">"tool"</span>,</span><br><span class="line">        <span class="string">"tool_call_id"</span>: tool_call.id,</span><br><span class="line">        <span class="string">"content"</span>: function_response,</span><br><span class="line">    &#125;)</span><br><span class="line">    </span><br><span class="line">    <span class="comment"># 第二次调用，让模型生成最终回复</span></span><br><span class="line">    final_response = client.chat.completions.create(</span><br><span class="line">        model=<span class="string">"gpt-3.5-turbo"</span>,</span><br><span class="line">        messages=messages,</span><br><span class="line">    )</span><br><span class="line">    print(final_response.choices[<span class="number">0</span>].message.content)</span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">    <span class="comment"># 模型直接回复</span></span><br><span class="line">    print(response.choices[<span class="number">0</span>].message.content)</span><br></pre></td></tr></table></figure>
+<p>模型最终会输出类似：“北京今天的天气是晴朗，温度25°C。”</p>
+<p>函数调用极大地扩展了 LLM 的能力，可以接入实时数据、业务逻辑等。</p>
 <hr>
-<h2 id="4-消息队列异步处理"><a href="#4-消息队列异步处理" class="headerlink" title="4. 消息队列异步处理"></a>4. 消息队列异步处理</h2><h3 id="4-1-为什么用消息队列？"><a href="#4-1-为什么用消息队列？" class="headerlink" title="4.1 为什么用消息队列？"></a>4.1 为什么用消息队列？</h3><ul>
-<li><strong>削峰填谷</strong>：将瞬间的高峰请求转化为平稳的消息处理，下游数据库可以按自身能力消费。</li>
-<li><strong>解耦</strong>：秒杀核心逻辑与订单创建分离，即使订单系统短暂不可用，消息也不会丢失。</li>
+<h2 id="6-高级技巧与最佳实践"><a href="#6-高级技巧与最佳实践" class="headerlink" title="6. 高级技巧与最佳实践"></a>6. 高级技巧与最佳实践</h2><h3 id="6-1-控制参数"><a href="#6-1-控制参数" class="headerlink" title="6.1 控制参数"></a>6.1 控制参数</h3><ul>
+<li><code>temperature</code>：控制随机性，0~2之间，0 表示确定，1 表示平衡。</li>
+<li><code>max_tokens</code>：限制回复长度。</li>
+<li><code>top_p</code>：核采样，与 temperature 类似，通常只调一个。</li>
+<li><code>presence_penalty</code> 和 <code>frequency_penalty</code>：控制话题重复。</li>
 </ul>
-<h3 id="4-2-实现步骤"><a href="#4-2-实现步骤" class="headerlink" title="4.2 实现步骤"></a>4.2 实现步骤</h3><ol>
-<li>应用层将有效的秒杀请求（已预扣Redis库存）封装为消息，发送到消息队列（如Kafka、RabbitMQ）。</li>
-<li>消费者从队列中拉取消息，执行数据库事务：<strong>再次检查数据库库存（乐观锁）</strong>，防止Redis和数据库最终不一致，然后扣减数据库库存并生成订单。</li>
-<li>如果数据库扣减失败（例如乐观锁冲突），需要补偿：将Redis库存回滚（<code>INCR</code>），避免Redis库存与数据库库存不一致。</li>
-</ol>
-<h3 id="4-3-代码示例（Kafka消费者）"><a href="#4-3-代码示例（Kafka消费者）" class="headerlink" title="4.3 代码示例（Kafka消费者）"></a>4.3 代码示例（Kafka消费者）</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Component</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SeckillConsumer</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    <span class="keyword">private</span> GoodsMapper goodsMapper;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    <span class="keyword">private</span> OrderMapper orderMapper;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    <span class="keyword">private</span> StringRedisTemplate redisTemplate;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@KafkaListener</span>(topics = <span class="string">"seckill-topic"</span>, groupId = <span class="string">"seckill-group"</span>)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">handleSeckillMessage</span><span class="params">(String messageStr)</span> </span>&#123;</span><br><span class="line">        SeckillMessage message = JSON.parseObject(messageStr, SeckillMessage<span class="class">.<span class="keyword">class</span>)</span>;</span><br><span class="line">        <span class="keyword">long</span> goodsId = message.getGoodsId();</span><br><span class="line">        <span class="keyword">long</span> userId = message.getUserId();</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 1. 数据库乐观锁扣减库存</span></span><br><span class="line">        <span class="keyword">int</span> update = goodsMapper.reduceStockByOptimisticLock(goodsId);</span><br><span class="line">        <span class="keyword">if</span> (update == <span class="number">0</span>) &#123;</span><br><span class="line">            <span class="comment">// 数据库库存不足或乐观锁冲突，回滚Redis</span></span><br><span class="line">            String key = <span class="string">"stock:"</span> + goodsId;</span><br><span class="line">            redisTemplate.opsForValue().increment(key);</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 2. 创建订单</span></span><br><span class="line">        Order order = <span class="keyword">new</span> Order();</span><br><span class="line">        order.setUserId(userId);</span><br><span class="line">        order.setGoodsId(goodsId);</span><br><span class="line">        order.setCreateTime(<span class="keyword">new</span> Date());</span><br><span class="line">        orderMapper.insert(order);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 3. 可发送通知告知用户秒杀成功</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><strong>数据库乐观锁实现</strong>：<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- goods表增加version字段</span></span><br><span class="line"><span class="keyword">update</span> goods </span><br><span class="line"><span class="keyword">set</span> stock = stock - <span class="number">1</span>, <span class="keyword">version</span> = <span class="keyword">version</span> + <span class="number">1</span> </span><br><span class="line"><span class="keyword">where</span> <span class="keyword">id</span> = <span class="comment">#&#123;goodsId&#125; and stock &gt; 0 and version = #&#123;oldVersion&#125;</span></span><br></pre></td></tr></table></figure></p>
+<p>示例：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">response = client.chat.completions.create(</span><br><span class="line">    ...,</span><br><span class="line">    temperature=<span class="number">0.7</span>,</span><br><span class="line">    max_tokens=<span class="number">500</span></span><br><span class="line">)</span><br></pre></td></tr></table></figure></p>
+<h3 id="6-2-错误处理与重试"><a href="#6-2-错误处理与重试" class="headerlink" title="6.2 错误处理与重试"></a>6.2 错误处理与重试</h3><p>网络不稳定或 API 限流时，需要添加异常处理。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> time</span><br><span class="line"><span class="keyword">from</span> openai <span class="keyword">import</span> RateLimitError, APIConnectionError</span><br><span class="line"></span><br><span class="line">max_retries = <span class="number">3</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(max_retries):</span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        response = client.chat.completions.create(...)</span><br><span class="line">        <span class="keyword">break</span></span><br><span class="line">    <span class="keyword">except</span> RateLimitError:</span><br><span class="line">        print(<span class="string">"触发限流，等待后重试"</span>)</span><br><span class="line">        time.sleep(<span class="number">2</span> ** i)</span><br><span class="line">    <span class="keyword">except</span> APIConnectionError:</span><br><span class="line">        print(<span class="string">"网络错误，重试"</span>)</span><br><span class="line">        time.sleep(<span class="number">2</span> ** i)</span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">    print(<span class="string">"多次重试失败"</span>)</span><br></pre></td></tr></table></figure>
+<h3 id="6-3-成本控制"><a href="#6-3-成本控制" class="headerlink" title="6.3 成本控制"></a>6.3 成本控制</h3><ul>
+<li>使用 <code>tiktoken</code> 库计算 token 数量，避免超出限制。</li>
+<li>设置 <code>max_tokens</code> 限制回复长度。</li>
+<li>缓存常见问题的回复。</li>
+</ul>
+<h3 id="6-4-异步调用"><a href="#6-4-异步调用" class="headerlink" title="6.4 异步调用"></a>6.4 异步调用</h3><p>对于高并发场景，使用异步客户端：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> openai <span class="keyword">import</span> AsyncOpenAI</span><br><span class="line"></span><br><span class="line">client = AsyncOpenAI()</span><br><span class="line"></span><br><span class="line"><span class="keyword">async</span> <span class="function"><span class="keyword">def</span> <span class="title">async_chat</span><span class="params">()</span>:</span></span><br><span class="line">    response = <span class="keyword">await</span> client.chat.completions.create(...)</span><br><span class="line">    <span class="keyword">return</span> response</span><br></pre></td></tr></table></figure>
 <hr>
-<h2 id="5-防止重复下单与接口限流"><a href="#5-防止重复下单与接口限流" class="headerlink" title="5. 防止重复下单与接口限流"></a>5. 防止重复下单与接口限流</h2><h3 id="5-1-防止重复下单"><a href="#5-1-防止重复下单" class="headerlink" title="5.1 防止重复下单"></a>5.1 防止重复下单</h3><p>同一用户短时间内多次点击秒杀按钮，可能产生多个请求。我们需要在应用层做幂等处理：</p>
-<ul>
-<li><strong>前端</strong>：按钮置灰，禁止重复提交。</li>
-<li><strong>后端</strong>：可以使用Redis记录用户是否已经秒杀成功（例如使用<code>SETNX</code>），如果已存在则直接拒绝。</li>
-</ul>
-<p>代码示例：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 在seckill方法开头</span></span><br><span class="line">String userKey = <span class="string">"seckill:user:"</span> + userId + <span class="string">":"</span> + goodsId;</span><br><span class="line">Boolean isNew = redisTemplate.opsForValue().setIfAbsent(userKey, <span class="string">"1"</span>, <span class="number">10</span>, TimeUnit.SECONDS);</span><br><span class="line"><span class="keyword">if</span> (!isNew) &#123;</span><br><span class="line">    <span class="keyword">return</span> Result.error(<span class="string">"请勿重复提交"</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<h3 id="5-2-接口限流"><a href="#5-2-接口限流" class="headerlink" title="5.2 接口限流"></a>5.2 接口限流</h3><p>使用令牌桶或漏桶算法限制单位时间内的请求数，防止恶意刷单。可借助Redis或Guava RateLimiter。</p>
+<h2 id="7-总结"><a href="#7-总结" class="headerlink" title="7. 总结"></a>7. 总结</h2><p>通过本文，你学会了如何集成 LLM API，从最基础的对话到高级的函数调用。函数调用使得模型能够主动获取外部信息，极大地增强了应用的智能性和实用性。未来，LLM 将越来越多地作为应用的“大脑”，而开发者需要掌握如何将其与现有系统无缝结合。</p>
+<p>LLM API 只是起点，结合提示工程、RAG（检索增强生成）、微调等技术，你可以构建出更强大的应用。希望本文能帮助你迈出第一步！</p>
 <hr>
-<h2 id="6-总结"><a href="#6-总结" class="headerlink" title="6. 总结"></a>6. 总结</h2><p>通过以上优化，我们的秒杀系统具备了处理高并发的能力：</p>
-<ul>
-<li>Redis承担了大部分读压力，利用原子操作快速判断库存。</li>
-<li>消息队列将写操作异步化，保护数据库。</li>
-<li>数据库最终通过乐观锁保证一致性，Redis作为二级缓存需要做好补偿机制。</li>
+<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><ul>
+<li><a href="https://platform.openai.com/docs/introduction" target="_blank" rel="noopener">OpenAI API 文档</a></li>
+<li><a href="https://platform.openai.com/docs/guides/function-calling" target="_blank" rel="noopener">Function Calling 官方指南</a></li>
 </ul>
-<p>当然，实际生产环境还需要考虑更多细节：Redis高可用（集群/哨兵）、消息队列的可靠性、分布式事务的最终一致性、监控报警等。但上述核心思想已经能够应对绝大多数秒杀场景。</p>
-<p>希望本文能为你设计和优化高并发系统提供一些启发！</p>
 
       
 
@@ -288,7 +290,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="http://s.jiathis.com/qrcode.php?url=https://cxlhaha.github.io/2026/01/15/高并发场景下的秒杀系统优化实践：从Redis到消息队列/" alt="微信分享二维码">
+      <img src="http://s.jiathis.com/qrcode.php?url=https://cxlhaha.github.io/2025/05/11/LLM-API-集成指南/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -302,18 +304,18 @@
   
 <nav id="article-nav">
   
-    <a href="/2026/02/04/构建高可用微服务系统：原理、模式与实战/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2025/05/15/AI-Agent：从概念到代码实现/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          构建高可用微服务系统：原理、模式与实战
+          AI Agent：从概念到代码实现
         
       </div>
     </a>
   
   
-    <a href="/2025/12/06/云原生转型实战/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">云原生转型实战</div>
+    <a href="/2025/04/08/混沌工程实战/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">混沌工程实战</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -327,7 +329,7 @@
   
   <div class="duoshuo">
 	<!-- 多说评论框 start -->
-	<div class="ds-thread" data-thread-key="高并发场景下的秒杀系统优化实践：从Redis到消息队列" data-title="高并发场景下的秒杀系统优化实践：从Redis到消息队列" data-url="https://cxlhaha.github.io/2026/01/15/高并发场景下的秒杀系统优化实践：从Redis到消息队列/"></div>
+	<div class="ds-thread" data-thread-key="LLM-API-集成指南" data-title="LLM_API_集成指南" data-url="https://cxlhaha.github.io/2025/05/11/LLM-API-集成指南/"></div>
 	<!-- 多说评论框 end -->
 	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
 	<script type="text/javascript">

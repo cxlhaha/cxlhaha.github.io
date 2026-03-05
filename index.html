@@ -160,7 +160,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="技术债治理：从“破窗效应”到可持续开发"><a href="#技术债治理：从“破窗效应”到可持续开发" class="headerlink" title="技术债治理：从“破窗效应”到可持续开发"></a>技术债治理：从“破窗效应”到可持续开发</h1><h2 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h2><p>技术债（Technical Debt）是软件开发中一个形象的比喻，由Ward Cunningham提出。就像金融债务一样，为了快速交付功能而采取“捷径”（如编写混乱的代码、跳过测试、忽视架构），虽然短期内获得了速度，但未来需要支付“利息”——更高的维护成本、更慢的特性开发、更多的缺陷。如果技术债长期不偿还，系统将陷入“破窗效应”，最终导致重构甚至重写的巨大代价。</p>
+        <h2 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h2><p>技术债（Technical Debt）是软件开发中一个形象的比喻，由Ward Cunningham提出。就像金融债务一样，为了快速交付功能而采取“捷径”（如编写混乱的代码、跳过测试、忽视架构），虽然短期内获得了速度，但未来需要支付“利息”——更高的维护成本、更慢的特性开发、更多的缺陷。如果技术债长期不偿还，系统将陷入“破窗效应”，最终导致重构甚至重写的巨大代价。</p>
 <p>然而，技术债并非洪水猛兽，关键在于有效治理。本文将探讨技术债的成因、识别方法，并通过实际代码示例展示如何逐步偿还技术债，建立可持续的开发节奏。</p>
 <hr>
 <h2 id="1-技术债的类型与成因"><a href="#1-技术债的类型与成因" class="headerlink" title="1. 技术债的类型与成因"></a>1. 技术债的类型与成因</h2><p>技术债可以出现在软件开发的各个层面：</p>
@@ -289,7 +289,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="高并发场景下的秒杀系统优化实践：从Redis到消息队列"><a href="#高并发场景下的秒杀系统优化实践：从Redis到消息队列" class="headerlink" title="高并发场景下的秒杀系统优化实践：从Redis到消息队列"></a>高并发场景下的秒杀系统优化实践：从Redis到消息队列</h1><h2 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h2><p>秒杀系统是互联网中典型的高并发场景，例如双十一秒杀、限量抢购等。这类系统的特点是：瞬间涌入大量请求，热点数据（如库存）集中读写，对系统的性能和一致性要求极高。如果直接使用传统的关系型数据库处理所有请求，数据库将不堪重负，甚至出现超卖、响应慢等问题。</p>
+        <h2 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h2><p>秒杀系统是互联网中典型的高并发场景，例如双十一秒杀、限量抢购等。这类系统的特点是：瞬间涌入大量请求，热点数据（如库存）集中读写，对系统的性能和一致性要求极高。如果直接使用传统的关系型数据库处理所有请求，数据库将不堪重负，甚至出现超卖、响应慢等问题。</p>
 <p>本文将通过一个简化的秒杀系统案例，介绍如何利用<strong>Redis</strong>预减库存和<strong>消息队列</strong>异步下单来优化高并发处理能力，并给出核心代码片段。</p>
 <hr>
 <h2 id="1-传统架构的痛点"><a href="#1-传统架构的痛点" class="headerlink" title="1. 传统架构的痛点"></a>1. 传统架构的痛点</h2><p>一个最基础的秒杀系统通常包含以下流程：</p>
@@ -356,7 +356,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="云原生转型实战：从传统Spring-Boot应用到Kubernetes集群"><a href="#云原生转型实战：从传统Spring-Boot应用到Kubernetes集群" class="headerlink" title="云原生转型实战：从传统Spring Boot应用到Kubernetes集群"></a>云原生转型实战：从传统Spring Boot应用到Kubernetes集群</h1><h2 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h2><p>云原生（Cloud Native）是当前软件架构的主流方向，它倡导将应用设计为弹性、可伸缩、可观测的微服务，并充分利用云平台的自动化能力。根据CNCF的定义，云原生技术包括容器、服务网格、微服务、不可变基础设施和声明式API等。</p>
+        <h2 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h2><p>云原生（Cloud Native）是当前软件架构的主流方向，它倡导将应用设计为弹性、可伸缩、可观测的微服务，并充分利用云平台的自动化能力。根据CNCF的定义，云原生技术包括容器、服务网格、微服务、不可变基础设施和声明式API等。</p>
 <p>然而，许多团队仍然维护着传统的单体应用，运行在物理机或虚拟机上，面临着部署慢、扩展难、环境不一致等问题。将传统应用迁移到云原生架构并非一蹴而就，而是一个逐步演进的过程。本文将以一个典型的Spring Boot应用为例，展示如何将其容器化并部署到Kubernetes集群，实现云原生的初步转型。</p>
 <hr>
 <h2 id="1-传统应用的痛点"><a href="#1-传统应用的痛点" class="headerlink" title="1. 传统应用的痛点"></a>1. 传统应用的痛点</h2><p>假设我们有一个基于Spring Boot的订单服务（Order Service），传统部署方式如下：</p>
@@ -426,7 +426,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="分布式锁的设计与实现：从Redis到ZooKeeper"><a href="#分布式锁的设计与实现：从Redis到ZooKeeper" class="headerlink" title="分布式锁的设计与实现：从Redis到ZooKeeper"></a>分布式锁的设计与实现：从Redis到ZooKeeper</h1><h2 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h2><p>在分布式系统中，多个节点同时访问共享资源（如数据库、文件、缓存）时，需要一种机制来保证数据的一致性和操作的互斥性。传统的本地锁（如Java的<code>synchronized</code>）只能作用于单个进程，无法跨节点协调。这时，我们就需要<strong>分布式锁</strong>。</p>
+        <h2 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h2><p>在分布式系统中，多个节点同时访问共享资源（如数据库、文件、缓存）时，需要一种机制来保证数据的一致性和操作的互斥性。传统的本地锁（如Java的<code>synchronized</code>）只能作用于单个进程，无法跨节点协调。这时，我们就需要<strong>分布式锁</strong>。</p>
 <p>分布式锁是一种跨进程、跨机器的互斥锁，它协调多个客户端对共享资源的访问。本文将探讨分布式锁的核心要求，并通过两种主流实现方式——<strong>Redis</strong>和<strong>ZooKeeper</strong>——展示其设计与代码实现，最后对比它们的优缺点及适用场景。</p>
 <hr>
 <h2 id="1-分布式锁的基本要求"><a href="#1-分布式锁的基本要求" class="headerlink" title="1. 分布式锁的基本要求"></a>1. 分布式锁的基本要求</h2><p>一个合格的分布式锁应满足以下特性：</p>
@@ -490,7 +490,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="深入浅出RPC框架：原理与手写实现"><a href="#深入浅出RPC框架：原理与手写实现" class="headerlink" title="深入浅出RPC框架：原理与手写实现"></a>深入浅出RPC框架：原理与手写实现</h1><h2 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h2><p>在分布式系统中，服务之间的调用是家常便饭。传统的HTTP接口虽然简单，但在性能、灵活性和易用性上往往不够理想。RPC（Remote Procedure Call，远程过程调用）框架应运而生，它让开发者像调用本地方法一样调用远程服务，屏蔽了网络通信、序列化、寻址等底层细节。</p>
+        <h2 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h2><p>在分布式系统中，服务之间的调用是家常便饭。传统的HTTP接口虽然简单，但在性能、灵活性和易用性上往往不够理想。RPC（Remote Procedure Call，远程过程调用）框架应运而生，它让开发者像调用本地方法一样调用远程服务，屏蔽了网络通信、序列化、寻址等底层细节。</p>
 <p>本文将介绍RPC的核心原理，并通过一个简单的Java实现展示其工作流程，最后对比主流RPC框架的选型。</p>
 <hr>
 <h2 id="1-RPC的核心原理"><a href="#1-RPC的核心原理" class="headerlink" title="1. RPC的核心原理"></a>1. RPC的核心原理</h2><p>RPC框架的目标是让远程调用像本地调用一样简单。其核心流程包括以下几个步骤：</p>
@@ -564,7 +564,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="Docker从入门到实践：容器化你的应用"><a href="#Docker从入门到实践：容器化你的应用" class="headerlink" title="Docker从入门到实践：容器化你的应用"></a>Docker从入门到实践：容器化你的应用</h1><h2 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h2><p>在软件开发中，我们经常遇到这样的问题：“它在我的机器上可以运行！”——环境不一致导致的部署失败、依赖冲突、版本差异等让人头疼。Docker的出现解决了这一痛点。Docker是一个开源的容器化平台，它允许开发者将应用及其依赖打包成一个轻量级、可移植的容器，然后在任何支持Docker的环境中运行，真正做到“一次构建，到处运行”。</p>
+        <h2 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h2><p>在软件开发中，我们经常遇到这样的问题：“它在我的机器上可以运行！”——环境不一致导致的部署失败、依赖冲突、版本差异等让人头疼。Docker的出现解决了这一痛点。Docker是一个开源的容器化平台，它允许开发者将应用及其依赖打包成一个轻量级、可移植的容器，然后在任何支持Docker的环境中运行，真正做到“一次构建，到处运行”。</p>
 <p>本文将通过一个Node.js应用示例，带你从零开始学习Docker的核心概念、Dockerfile编写、容器运行，以及使用Docker Compose编排多容器应用。</p>
 <hr>
 <h2 id="1-Docker核心概念"><a href="#1-Docker核心概念" class="headerlink" title="1. Docker核心概念"></a>1. Docker核心概念</h2><ul>
@@ -626,7 +626,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="Kafka实战：构建高吞吐消息系统"><a href="#Kafka实战：构建高吞吐消息系统" class="headerlink" title="Kafka实战：构建高吞吐消息系统"></a>Kafka实战：构建高吞吐消息系统</h1><h2 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h2><p>在大数据和分布式系统盛行的今天，消息队列作为系统解耦、异步处理、流量削峰的核心组件，扮演着至关重要的角色。Apache Kafka 是一个分布式、分区的、多副本的、基于 ZooKeeper 协调的分布式消息系统，它以高吞吐、持久化、水平扩展等特性，成为实时数据流处理的事实标准。</p>
+        <h2 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h2><p>在大数据和分布式系统盛行的今天，消息队列作为系统解耦、异步处理、流量削峰的核心组件，扮演着至关重要的角色。Apache Kafka 是一个分布式、分区的、多副本的、基于 ZooKeeper 协调的分布式消息系统，它以高吞吐、持久化、水平扩展等特性，成为实时数据流处理的事实标准。</p>
 <p>本文将带你从零开始认识 Kafka 的核心概念，并通过 Java 客户端示例展示生产者和消费者的基本用法，最后探讨一些高级特性与最佳实践。</p>
 <hr>
 <h2 id="1-Kafka-核心概念"><a href="#1-Kafka-核心概念" class="headerlink" title="1. Kafka 核心概念"></a>1. Kafka 核心概念</h2><ul>
@@ -671,29 +671,49 @@
 
 
   
-    <article id="post-动态添加属性-Associated Object" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-构建你的第一个大数据处理应用" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2020/03/13/动态添加属性-Associated Object/">动态添加属性-Associated Object</a>
+      <a class="article-title" href="/2025/07/22/构建你的第一个大数据处理应用/">构建你的第一个大数据处理应用</a>
     </h1>
   
 
         
-        <a href="/2020/03/13/动态添加属性-Associated Object/" class="archive-article-date">
-  	<time datetime="2020-03-13T09:56:26.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-13</time>
+        <a href="/2025/07/22/构建你的第一个大数据处理应用/" class="archive-article-date">
+  	<time datetime="2025-07-22T13:12:51.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2025-07-22</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>从今天开始,我们将要开始逐步接近OC的动态特性,慢慢揭开OC底层runtime系统的神秘面纱,超强的动态特性,是OC和一般面向对象的语言最明显的区别,也是这门古老的语言最具魅力的地方,如果可以正确的利用动态特性,那么可以帮助我们方便的解决很多棘手的问题.</p>
-<p>我们今天来看的呢,是runtime库里非常有用的一组函数,Associated Object动态关联对象.这个功能,能够让我们动态的对一个对象绑定相关联的数据.</p>
-<p>有了这个功能,我们不仅能够为自己编写的类添加属性,还能够为系统框架里的类动态添加我们需要的属性,甚至能够在分类里动态添加属性.我们这就来看看这个方便又强大的功能吧.<br>
+        <h2 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h2><p>随着互联网和物联网的飞速发展，数据量呈指数级增长，传统单机存储和计算已经无法满足海量数据的处理需求。Apache Hadoop 作为大数据领域的开创性框架，提供了分布式存储（HDFS）和分布式计算（MapReduce）的能力，让企业能够以低成本、高可靠的方式处理 PB 级数据。</p>
+<p>本文将介绍 Hadoop 的核心组件，并通过一个完整的 WordCount 示例，带你体验从数据上传到 MapReduce 作业运行的全过程。无论你是大数据初学者，还是希望系统梳理 Hadoop 知识的开发者，本文都将为你提供实用的指导。</p>
+<hr>
+<h2 id="1-Hadoop-生态系统概览"><a href="#1-Hadoop-生态系统概览" class="headerlink" title="1. Hadoop 生态系统概览"></a>1. Hadoop 生态系统概览</h2><p>Hadoop 主要由以下四个核心模块组成：</p>
+<ul>
+<li><strong>Hadoop Common</strong>：支持其他 Hadoop 模块的通用工具。</li>
+<li><strong>HDFS（Hadoop Distributed File System）</strong>：分布式文件系统，提供高吞吐量的数据访问，将大文件切分成块存储在多台机器上。</li>
+<li><strong>MapReduce</strong>：分布式计算框架，基于“分而治之”思想，将任务拆分为 Map 和 Reduce 阶段并行处理。</li>
+<li><strong>YARN（Yet Another Resource Negotiator）</strong>：资源调度框架，负责集群资源管理和作业调度。</li>
+</ul>
+<p>此外，Hadoop 生态还包括 Hive（数据仓库）、HBase（NoSQL 数据库）、Spark（内存计算）等，本文聚焦于 HDFS 和 MapReduce。</p>
+<hr>
+<h2 id="2-HDFS-分布式文件系统"><a href="#2-HDFS-分布式文件系统" class="headerlink" title="2. HDFS 分布式文件系统"></a>2. HDFS 分布式文件系统</h2><h3 id="2-1-架构与原理"><a href="#2-1-架构与原理" class="headerlink" title="2.1 架构与原理"></a>2.1 架构与原理</h3><p>HDFS 采用主从架构：</p>
+<ul>
+<li><strong>NameNode</strong>：主节点，管理文件系统的命名空间和元数据（文件路径、块位置等）。</li>
+<li><strong>DataNode</strong>：从节点，实际存储数据块（默认块大小 128MB），并定期向 NameNode 发送心跳和块报告。</li>
+<li><strong>Secondary NameNode</strong>：辅助 NameNode 合并编辑日志，并非 NameNode 的热备。</li>
+</ul>
+<p><strong>文件写入流程</strong>：客户端向 NameNode 请求上传文件，NameNode 返回可用的 DataNode 列表，客户端将文件切块后并行写入多个 DataNode（副本数默认为 3）。</p>
+<p><strong>文件读取流程</strong>：客户端向 NameNode 请求文件块位置，NameNode 返回离客户端最近的 DataNode 地址，客户端直接从 DataNode 读取数据。</p>
+<h3 id="2-2-HDFS-Java-API-示例"><a href="#2-2-HDFS-Java-API-示例" class="headerlink" title="2.2 HDFS Java API 示例"></a>2.2 HDFS Java API 示例</h3><p>我们将编写一个简单的程序，实现本地文件上传到 HDFS。</p>
+<p><strong>环境准备</strong>：确保 Hadoop 集群已启动，并在项目中添加 Hadoop 客户端依赖（Maven）：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.apache.hadoop<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>hadoop-client<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>3.3.4<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
         
       
 
@@ -706,7 +726,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2020/03/13/动态添加属性-Associated Object/">展开全文 >></a>
+          <a class="article-more-a" href="/2025/07/22/构建你的第一个大数据处理应用/">展开全文 >></a>
         </p>
       
 
@@ -724,30 +744,45 @@
 
 
   
-    <article id="post-技术支持" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-大模型微调新范式：LoRA原理与实践" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2020/01/12/技术支持/">技术支持</a>
+      <a class="article-title" href="/2025/06/16/大模型微调新范式：LoRA原理与实践/">大模型微调新范式：LoRA原理与实践</a>
     </h1>
   
 
         
-        <a href="/2020/01/12/技术支持/" class="archive-article-date">
-  	<time datetime="2020-01-12T08:39:09.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-01-12</time>
+        <a href="/2025/06/16/大模型微调新范式：LoRA原理与实践/" class="archive-article-date">
+  	<time datetime="2025-06-16T13:17:45.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2025-06-16</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>If you have any questions, you can either leave a message or send the questions to your email address. We will answer them for you in the first time.</p>
-<p>Address:<a href="mailto:changxlhaha1@163.com" target="_blank" rel="noopener">changxlhaha1@163.com</a></p>
-<p>thank you</p>
-
+        <h2 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h2><p>近年来，预训练语言模型（PLMs）的规模呈指数级增长，从 BERT 的 1 亿参数到 GPT-3 的 1750 亿参数。全参数微调（Full Fine-tuning）虽然效果显著，但需要为每个下游任务存储一个完整的模型副本，训练成本高昂且部署困难。为了解决这一问题，参数高效微调（Parameter-Efficient Fine-Tuning，PEFT）技术应运而生，其中最具代表性的方法之一便是 <strong>LoRA（Low-Rank Adaptation）</strong>。</p>
+<p>LoRA 的核心思想是：冻结预训练模型的权重，并在 Transformer 层的某些权重矩阵旁引入可训练的低秩矩阵，仅更新这些少量参数即可达到与全参数微调相当的性能。本文将介绍 LoRA 的原理，并通过 Hugging Face 的 <code>peft</code> 库在情感分类任务上演示如何使用 LoRA 微调 BERT 模型。</p>
+<hr>
+<h2 id="1-LoRA-原理简介"><a href="#1-LoRA-原理简介" class="headerlink" title="1. LoRA 原理简介"></a>1. LoRA 原理简介</h2><p>LoRA 基于一个关键的观察：预训练语言模型在适应下游任务时，其权重更新通常具有较低的“内在秩”（intrinsic rank）。因此，LoRA 提出在模型的现有权重矩阵旁添加一个低秩分解的适配器。</p>
+<p>具体来说，对于预训练权重矩阵 $W_0 \in \mathbb{R}^{d \times k}$，其前向传播为 $h = W_0 x$。LoRA 将其更新为：</p>
+<p>$$ h = W_0 x + \Delta W x = W_0 x + BA x $$</p>
+<p>其中 $B \in \mathbb{R}^{d \times r}$，$A \in \mathbb{R}^{r \times k}$，且 $r \ll \min(d, k)$。训练时，$W_0$ 被冻结，仅 $A$ 和 $B$ 参与梯度更新。初始化时，$A$ 采用随机高斯初始化，$B$ 初始化为零，使得 $\Delta W$ 初始为 0。</p>
+<p><strong>优势</strong>：</p>
+<ul>
+<li>显存占用大幅降低（只需保存少量可训练参数）。</li>
+<li>训练速度快。</li>
+<li>可以在不同任务间共享基础模型，只需切换 LoRA 权重即可。</li>
+<li>无推理延迟（可将 $BA$ 合并回 $W_0$）。</li>
+</ul>
+<p>LoRA 通常应用于 Transformer 的自注意力模块中的查询（Q）、键（K）、值（V）和输出（O）投影矩阵。</p>
+<hr>
+<h2 id="2-环境准备"><a href="#2-环境准备" class="headerlink" title="2. 环境准备"></a>2. 环境准备</h2><p>安装必要的库：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install torch transformers datasets evaluate peft accelerate</span><br></pre></td></tr></table></figure>
+        
       
 
       
@@ -759,7 +794,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2020/01/12/技术支持/">展开全文 >></a>
+          <a class="article-more-a" href="/2025/06/16/大模型微调新范式：LoRA原理与实践/">展开全文 >></a>
         </p>
       
 
@@ -779,7 +814,7 @@
   
   
     <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
+      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
     </nav>
   
 
